@@ -1,7 +1,7 @@
 ---
 name: bug_error report
 about: 클라이언트 버그/오류제보
-title: ''
+title: "[BUG/ERROR] "
 labels: ''
 assignees: ''
 
@@ -9,6 +9,7 @@ assignees: ''
 
 > [!NOTE]
 > 이슈 작성전 반드시 아래 내용을 읽어주세요. (읽지 않고 작성시 처리가 어려울수 있습니다)
+> 또한 기능제안이랑 같이있는 경우 각각 개별로 작성해주세요
 > 
 > 1. 릴리즈 버전
 >   - 사용중인 클라이언트 버전 (ex. v24.01.01)
