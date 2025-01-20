@@ -7,7 +7,10 @@
 ![image](https://github.com/user-attachments/assets/a9436910-caa0-4fbd-aa6d-960a61adfa09)
 
 ## Support version
-1.8.9 only
+1.8.9
+
+## FAQ
+[여기](https://github.com/ButterackingClient/ButterackingClient/blob/main/FAQ.md)를 눌러 FAQ로 이동하세요
 
 ## License
 ```
@@ -36,8 +39,6 @@ SOFTWARE.
 
 ## Social
 YT - [@Butteracking](https://www.youtube.com/@Butteracking)
-
-Discord - coming soon
 
 ## Developer / Contributors
 delta8682 [[GitHub](https://github.com/delta8682)]
