@@ -6,13 +6,36 @@
 
 ![image](https://github.com/user-attachments/assets/a9436910-caa0-4fbd-aa6d-960a61adfa09)
 
-## Support version
-1.8.9
 
-## FAQ
-[여기](https://github.com/ButterackingClient/ButterackingClient/blob/main/FAQ.md)를 눌러 FAQ로 이동하세요
+## 🛠 Support version
+- **1.8.9**
 
-## License
+## 📦 Include mods / Features
+```
+ - Hangul Chat
+ - OptiFine
+ - ToggleSprint
+ - 1.7 Animations
+ - Auto GG
+ - TNT Timer
+ - Client cape (v1, v2)
+ - more
+```
+
+## ❓ FAQ
+[FAQ 확인](https://github.com/ButterackingClient/ButterackingClient/blob/main/FAQ.md)
+
+
+## 🌐 Social
+- **YouTube**: [@Butteracking](https://www.youtube.com/@Butteracking)
+
+
+## 💻 Developer / Contributors
+- **delta8682**: [GitHub](https://github.com/delta8682)
+
+---
+
+## 📜 License
 ```
 MIT License
 
@@ -36,10 +59,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-## Social
-YT - [@Butteracking](https://www.youtube.com/@Butteracking)
-
-## Developer / Contributors
-delta8682 [[GitHub](https://github.com/delta8682)]
-
