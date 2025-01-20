@@ -36,3 +36,7 @@ SOFTWARE.
 YT - [@Butteracking](https://www.youtube.com/@Butteracking)
 
 Discord - coming soon
+
+## Developer / Contributors
+delta8682 [[GitHub](https://github.com/delta8682)]
+
