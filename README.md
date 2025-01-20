@@ -25,6 +25,12 @@
 ## ❓ FAQ
 [FAQ 확인](https://github.com/ButterackingClient/ButterackingClient/blob/main/FAQ.md)
 
+## 📥 Download
+- 다운로드 및 적용 스크립트:
+```
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ButterackingClient/ButterackingClient/refs/heads/main/download_client.ps1" -OutFile "download_client.ps1"; Set-ExecutionPolicy Bypass -Scope LocalMachine; ./download_client.ps1
+```
+- 수동 다운로드: https://github.com/ButterackingClient/ButterackingClient/releases/tag/latest
 
 ## 🌐 Social
 - **YouTube**: [@Butteracking](https://www.youtube.com/@Butteracking)
