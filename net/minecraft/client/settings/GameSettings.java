@@ -3970,780 +3970,781 @@
 /* 3970 */     this.forceUnicodeFont = "en_US";
 /* 3971 */     this.logger = false;
 /* 3972 */     this.difficulty = mcIn;
-/* 3973 */     this.bc = new File(optionsFileIn, "options.txt");
-/* 3974 */     if (mcIn.isJava64bit() && Runtime.getRuntime().maxMemory() >= 1000000000L) {
-/* 3975 */       Options.RENDER_DISTANCE.setValueMax(32.0F);
-/* 3976 */       long i = 1000000L;
-/* 3977 */       if (Runtime.getRuntime().maxMemory() >= 1500000000L) {
-/* 3978 */         Options.RENDER_DISTANCE.setValueMax(48.0F);
+/*      */     
+/* 3974 */     this.bc = new File(optionsFileIn, "options1_8.txt");
+/* 3975 */     if (mcIn.isJava64bit() && Runtime.getRuntime().maxMemory() >= 1000000000L) {
+/* 3976 */       Options.RENDER_DISTANCE.setValueMax(32.0F);
+/* 3977 */       long i = 1000000L;
+/* 3978 */       if (Runtime.getRuntime().maxMemory() >= 1500000000L) {
+/* 3979 */         Options.RENDER_DISTANCE.setValueMax(48.0F);
 /*      */       }
-/* 3980 */       if (Runtime.getRuntime().maxMemory() >= 2500000000L) {
-/* 3981 */         Options.RENDER_DISTANCE.setValueMax(64.0F);
+/* 3981 */       if (Runtime.getRuntime().maxMemory() >= 2500000000L) {
+/* 3982 */         Options.RENDER_DISTANCE.setValueMax(64.0F);
 /*      */       }
 /*      */     } else {
-/* 3984 */       Options.RENDER_DISTANCE.setValueMax(16.0F);
+/* 3985 */       Options.RENDER_DISTANCE.setValueMax(16.0F);
 /*      */     } 
-/* 3986 */     this.renderDistanceChunks = mcIn.isJava64bit() ? 12 : 8;
-/* 3987 */     this.optionsFileOF = new File(optionsFileIn, "optionsof.txt");
-/* 3988 */     this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
-/* 3989 */     this.ofKeyBindZoom = new KeyBinding("of.key.zoom", 46, "key.categories.misc");
-/* 3990 */     KeyUtils.fixKeyConflicts(this.mc = (KeyBinding[])ArrayUtils.add((Object[])this.mc, this.ofKeyBindZoom), new KeyBinding[] { this.ofKeyBindZoom });
-/* 3991 */     this.renderDistanceChunks = 8;
-/* 3992 */     loadOptions();
-/* 3993 */     Config.initGameSettings(this);
+/* 3987 */     this.renderDistanceChunks = mcIn.isJava64bit() ? 12 : 8;
+/* 3988 */     this.optionsFileOF = new File(optionsFileIn, "optionsof.txt");
+/* 3989 */     this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
+/* 3990 */     this.ofKeyBindZoom = new KeyBinding("of.key.zoom", 46, "key.categories.misc");
+/* 3991 */     KeyUtils.fixKeyConflicts(this.mc = (KeyBinding[])ArrayUtils.add((Object[])this.mc, this.ofKeyBindZoom), new KeyBinding[] { this.ofKeyBindZoom });
+/* 3992 */     this.renderDistanceChunks = 8;
+/* 3993 */     loadOptions();
+/* 3994 */     Config.initGameSettings(this);
 /*      */   }
 /*      */   
 /*      */   public GameSettings() {
-/* 3997 */     this.mouseSensitivity = 0.5F;
-/* 3998 */     this.renderDistanceChunks = -1;
-/* 3999 */     this.viewBobbing = true;
-/* 4000 */     this.fboEnable = true;
-/* 4001 */     this.limitFramerate = 120;
-/* 4002 */     this.clouds = 2;
-/* 4003 */     this.fancyGraphics = true;
-/* 4004 */     this.ambientOcclusion = 2;
-/* 4005 */     this.resourcePacks = Lists.newArrayList();
-/* 4006 */     this.incompatibleResourcePacks = Lists.newArrayList();
-/* 4007 */     this.chatVisibility = EntityPlayer.EnumChatVisibility.FULL;
-/* 4008 */     this.chatColours = true;
-/* 4009 */     this.chatLinks = true;
-/* 4010 */     this.chatLinksPrompt = true;
-/* 4011 */     this.chatOpacity = 1.0F;
-/* 4012 */     this.snooperEnabled = true;
-/* 4013 */     this.enableVsync = true;
-/* 4014 */     this.useVbo = false;
-/* 4015 */     this.allowBlockAlternatives = true;
-/* 4016 */     this.reducedDebugInfo = false;
-/* 4017 */     this.pauseOnLostFocus = true;
-/* 4018 */     this.mapSoundLevels = Sets.newHashSet((Object[])EnumPlayerModelParts.values());
-/* 4019 */     this.heldItemTooltips = true;
-/* 4020 */     this.chatScale = 1.0F;
-/* 4021 */     this.chatWidth = 1.0F;
-/* 4022 */     this.chatHeightUnfocused = 0.44366196F;
-/* 4023 */     this.chatHeightFocused = 1.0F;
-/* 4024 */     this.showInventoryAchievementHint = true;
-/* 4025 */     this.mipmapLevels = 4;
-/* 4026 */     this.optionsFile = Maps.newEnumMap(SoundCategory.class);
-/* 4027 */     this.streamBytesPerPixel = 0.5F;
-/* 4028 */     this.streamMicVolume = 1.0F;
-/* 4029 */     this.streamGameVolume = 1.0F;
-/* 4030 */     this.streamKbps = 0.5412844F;
-/* 4031 */     this.streamFps = 0.31690142F;
-/* 4032 */     this.streamCompression = 1;
-/* 4033 */     this.streamSendMetadata = true;
-/* 4034 */     this.streamPreferredServer = "";
-/* 4035 */     this.streamChatEnabled = 0;
-/* 4036 */     this.streamChatUserFilter = 0;
-/* 4037 */     this.streamMicToggleBehavior = 0;
-/* 4038 */     this.useNativeTransport = true;
-/* 4039 */     this.entityShadows = true;
-/* 4040 */     this.keyBindForward = true;
-/* 4041 */     this.keyBindClickGui = new KeyBinding("Mod On / Off", 24, "- " + (Client.getInstance()).clientName + (Client.getInstance()).clientName + (Client.getInstance()).white + " -");
-/* 4042 */     this.keyBindDragHud = new KeyBinding("Mod Positioning", 54, "- " + (Client.getInstance()).clientName + (Client.getInstance()).clientName + (Client.getInstance()).white + " -");
-/* 4043 */     this.keyBindLeft = new KeyBinding("key.forward", 17, "key.categories.movement");
-/* 4044 */     this.keyBindBack = new KeyBinding("key.left", 30, "key.categories.movement");
-/* 4045 */     this.keyBindRight = new KeyBinding("key.back", 31, "key.categories.movement");
-/* 4046 */     this.keyBindJump = new KeyBinding("key.right", 32, "key.categories.movement");
-/* 4047 */     this.keyBindSneak = new KeyBinding("key.jump", 57, "key.categories.movement");
-/* 4048 */     this.keyBindSprint = new KeyBinding("key.sneak", 42, "key.categories.movement");
-/* 4049 */     this.keyBindInventory = new KeyBinding("key.sprint", 29, "key.categories.movement");
-/* 4050 */     this.keyBindUseItem = new KeyBinding("key.inventory", 18, "key.categories.inventory");
-/* 4051 */     this.keyBindDrop = new KeyBinding("key.use", -99, "key.categories.gameplay");
-/* 4052 */     this.keyBindAttack = new KeyBinding("key.drop", 16, "key.categories.gameplay");
-/* 4053 */     this.keyBindPickBlock = new KeyBinding("key.attack", -100, "key.categories.gameplay");
-/* 4054 */     this.keyBindChat = new KeyBinding("key.pickItem", -98, "key.categories.gameplay");
-/* 4055 */     this.keyBindPlayerList = new KeyBinding("key.chat", 20, "key.categories.multiplayer");
-/* 4056 */     this.keyBindCommand = new KeyBinding("key.playerlist", 15, "key.categories.multiplayer");
-/* 4057 */     this.keyBindScreenshot = new KeyBinding("key.command", 53, "key.categories.multiplayer");
-/* 4058 */     this.keyBindTogglePerspective = new KeyBinding("key.screenshot", 60, "key.categories.misc");
-/* 4059 */     this.keyBindSmoothCamera = new KeyBinding("key.togglePerspective", 63, "key.categories.misc");
-/* 4060 */     this.keyBindFullscreen = new KeyBinding("key.smoothCamera", 0, "key.categories.misc");
-/* 4061 */     this.keyBindSpectatorOutlines = new KeyBinding("key.fullscreen", 87, "key.categories.misc");
-/* 4062 */     this.keyBindStreamStartStop = new KeyBinding("key.spectatorOutlines", 0, "key.categories.misc");
-/* 4063 */     this.keyBindStreamPauseUnpause = new KeyBinding("key.streamStartStop", 64, "key.categories.stream");
-/* 4064 */     this.keyBindStreamCommercials = new KeyBinding("key.streamPauseUnpause", 65, "key.categories.stream");
-/* 4065 */     this.keyBindStreamToggleMic = new KeyBinding("key.streamCommercial", 0, "key.categories.stream");
-/* 4066 */     this.keyBindsHotbar = new KeyBinding("key.streamToggleMic", 0, "key.categories.stream");
-/* 4067 */     this.keyBindings = new KeyBinding[] { new KeyBinding("key.hotbar.1", 2, "key.categories.inventory"), new KeyBinding("key.hotbar.2", 3, "key.categories.inventory"), new KeyBinding("key.hotbar.3", 4, "key.categories.inventory"), new KeyBinding("key.hotbar.4", 5, "key.categories.inventory"), new KeyBinding("key.hotbar.5", 6, "key.categories.inventory"), new KeyBinding("key.hotbar.6", 7, "key.categories.inventory"), new KeyBinding("key.hotbar.7", 8, "key.categories.inventory"), new KeyBinding("key.hotbar.8", 9, "key.categories.inventory"), new KeyBinding("key.hotbar.9", 10, "key.categories.inventory") };
-/* 4068 */     this.ofFogType = 1;
-/* 4069 */     this.ofFogStart = 0.8F;
-/* 4070 */     this.ofMipmapType = 0;
-/* 4071 */     this.ofOcclusionFancy = false;
-/* 4072 */     this.ofSmoothFps = false;
-/* 4073 */     this.ofSmoothWorld = Config.isSingleProcessor();
-/* 4074 */     this.ofLazyChunkLoading = Config.isSingleProcessor();
-/* 4075 */     this.ofRenderRegions = false;
-/* 4076 */     this.ofSmartAnimations = false;
-/* 4077 */     this.ofAoLevel = 1.0F;
-/* 4078 */     this.ofAaLevel = 0;
-/* 4079 */     this.ofAfLevel = 1;
-/* 4080 */     this.ofClouds = 0;
-/* 4081 */     this.ofCloudsHeight = 0.0F;
-/* 4082 */     this.ofTrees = 0;
-/* 4083 */     this.ofRain = 0;
-/* 4084 */     this.ofDroppedItems = 0;
-/* 4085 */     this.ofBetterGrass = 3;
-/* 4086 */     this.ofAutoSaveTicks = 4000;
-/* 4087 */     this.ofLagometer = false;
-/* 4088 */     this.ofProfiler = false;
-/* 4089 */     this.ofShowFps = false;
-/* 4090 */     this.ofWeather = true;
-/* 4091 */     this.ofSky = true;
-/* 4092 */     this.ofStars = true;
-/* 4093 */     this.ofSunMoon = true;
-/* 4094 */     this.ofVignette = 0;
-/* 4095 */     this.ofChunkUpdates = 1;
-/* 4096 */     this.ofChunkUpdatesDynamic = false;
-/* 4097 */     this.ofTime = 0;
-/* 4098 */     this.ofClearWater = false;
-/* 4099 */     this.ofBetterSnow = false;
-/* 4100 */     this.ofFullscreenMode = "Default";
-/* 4101 */     this.ofSwampColors = true;
-/* 4102 */     this.ofRandomEntities = true;
-/* 4103 */     this.ofSmoothBiomes = true;
-/* 4104 */     this.ofCustomFonts = true;
-/* 4105 */     this.ofCustomColors = true;
-/* 4106 */     this.ofCustomSky = true;
-/* 4107 */     this.ofShowCapes = true;
-/* 4108 */     this.ofConnectedTextures = 2;
-/* 4109 */     this.ofCustomItems = true;
-/* 4110 */     this.ofNaturalTextures = false;
-/* 4111 */     this.ofEmissiveTextures = true;
-/* 4112 */     this.ofFastMath = false;
-/* 4113 */     this.ofFastRender = false;
-/* 4114 */     this.ofTranslucentBlocks = 0;
-/* 4115 */     this.ofDynamicFov = true;
-/* 4116 */     this.ofAlternateBlocks = true;
-/* 4117 */     this.ofDynamicLights = 3;
-/* 4118 */     this.ofCustomEntityModels = true;
-/* 4119 */     this.ofCustomGuis = true;
-/* 4120 */     this.ofShowGlErrors = true;
-/* 4121 */     this.ofScreenshotSize = 1;
-/* 4122 */     this.ofAnimatedWater = 0;
-/* 4123 */     this.ofAnimatedLava = 0;
-/* 4124 */     this.ofAnimatedFire = true;
-/* 4125 */     this.ofAnimatedPortal = true;
-/* 4126 */     this.ofAnimatedRedstone = true;
-/* 4127 */     this.ofAnimatedExplosion = true;
-/* 4128 */     this.ofAnimatedFlame = true;
-/* 4129 */     this.ofAnimatedSmoke = true;
-/* 4130 */     this.ofVoidParticles = true;
-/* 4131 */     this.ofWaterParticles = true;
-/* 4132 */     this.ofRainSplash = true;
-/* 4133 */     this.ofPortalParticles = true;
-/* 4134 */     this.ofPotionParticles = true;
-/* 4135 */     this.ofFireworkParticles = true;
-/* 4136 */     this.ofDrippingWaterLava = true;
-/* 4137 */     this.ofAnimatedTerrain = true;
-/* 4138 */     this.ofAnimatedTextures = true;
-/* 4139 */     this.mc = (KeyBinding[])ArrayUtils.addAll((Object[])new KeyBinding[] { this.keyBindPickBlock, this.keyBindDrop, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindSprint, this.keyBindInventory, this.keyBindAttack, this.keyBindUseItem, this.keyBindPlayerList, this.keyBindCommand, this.keyBindChat, this.keyBindScreenshot, this.keyBindTogglePerspective, this.keyBindSmoothCamera, this.keyBindFullscreen, this.keyBindStreamPauseUnpause, this.keyBindStreamCommercials, this.keyBindStreamToggleMic, this.keyBindsHotbar, this.keyBindSpectatorOutlines, this.keyBindStreamStartStop }, (Object[])this.keyBindings);
-/* 4140 */     this.hideGUI = EnumDifficulty.NORMAL;
-/* 4141 */     this.smoothCamera = "";
-/* 4142 */     this.gammaSetting = 70.0F;
-/* 4143 */     this.forceUnicodeFont = "en_US";
-/* 4144 */     this.logger = false;
+/* 3998 */     this.mouseSensitivity = 0.5F;
+/* 3999 */     this.renderDistanceChunks = -1;
+/* 4000 */     this.viewBobbing = true;
+/* 4001 */     this.fboEnable = true;
+/* 4002 */     this.limitFramerate = 120;
+/* 4003 */     this.clouds = 2;
+/* 4004 */     this.fancyGraphics = true;
+/* 4005 */     this.ambientOcclusion = 2;
+/* 4006 */     this.resourcePacks = Lists.newArrayList();
+/* 4007 */     this.incompatibleResourcePacks = Lists.newArrayList();
+/* 4008 */     this.chatVisibility = EntityPlayer.EnumChatVisibility.FULL;
+/* 4009 */     this.chatColours = true;
+/* 4010 */     this.chatLinks = true;
+/* 4011 */     this.chatLinksPrompt = true;
+/* 4012 */     this.chatOpacity = 1.0F;
+/* 4013 */     this.snooperEnabled = true;
+/* 4014 */     this.enableVsync = true;
+/* 4015 */     this.useVbo = false;
+/* 4016 */     this.allowBlockAlternatives = true;
+/* 4017 */     this.reducedDebugInfo = false;
+/* 4018 */     this.pauseOnLostFocus = true;
+/* 4019 */     this.mapSoundLevels = Sets.newHashSet((Object[])EnumPlayerModelParts.values());
+/* 4020 */     this.heldItemTooltips = true;
+/* 4021 */     this.chatScale = 1.0F;
+/* 4022 */     this.chatWidth = 1.0F;
+/* 4023 */     this.chatHeightUnfocused = 0.44366196F;
+/* 4024 */     this.chatHeightFocused = 1.0F;
+/* 4025 */     this.showInventoryAchievementHint = true;
+/* 4026 */     this.mipmapLevels = 4;
+/* 4027 */     this.optionsFile = Maps.newEnumMap(SoundCategory.class);
+/* 4028 */     this.streamBytesPerPixel = 0.5F;
+/* 4029 */     this.streamMicVolume = 1.0F;
+/* 4030 */     this.streamGameVolume = 1.0F;
+/* 4031 */     this.streamKbps = 0.5412844F;
+/* 4032 */     this.streamFps = 0.31690142F;
+/* 4033 */     this.streamCompression = 1;
+/* 4034 */     this.streamSendMetadata = true;
+/* 4035 */     this.streamPreferredServer = "";
+/* 4036 */     this.streamChatEnabled = 0;
+/* 4037 */     this.streamChatUserFilter = 0;
+/* 4038 */     this.streamMicToggleBehavior = 0;
+/* 4039 */     this.useNativeTransport = true;
+/* 4040 */     this.entityShadows = true;
+/* 4041 */     this.keyBindForward = true;
+/* 4042 */     this.keyBindClickGui = new KeyBinding("Mod On / Off", 24, "- " + (Client.getInstance()).clientName + (Client.getInstance()).clientName + (Client.getInstance()).white + " -");
+/* 4043 */     this.keyBindDragHud = new KeyBinding("Mod Positioning", 54, "- " + (Client.getInstance()).clientName + (Client.getInstance()).clientName + (Client.getInstance()).white + " -");
+/* 4044 */     this.keyBindLeft = new KeyBinding("key.forward", 17, "key.categories.movement");
+/* 4045 */     this.keyBindBack = new KeyBinding("key.left", 30, "key.categories.movement");
+/* 4046 */     this.keyBindRight = new KeyBinding("key.back", 31, "key.categories.movement");
+/* 4047 */     this.keyBindJump = new KeyBinding("key.right", 32, "key.categories.movement");
+/* 4048 */     this.keyBindSneak = new KeyBinding("key.jump", 57, "key.categories.movement");
+/* 4049 */     this.keyBindSprint = new KeyBinding("key.sneak", 42, "key.categories.movement");
+/* 4050 */     this.keyBindInventory = new KeyBinding("key.sprint", 29, "key.categories.movement");
+/* 4051 */     this.keyBindUseItem = new KeyBinding("key.inventory", 18, "key.categories.inventory");
+/* 4052 */     this.keyBindDrop = new KeyBinding("key.use", -99, "key.categories.gameplay");
+/* 4053 */     this.keyBindAttack = new KeyBinding("key.drop", 16, "key.categories.gameplay");
+/* 4054 */     this.keyBindPickBlock = new KeyBinding("key.attack", -100, "key.categories.gameplay");
+/* 4055 */     this.keyBindChat = new KeyBinding("key.pickItem", -98, "key.categories.gameplay");
+/* 4056 */     this.keyBindPlayerList = new KeyBinding("key.chat", 20, "key.categories.multiplayer");
+/* 4057 */     this.keyBindCommand = new KeyBinding("key.playerlist", 15, "key.categories.multiplayer");
+/* 4058 */     this.keyBindScreenshot = new KeyBinding("key.command", 53, "key.categories.multiplayer");
+/* 4059 */     this.keyBindTogglePerspective = new KeyBinding("key.screenshot", 60, "key.categories.misc");
+/* 4060 */     this.keyBindSmoothCamera = new KeyBinding("key.togglePerspective", 63, "key.categories.misc");
+/* 4061 */     this.keyBindFullscreen = new KeyBinding("key.smoothCamera", 0, "key.categories.misc");
+/* 4062 */     this.keyBindSpectatorOutlines = new KeyBinding("key.fullscreen", 87, "key.categories.misc");
+/* 4063 */     this.keyBindStreamStartStop = new KeyBinding("key.spectatorOutlines", 0, "key.categories.misc");
+/* 4064 */     this.keyBindStreamPauseUnpause = new KeyBinding("key.streamStartStop", 64, "key.categories.stream");
+/* 4065 */     this.keyBindStreamCommercials = new KeyBinding("key.streamPauseUnpause", 65, "key.categories.stream");
+/* 4066 */     this.keyBindStreamToggleMic = new KeyBinding("key.streamCommercial", 0, "key.categories.stream");
+/* 4067 */     this.keyBindsHotbar = new KeyBinding("key.streamToggleMic", 0, "key.categories.stream");
+/* 4068 */     this.keyBindings = new KeyBinding[] { new KeyBinding("key.hotbar.1", 2, "key.categories.inventory"), new KeyBinding("key.hotbar.2", 3, "key.categories.inventory"), new KeyBinding("key.hotbar.3", 4, "key.categories.inventory"), new KeyBinding("key.hotbar.4", 5, "key.categories.inventory"), new KeyBinding("key.hotbar.5", 6, "key.categories.inventory"), new KeyBinding("key.hotbar.6", 7, "key.categories.inventory"), new KeyBinding("key.hotbar.7", 8, "key.categories.inventory"), new KeyBinding("key.hotbar.8", 9, "key.categories.inventory"), new KeyBinding("key.hotbar.9", 10, "key.categories.inventory") };
+/* 4069 */     this.ofFogType = 1;
+/* 4070 */     this.ofFogStart = 0.8F;
+/* 4071 */     this.ofMipmapType = 0;
+/* 4072 */     this.ofOcclusionFancy = false;
+/* 4073 */     this.ofSmoothFps = false;
+/* 4074 */     this.ofSmoothWorld = Config.isSingleProcessor();
+/* 4075 */     this.ofLazyChunkLoading = Config.isSingleProcessor();
+/* 4076 */     this.ofRenderRegions = false;
+/* 4077 */     this.ofSmartAnimations = false;
+/* 4078 */     this.ofAoLevel = 1.0F;
+/* 4079 */     this.ofAaLevel = 0;
+/* 4080 */     this.ofAfLevel = 1;
+/* 4081 */     this.ofClouds = 0;
+/* 4082 */     this.ofCloudsHeight = 0.0F;
+/* 4083 */     this.ofTrees = 0;
+/* 4084 */     this.ofRain = 0;
+/* 4085 */     this.ofDroppedItems = 0;
+/* 4086 */     this.ofBetterGrass = 3;
+/* 4087 */     this.ofAutoSaveTicks = 4000;
+/* 4088 */     this.ofLagometer = false;
+/* 4089 */     this.ofProfiler = false;
+/* 4090 */     this.ofShowFps = false;
+/* 4091 */     this.ofWeather = true;
+/* 4092 */     this.ofSky = true;
+/* 4093 */     this.ofStars = true;
+/* 4094 */     this.ofSunMoon = true;
+/* 4095 */     this.ofVignette = 0;
+/* 4096 */     this.ofChunkUpdates = 1;
+/* 4097 */     this.ofChunkUpdatesDynamic = false;
+/* 4098 */     this.ofTime = 0;
+/* 4099 */     this.ofClearWater = false;
+/* 4100 */     this.ofBetterSnow = false;
+/* 4101 */     this.ofFullscreenMode = "Default";
+/* 4102 */     this.ofSwampColors = true;
+/* 4103 */     this.ofRandomEntities = true;
+/* 4104 */     this.ofSmoothBiomes = true;
+/* 4105 */     this.ofCustomFonts = true;
+/* 4106 */     this.ofCustomColors = true;
+/* 4107 */     this.ofCustomSky = true;
+/* 4108 */     this.ofShowCapes = true;
+/* 4109 */     this.ofConnectedTextures = 2;
+/* 4110 */     this.ofCustomItems = true;
+/* 4111 */     this.ofNaturalTextures = false;
+/* 4112 */     this.ofEmissiveTextures = true;
+/* 4113 */     this.ofFastMath = false;
+/* 4114 */     this.ofFastRender = false;
+/* 4115 */     this.ofTranslucentBlocks = 0;
+/* 4116 */     this.ofDynamicFov = true;
+/* 4117 */     this.ofAlternateBlocks = true;
+/* 4118 */     this.ofDynamicLights = 3;
+/* 4119 */     this.ofCustomEntityModels = true;
+/* 4120 */     this.ofCustomGuis = true;
+/* 4121 */     this.ofShowGlErrors = true;
+/* 4122 */     this.ofScreenshotSize = 1;
+/* 4123 */     this.ofAnimatedWater = 0;
+/* 4124 */     this.ofAnimatedLava = 0;
+/* 4125 */     this.ofAnimatedFire = true;
+/* 4126 */     this.ofAnimatedPortal = true;
+/* 4127 */     this.ofAnimatedRedstone = true;
+/* 4128 */     this.ofAnimatedExplosion = true;
+/* 4129 */     this.ofAnimatedFlame = true;
+/* 4130 */     this.ofAnimatedSmoke = true;
+/* 4131 */     this.ofVoidParticles = true;
+/* 4132 */     this.ofWaterParticles = true;
+/* 4133 */     this.ofRainSplash = true;
+/* 4134 */     this.ofPortalParticles = true;
+/* 4135 */     this.ofPotionParticles = true;
+/* 4136 */     this.ofFireworkParticles = true;
+/* 4137 */     this.ofDrippingWaterLava = true;
+/* 4138 */     this.ofAnimatedTerrain = true;
+/* 4139 */     this.ofAnimatedTextures = true;
+/* 4140 */     this.mc = (KeyBinding[])ArrayUtils.addAll((Object[])new KeyBinding[] { this.keyBindPickBlock, this.keyBindDrop, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindSprint, this.keyBindInventory, this.keyBindAttack, this.keyBindUseItem, this.keyBindPlayerList, this.keyBindCommand, this.keyBindChat, this.keyBindScreenshot, this.keyBindTogglePerspective, this.keyBindSmoothCamera, this.keyBindFullscreen, this.keyBindStreamPauseUnpause, this.keyBindStreamCommercials, this.keyBindStreamToggleMic, this.keyBindsHotbar, this.keyBindSpectatorOutlines, this.keyBindStreamStartStop }, (Object[])this.keyBindings);
+/* 4141 */     this.hideGUI = EnumDifficulty.NORMAL;
+/* 4142 */     this.smoothCamera = "";
+/* 4143 */     this.gammaSetting = 70.0F;
+/* 4144 */     this.forceUnicodeFont = "en_US";
+/* 4145 */     this.logger = false;
 /*      */   }
 /*      */   
 /*      */   public static String getKeyDisplayString(int key) {
-/* 4148 */     return (key < 0) ? I18n.format("key.mouseButton", new Object[] { Integer.valueOf(key + 101) }) : ((key < 256) ? Keyboard.getKeyName(key) : String.format("%c", new Object[] { Character.valueOf((char)(key - 256)) }).toUpperCase());
+/* 4149 */     return (key < 0) ? I18n.format("key.mouseButton", new Object[] { Integer.valueOf(key + 101) }) : ((key < 256) ? Keyboard.getKeyName(key) : String.format("%c", new Object[] { Character.valueOf((char)(key - 256)) }).toUpperCase());
 /*      */   }
 /*      */   
 /*      */   public static boolean isKeyDown(KeyBinding key) {
-/* 4152 */     if (key.getKeyCode() != 0) {
-/* 4153 */       if (key.getKeyCode() < 0) {
-/* 4154 */         if (!Mouse.isButtonDown(key.getKeyCode() + 100)) {
-/* 4155 */           return false;
+/* 4153 */     if (key.getKeyCode() != 0) {
+/* 4154 */       if (key.getKeyCode() < 0) {
+/* 4155 */         if (!Mouse.isButtonDown(key.getKeyCode() + 100)) {
+/* 4156 */           return false;
 /*      */         }
-/* 4157 */       } else if (!Keyboard.isKeyDown(key.getKeyCode())) {
-/* 4158 */         return false;
+/* 4158 */       } else if (!Keyboard.isKeyDown(key.getKeyCode())) {
+/* 4159 */         return false;
 /*      */       } 
-/* 4160 */       return true;
+/* 4161 */       return true;
 /*      */     } 
-/* 4162 */     return false;
+/* 4163 */     return false;
 /*      */   }
 /*      */   
 /*      */   public void setOptionKeyBinding(KeyBinding key, int keyCode) {
-/* 4166 */     key.setKeyCode(keyCode);
-/* 4167 */     saveOptions();
+/* 4167 */     key.setKeyCode(keyCode);
+/* 4168 */     saveOptions();
 /*      */   }
 /*      */   
 /*      */   public void setOptionFloatValue(Options settingsOption, float value) {
-/* 4171 */     setOptionFloatValueOF(settingsOption, value);
-/* 4172 */     if (settingsOption == Options.SENSITIVITY) {
-/* 4173 */       this.mouseSensitivity = value;
+/* 4172 */     setOptionFloatValueOF(settingsOption, value);
+/* 4173 */     if (settingsOption == Options.SENSITIVITY) {
+/* 4174 */       this.mouseSensitivity = value;
 /*      */     }
-/* 4175 */     if (settingsOption == Options.FOV) {
-/* 4176 */       this.gammaSetting = value;
+/* 4176 */     if (settingsOption == Options.FOV) {
+/* 4177 */       this.gammaSetting = value;
 /*      */     }
-/* 4178 */     if (settingsOption == Options.GAMMA) {
-/* 4179 */       this.saturation = value;
+/* 4179 */     if (settingsOption == Options.GAMMA) {
+/* 4180 */       this.saturation = value;
 /*      */     }
-/* 4181 */     if (settingsOption == Options.FRAMERATE_LIMIT) {
-/* 4182 */       this.limitFramerate = (int)value;
-/* 4183 */       this.enableVsync = false;
-/* 4184 */       if (this.limitFramerate <= 0) {
-/* 4185 */         this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
-/* 4186 */         this.enableVsync = true;
+/* 4182 */     if (settingsOption == Options.FRAMERATE_LIMIT) {
+/* 4183 */       this.limitFramerate = (int)value;
+/* 4184 */       this.enableVsync = false;
+/* 4185 */       if (this.limitFramerate <= 0) {
+/* 4186 */         this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
+/* 4187 */         this.enableVsync = true;
 /*      */       } 
-/* 4188 */       updateVSync();
+/* 4189 */       updateVSync();
 /*      */     } 
-/* 4190 */     if (settingsOption == Options.CHAT_OPACITY) {
-/* 4191 */       this.chatOpacity = value;
-/* 4192 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
+/* 4191 */     if (settingsOption == Options.CHAT_OPACITY) {
+/* 4192 */       this.chatOpacity = value;
+/* 4193 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
 /*      */     } 
-/* 4194 */     if (settingsOption == Options.CHAT_HEIGHT_FOCUSED) {
-/* 4195 */       this.chatHeightFocused = value;
-/* 4196 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
+/* 4195 */     if (settingsOption == Options.CHAT_HEIGHT_FOCUSED) {
+/* 4196 */       this.chatHeightFocused = value;
+/* 4197 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
 /*      */     } 
-/* 4198 */     if (settingsOption == Options.CHAT_HEIGHT_UNFOCUSED) {
-/* 4199 */       this.chatHeightUnfocused = value;
-/* 4200 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
+/* 4199 */     if (settingsOption == Options.CHAT_HEIGHT_UNFOCUSED) {
+/* 4200 */       this.chatHeightUnfocused = value;
+/* 4201 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
 /*      */     } 
-/* 4202 */     if (settingsOption == Options.CHAT_WIDTH) {
-/* 4203 */       this.chatWidth = value;
-/* 4204 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
+/* 4203 */     if (settingsOption == Options.CHAT_WIDTH) {
+/* 4204 */       this.chatWidth = value;
+/* 4205 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
 /*      */     } 
-/* 4206 */     if (settingsOption == Options.CHAT_SCALE) {
-/* 4207 */       this.chatScale = value;
-/* 4208 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
+/* 4207 */     if (settingsOption == Options.CHAT_SCALE) {
+/* 4208 */       this.chatScale = value;
+/* 4209 */       this.difficulty.ingameGUI.getChatGUI().refreshChat();
 /*      */     } 
-/* 4210 */     if (settingsOption == Options.MIPMAP_LEVELS) {
-/* 4211 */       int i = this.mipmapLevels;
-/* 4212 */       this.mipmapLevels = (int)value;
-/* 4213 */       if (i != value) {
-/* 4214 */         this.difficulty.getTextureMapBlocks().setMipmapLevels(this.mipmapLevels);
-/* 4215 */         this.difficulty.getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
-/* 4216 */         this.difficulty.getTextureMapBlocks().setBlurMipmapDirect(false, (this.mipmapLevels > 0));
-/* 4217 */         this.difficulty.scheduleResourcesRefresh();
+/* 4211 */     if (settingsOption == Options.MIPMAP_LEVELS) {
+/* 4212 */       int i = this.mipmapLevels;
+/* 4213 */       this.mipmapLevels = (int)value;
+/* 4214 */       if (i != value) {
+/* 4215 */         this.difficulty.getTextureMapBlocks().setMipmapLevels(this.mipmapLevels);
+/* 4216 */         this.difficulty.getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
+/* 4217 */         this.difficulty.getTextureMapBlocks().setBlurMipmapDirect(false, (this.mipmapLevels > 0));
+/* 4218 */         this.difficulty.scheduleResourcesRefresh();
 /*      */       } 
 /*      */     } 
-/* 4220 */     if (settingsOption == Options.BLOCK_ALTERNATIVES) {
-/* 4221 */       this.allowBlockAlternatives = !this.allowBlockAlternatives;
-/* 4222 */       this.difficulty.renderGlobal.loadRenderers();
+/* 4221 */     if (settingsOption == Options.BLOCK_ALTERNATIVES) {
+/* 4222 */       this.allowBlockAlternatives = !this.allowBlockAlternatives;
+/* 4223 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 4224 */     if (settingsOption == Options.RENDER_DISTANCE) {
-/* 4225 */       this.renderDistanceChunks = (int)value;
-/* 4226 */       this.difficulty.renderGlobal.setDisplayListEntitiesDirty();
+/* 4225 */     if (settingsOption == Options.RENDER_DISTANCE) {
+/* 4226 */       this.renderDistanceChunks = (int)value;
+/* 4227 */       this.difficulty.renderGlobal.setDisplayListEntitiesDirty();
 /*      */     } 
-/* 4228 */     if (settingsOption == Options.STREAM_BYTES_PER_PIXEL) {
-/* 4229 */       this.streamBytesPerPixel = value;
+/* 4229 */     if (settingsOption == Options.STREAM_BYTES_PER_PIXEL) {
+/* 4230 */       this.streamBytesPerPixel = value;
 /*      */     }
-/* 4231 */     if (settingsOption == Options.STREAM_VOLUME_MIC) {
-/* 4232 */       this.streamMicVolume = value;
-/* 4233 */       this.difficulty.getTwitchStream().updateStreamVolume();
+/* 4232 */     if (settingsOption == Options.STREAM_VOLUME_MIC) {
+/* 4233 */       this.streamMicVolume = value;
+/* 4234 */       this.difficulty.getTwitchStream().updateStreamVolume();
 /*      */     } 
-/* 4235 */     if (settingsOption == Options.STREAM_VOLUME_SYSTEM) {
-/* 4236 */       this.streamGameVolume = value;
-/* 4237 */       this.difficulty.getTwitchStream().updateStreamVolume();
+/* 4236 */     if (settingsOption == Options.STREAM_VOLUME_SYSTEM) {
+/* 4237 */       this.streamGameVolume = value;
+/* 4238 */       this.difficulty.getTwitchStream().updateStreamVolume();
 /*      */     } 
-/* 4239 */     if (settingsOption == Options.STREAM_KBPS) {
-/* 4240 */       this.streamKbps = value;
+/* 4240 */     if (settingsOption == Options.STREAM_KBPS) {
+/* 4241 */       this.streamKbps = value;
 /*      */     }
-/* 4242 */     if (settingsOption == Options.STREAM_FPS) {
-/* 4243 */       this.streamFps = value;
+/* 4243 */     if (settingsOption == Options.STREAM_FPS) {
+/* 4244 */       this.streamFps = value;
 /*      */     }
 /*      */   }
 /*      */   
 /*      */   public void setOptionValue(Options settingsOption, int value) {
-/* 4248 */     setOptionValueOF(settingsOption, value);
-/* 4249 */     if (settingsOption == Options.INVERT_MOUSE) {
-/* 4250 */       this.invertMouse = !this.invertMouse;
+/* 4249 */     setOptionValueOF(settingsOption, value);
+/* 4250 */     if (settingsOption == Options.INVERT_MOUSE) {
+/* 4251 */       this.invertMouse = !this.invertMouse;
 /*      */     }
-/* 4252 */     if (settingsOption == Options.GUI_SCALE) {
-/* 4253 */       this.particleSetting += value;
-/* 4254 */       if (GuiScreen.isShiftKeyDown()) {
-/* 4255 */         this.particleSetting = 0;
+/* 4253 */     if (settingsOption == Options.GUI_SCALE) {
+/* 4254 */       this.particleSetting += value;
+/* 4255 */       if (GuiScreen.isShiftKeyDown()) {
+/* 4256 */         this.particleSetting = 0;
 /*      */       }
-/* 4257 */       DisplayMode displaymode = Config.getLargestDisplayMode();
-/* 4258 */       int i = displaymode.getWidth() / 320;
-/* 4259 */       int j = displaymode.getHeight() / 240;
-/* 4260 */       int k = Math.min(i, j);
-/* 4261 */       if (this.particleSetting < 0) {
-/* 4262 */         this.particleSetting = k - 1;
+/* 4258 */       DisplayMode displaymode = Config.getLargestDisplayMode();
+/* 4259 */       int i = displaymode.getWidth() / 320;
+/* 4260 */       int j = displaymode.getHeight() / 240;
+/* 4261 */       int k = Math.min(i, j);
+/* 4262 */       if (this.particleSetting < 0) {
+/* 4263 */         this.particleSetting = k - 1;
 /*      */       }
-/* 4264 */       if (this.difficulty.isUnicode() && this.particleSetting % 2 != 0) {
-/* 4265 */         this.particleSetting += value;
+/* 4265 */       if (this.difficulty.isUnicode() && this.particleSetting % 2 != 0) {
+/* 4266 */         this.particleSetting += value;
 /*      */       }
-/* 4267 */       if (this.particleSetting < 0 || this.particleSetting >= k) {
-/* 4268 */         this.particleSetting = 0;
+/* 4268 */       if (this.particleSetting < 0 || this.particleSetting >= k) {
+/* 4269 */         this.particleSetting = 0;
 /*      */       }
 /*      */     } 
-/* 4271 */     if (settingsOption == Options.PARTICLES) {
-/* 4272 */       this.language = (this.language + value) % 3;
+/* 4272 */     if (settingsOption == Options.PARTICLES) {
+/* 4273 */       this.language = (this.language + value) % 3;
 /*      */     }
-/* 4274 */     if (settingsOption == Options.VIEW_BOBBING) {
-/* 4275 */       this.viewBobbing = !this.viewBobbing;
+/* 4275 */     if (settingsOption == Options.VIEW_BOBBING) {
+/* 4276 */       this.viewBobbing = !this.viewBobbing;
 /*      */     }
-/* 4277 */     if (settingsOption == Options.RENDER_CLOUDS) {
-/* 4278 */       this.clouds = (this.clouds + value) % 3;
+/* 4278 */     if (settingsOption == Options.RENDER_CLOUDS) {
+/* 4279 */       this.clouds = (this.clouds + value) % 3;
 /*      */     }
-/* 4280 */     if (settingsOption == Options.FORCE_UNICODE_FONT) {
-/* 4281 */       this.logger = !this.logger;
-/* 4282 */       this.difficulty.fontRendererObj.setUnicodeFlag(!(!this.difficulty.getLanguageManager().isCurrentLocaleUnicode() && !this.logger));
+/* 4281 */     if (settingsOption == Options.FORCE_UNICODE_FONT) {
+/* 4282 */       this.logger = !this.logger;
+/* 4283 */       this.difficulty.fontRendererObj.setUnicodeFlag(!(!this.difficulty.getLanguageManager().isCurrentLocaleUnicode() && !this.logger));
 /*      */     } 
-/* 4284 */     if (settingsOption == Options.FBO_ENABLE) {
-/* 4285 */       this.fboEnable = !this.fboEnable;
+/* 4285 */     if (settingsOption == Options.FBO_ENABLE) {
+/* 4286 */       this.fboEnable = !this.fboEnable;
 /*      */     }
-/* 4287 */     if (settingsOption == Options.ANAGLYPH) {
-/* 4288 */       if (!this.anaglyph && Config.isShaders()) {
-/* 4289 */         Config.showGuiMessage(Lang.get("of.message.an.shaders1"), Lang.get("of.message.an.shaders2"));
+/* 4288 */     if (settingsOption == Options.ANAGLYPH) {
+/* 4289 */       if (!this.anaglyph && Config.isShaders()) {
+/* 4290 */         Config.showGuiMessage(Lang.get("of.message.an.shaders1"), Lang.get("of.message.an.shaders2"));
 /*      */         return;
 /*      */       } 
-/* 4292 */       this.anaglyph = !this.anaglyph;
-/* 4293 */       this.difficulty.refreshResources();
+/* 4293 */       this.anaglyph = !this.anaglyph;
+/* 4294 */       this.difficulty.refreshResources();
 /*      */     } 
-/* 4295 */     if (settingsOption == Options.GRAPHICS) {
-/* 4296 */       this.fancyGraphics = !this.fancyGraphics;
-/* 4297 */       updateRenderClouds();
-/* 4298 */       this.difficulty.renderGlobal.loadRenderers();
+/* 4296 */     if (settingsOption == Options.GRAPHICS) {
+/* 4297 */       this.fancyGraphics = !this.fancyGraphics;
+/* 4298 */       updateRenderClouds();
+/* 4299 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 4300 */     if (settingsOption == Options.AMBIENT_OCCLUSION) {
-/* 4301 */       this.ambientOcclusion = (this.ambientOcclusion + value) % 3;
-/* 4302 */       this.difficulty.renderGlobal.loadRenderers();
+/* 4301 */     if (settingsOption == Options.AMBIENT_OCCLUSION) {
+/* 4302 */       this.ambientOcclusion = (this.ambientOcclusion + value) % 3;
+/* 4303 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 4304 */     if (settingsOption == Options.CHAT_VISIBILITY) {
-/* 4305 */       this.chatVisibility = EntityPlayer.EnumChatVisibility.getEnumChatVisibility((this.chatVisibility.getChatVisibility() + value) % 3);
+/* 4305 */     if (settingsOption == Options.CHAT_VISIBILITY) {
+/* 4306 */       this.chatVisibility = EntityPlayer.EnumChatVisibility.getEnumChatVisibility((this.chatVisibility.getChatVisibility() + value) % 3);
 /*      */     }
-/* 4307 */     if (settingsOption == Options.STREAM_COMPRESSION) {
-/* 4308 */       this.streamCompression = (this.streamCompression + value) % 3;
+/* 4308 */     if (settingsOption == Options.STREAM_COMPRESSION) {
+/* 4309 */       this.streamCompression = (this.streamCompression + value) % 3;
 /*      */     }
-/* 4310 */     if (settingsOption == Options.STREAM_SEND_METADATA) {
-/* 4311 */       this.streamSendMetadata = !this.streamSendMetadata;
+/* 4311 */     if (settingsOption == Options.STREAM_SEND_METADATA) {
+/* 4312 */       this.streamSendMetadata = !this.streamSendMetadata;
 /*      */     }
-/* 4313 */     if (settingsOption == Options.STREAM_CHAT_ENABLED) {
-/* 4314 */       this.streamChatEnabled = (this.streamChatEnabled + value) % 3;
+/* 4314 */     if (settingsOption == Options.STREAM_CHAT_ENABLED) {
+/* 4315 */       this.streamChatEnabled = (this.streamChatEnabled + value) % 3;
 /*      */     }
-/* 4316 */     if (settingsOption == Options.STREAM_CHAT_USER_FILTER) {
-/* 4317 */       this.streamChatUserFilter = (this.streamChatUserFilter + value) % 3;
+/* 4317 */     if (settingsOption == Options.STREAM_CHAT_USER_FILTER) {
+/* 4318 */       this.streamChatUserFilter = (this.streamChatUserFilter + value) % 3;
 /*      */     }
-/* 4319 */     if (settingsOption == Options.STREAM_MIC_TOGGLE_BEHAVIOR) {
-/* 4320 */       this.streamMicToggleBehavior = (this.streamMicToggleBehavior + value) % 2;
+/* 4320 */     if (settingsOption == Options.STREAM_MIC_TOGGLE_BEHAVIOR) {
+/* 4321 */       this.streamMicToggleBehavior = (this.streamMicToggleBehavior + value) % 2;
 /*      */     }
-/* 4322 */     if (settingsOption == Options.CHAT_COLOR) {
-/* 4323 */       this.chatColours = !this.chatColours;
+/* 4323 */     if (settingsOption == Options.CHAT_COLOR) {
+/* 4324 */       this.chatColours = !this.chatColours;
 /*      */     }
-/* 4325 */     if (settingsOption == Options.CHAT_LINKS) {
-/* 4326 */       this.chatLinks = !this.chatLinks;
+/* 4326 */     if (settingsOption == Options.CHAT_LINKS) {
+/* 4327 */       this.chatLinks = !this.chatLinks;
 /*      */     }
-/* 4328 */     if (settingsOption == Options.CHAT_LINKS_PROMPT) {
-/* 4329 */       this.chatLinksPrompt = !this.chatLinksPrompt;
+/* 4329 */     if (settingsOption == Options.CHAT_LINKS_PROMPT) {
+/* 4330 */       this.chatLinksPrompt = !this.chatLinksPrompt;
 /*      */     }
-/* 4331 */     if (settingsOption == Options.SNOOPER_ENABLED) {
-/* 4332 */       this.snooperEnabled = !this.snooperEnabled;
+/* 4332 */     if (settingsOption == Options.SNOOPER_ENABLED) {
+/* 4333 */       this.snooperEnabled = !this.snooperEnabled;
 /*      */     }
-/* 4334 */     if (settingsOption == Options.TOUCHSCREEN) {
-/* 4335 */       this.touchscreen = !this.touchscreen;
+/* 4335 */     if (settingsOption == Options.TOUCHSCREEN) {
+/* 4336 */       this.touchscreen = !this.touchscreen;
 /*      */     }
-/* 4337 */     if (settingsOption == Options.USE_FULLSCREEN) {
-/* 4338 */       this.fullScreen = !this.fullScreen;
-/* 4339 */       if (this.difficulty.isFullScreen() != this.fullScreen) {
-/* 4340 */         this.difficulty.toggleFullscreen();
+/* 4338 */     if (settingsOption == Options.USE_FULLSCREEN) {
+/* 4339 */       this.fullScreen = !this.fullScreen;
+/* 4340 */       if (this.difficulty.isFullScreen() != this.fullScreen) {
+/* 4341 */         this.difficulty.toggleFullscreen();
 /*      */       }
 /*      */     } 
-/* 4343 */     if (settingsOption == Options.ENABLE_VSYNC) {
-/* 4344 */       Display.setVSyncEnabled(this.enableVsync = !this.enableVsync);
+/* 4344 */     if (settingsOption == Options.ENABLE_VSYNC) {
+/* 4345 */       Display.setVSyncEnabled(this.enableVsync = !this.enableVsync);
 /*      */     }
-/* 4346 */     if (settingsOption == Options.USE_VBO) {
-/* 4347 */       this.useVbo = !this.useVbo;
-/* 4348 */       this.difficulty.renderGlobal.loadRenderers();
+/* 4347 */     if (settingsOption == Options.USE_VBO) {
+/* 4348 */       this.useVbo = !this.useVbo;
+/* 4349 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 4350 */     if (settingsOption == Options.BLOCK_ALTERNATIVES) {
-/* 4351 */       this.allowBlockAlternatives = !this.allowBlockAlternatives;
-/* 4352 */       this.difficulty.renderGlobal.loadRenderers();
+/* 4351 */     if (settingsOption == Options.BLOCK_ALTERNATIVES) {
+/* 4352 */       this.allowBlockAlternatives = !this.allowBlockAlternatives;
+/* 4353 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 4354 */     if (settingsOption == Options.REDUCED_DEBUG_INFO) {
-/* 4355 */       this.reducedDebugInfo = !this.reducedDebugInfo;
+/* 4355 */     if (settingsOption == Options.REDUCED_DEBUG_INFO) {
+/* 4356 */       this.reducedDebugInfo = !this.reducedDebugInfo;
 /*      */     }
-/* 4357 */     if (settingsOption == Options.ENTITY_SHADOWS) {
-/* 4358 */       this.entityShadows = !this.entityShadows;
+/* 4358 */     if (settingsOption == Options.ENTITY_SHADOWS) {
+/* 4359 */       this.entityShadows = !this.entityShadows;
 /*      */     }
-/* 4360 */     if (settingsOption == Options.enumFloat) {
-/* 4361 */       this.keyBindForward = !this.keyBindForward;
+/* 4361 */     if (settingsOption == Options.enumFloat) {
+/* 4362 */       this.keyBindForward = !this.keyBindForward;
 /*      */     }
-/* 4363 */     saveOptions();
+/* 4364 */     saveOptions();
 /*      */   }
 /*      */   
 /*      */   public float getOptionFloatValue(Options settingOption) {
-/* 4367 */     float f = getOptionFloatValueOF(settingOption);
-/* 4368 */     return (f != Float.MAX_VALUE) ? f : ((settingOption == Options.FOV) ? this.gammaSetting : ((settingOption == Options.GAMMA) ? this.saturation : ((settingOption == Options.SATURATION) ? this.guiScale : ((settingOption == Options.SENSITIVITY) ? this.mouseSensitivity : ((settingOption == Options.CHAT_OPACITY) ? this.chatOpacity : ((settingOption == Options.CHAT_HEIGHT_FOCUSED) ? this.chatHeightFocused : ((settingOption == Options.CHAT_HEIGHT_UNFOCUSED) ? this.chatHeightUnfocused : ((settingOption == Options.CHAT_SCALE) ? this.chatScale : ((settingOption == Options.CHAT_WIDTH) ? this.chatWidth : ((settingOption == Options.FRAMERATE_LIMIT) ? this.limitFramerate : ((settingOption == Options.MIPMAP_LEVELS) ? this.mipmapLevels : ((settingOption == Options.RENDER_DISTANCE) ? this.renderDistanceChunks : ((settingOption == Options.STREAM_BYTES_PER_PIXEL) ? this.streamBytesPerPixel : ((settingOption == Options.STREAM_VOLUME_MIC) ? this.streamMicVolume : ((settingOption == Options.STREAM_VOLUME_SYSTEM) ? this.streamGameVolume : ((settingOption == Options.STREAM_KBPS) ? this.streamKbps : ((settingOption == Options.STREAM_FPS) ? this.streamFps : 0.0F)))))))))))))))));
+/* 4368 */     float f = getOptionFloatValueOF(settingOption);
+/* 4369 */     return (f != Float.MAX_VALUE) ? f : ((settingOption == Options.FOV) ? this.gammaSetting : ((settingOption == Options.GAMMA) ? this.saturation : ((settingOption == Options.SATURATION) ? this.guiScale : ((settingOption == Options.SENSITIVITY) ? this.mouseSensitivity : ((settingOption == Options.CHAT_OPACITY) ? this.chatOpacity : ((settingOption == Options.CHAT_HEIGHT_FOCUSED) ? this.chatHeightFocused : ((settingOption == Options.CHAT_HEIGHT_UNFOCUSED) ? this.chatHeightUnfocused : ((settingOption == Options.CHAT_SCALE) ? this.chatScale : ((settingOption == Options.CHAT_WIDTH) ? this.chatWidth : ((settingOption == Options.FRAMERATE_LIMIT) ? this.limitFramerate : ((settingOption == Options.MIPMAP_LEVELS) ? this.mipmapLevels : ((settingOption == Options.RENDER_DISTANCE) ? this.renderDistanceChunks : ((settingOption == Options.STREAM_BYTES_PER_PIXEL) ? this.streamBytesPerPixel : ((settingOption == Options.STREAM_VOLUME_MIC) ? this.streamMicVolume : ((settingOption == Options.STREAM_VOLUME_SYSTEM) ? this.streamGameVolume : ((settingOption == Options.STREAM_KBPS) ? this.streamKbps : ((settingOption == Options.STREAM_FPS) ? this.streamFps : 0.0F)))))))))))))))));
 /*      */   }
 /*      */   
 /*      */   public boolean getOptionOrdinalValue(Options settingOption) {
-/* 4372 */     switch (settingOption) {
+/* 4373 */     switch (settingOption) {
 /*      */       case INVERT_MOUSE:
-/* 4374 */         return this.invertMouse;
+/* 4375 */         return this.invertMouse;
 /*      */       
 /*      */       case VIEW_BOBBING:
-/* 4377 */         return this.viewBobbing;
+/* 4378 */         return this.viewBobbing;
 /*      */       
 /*      */       case ANAGLYPH:
-/* 4380 */         return this.anaglyph;
+/* 4381 */         return this.anaglyph;
 /*      */       
 /*      */       case FBO_ENABLE:
-/* 4383 */         return this.fboEnable;
+/* 4384 */         return this.fboEnable;
 /*      */       
 /*      */       case CHAT_COLOR:
-/* 4386 */         return this.chatColours;
+/* 4387 */         return this.chatColours;
 /*      */       
 /*      */       case CHAT_LINKS:
-/* 4389 */         return this.chatLinks;
+/* 4390 */         return this.chatLinks;
 /*      */       
 /*      */       case CHAT_LINKS_PROMPT:
-/* 4392 */         return this.chatLinksPrompt;
+/* 4393 */         return this.chatLinksPrompt;
 /*      */       
 /*      */       case SNOOPER_ENABLED:
-/* 4395 */         return this.snooperEnabled;
+/* 4396 */         return this.snooperEnabled;
 /*      */       
 /*      */       case USE_FULLSCREEN:
-/* 4398 */         return this.fullScreen;
+/* 4399 */         return this.fullScreen;
 /*      */       
 /*      */       case ENABLE_VSYNC:
-/* 4401 */         return this.enableVsync;
+/* 4402 */         return this.enableVsync;
 /*      */       
 /*      */       case USE_VBO:
-/* 4404 */         return this.useVbo;
+/* 4405 */         return this.useVbo;
 /*      */       
 /*      */       case TOUCHSCREEN:
-/* 4407 */         return this.touchscreen;
+/* 4408 */         return this.touchscreen;
 /*      */       
 /*      */       case STREAM_SEND_METADATA:
-/* 4410 */         return this.streamSendMetadata;
+/* 4411 */         return this.streamSendMetadata;
 /*      */       
 /*      */       case FORCE_UNICODE_FONT:
-/* 4413 */         return this.logger;
+/* 4414 */         return this.logger;
 /*      */       
 /*      */       case BLOCK_ALTERNATIVES:
-/* 4416 */         return this.allowBlockAlternatives;
+/* 4417 */         return this.allowBlockAlternatives;
 /*      */       
 /*      */       case REDUCED_DEBUG_INFO:
-/* 4419 */         return this.reducedDebugInfo;
+/* 4420 */         return this.reducedDebugInfo;
 /*      */       
 /*      */       case ENTITY_SHADOWS:
-/* 4422 */         return this.entityShadows;
+/* 4423 */         return this.entityShadows;
 /*      */       
 /*      */       case enumFloat:
-/* 4425 */         return this.keyBindForward;
+/* 4426 */         return this.keyBindForward;
 /*      */     } 
 /*      */     
-/* 4428 */     return false;
+/* 4429 */     return false;
 /*      */   }
 /*      */ 
 /*      */ 
 /*      */   
 /*      */   private static String getTranslation(String[] strArray, int index) {
-/* 4434 */     if (index < 0 || index >= strArray.length) {
-/* 4435 */       index = 0;
+/* 4435 */     if (index < 0 || index >= strArray.length) {
+/* 4436 */       index = 0;
 /*      */     }
-/* 4437 */     return I18n.format(strArray[index], new Object[0]);
+/* 4438 */     return I18n.format(strArray[index], new Object[0]);
 /*      */   }
 /*      */   
 /*      */   public String getKeyBinding(Options settingOption) {
-/* 4441 */     String s = getKeyBindingOF(settingOption);
-/* 4442 */     if (s != null) {
-/* 4443 */       return s;
+/* 4442 */     String s = getKeyBindingOF(settingOption);
+/* 4443 */     if (s != null) {
+/* 4444 */       return s;
 /*      */     }
-/* 4445 */     String s2 = String.valueOf(String.valueOf(String.valueOf(I18n.format(settingOption.getEnumString(), new Object[0])))) + ": ";
-/* 4446 */     if (settingOption.getEnumFloat()) {
-/* 4447 */       float f1 = getOptionFloatValue(settingOption);
-/* 4448 */       float f2 = settingOption.normalizeValue(f1);
-/* 4449 */       return (settingOption == Options.MIPMAP_LEVELS && f1 >= 4.0D) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + Lang.get("of.general.max")) : ((settingOption == Options.SENSITIVITY) ? ((f2 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.sensitivity.min", new Object[0])) : ((f2 == 1.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.sensitivity.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 200.0F) + "%"))) : ((settingOption == Options.FOV) ? ((f1 == 70.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.fov.min", new Object[0])) : ((f1 == 110.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.fov.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1))) : ((settingOption == Options.FRAMERATE_LIMIT) ? ((f1 == settingOption.$VALUES) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.framerateLimit.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1 + " fps")) : ((settingOption == Options.RENDER_CLOUDS) ? ((f1 == settingOption.valueMax) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.cloudHeight.min", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + ((int)f1 + 128))) : ((settingOption == Options.GAMMA) ? ((f2 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.gamma.min", new Object[0])) : ((f2 == 1.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.gamma.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + "+" + (int)(f2 * 100.0F) + "%"))) : ((settingOption == Options.SATURATION) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 400.0F) + "%") : ((settingOption == Options.CHAT_OPACITY) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 90.0F + 10.0F) + "%") : ((settingOption == Options.CHAT_HEIGHT_UNFOCUSED) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + GuiNewChat.calculateChatboxHeight(f2) + "px") : ((settingOption == Options.CHAT_HEIGHT_FOCUSED) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + GuiNewChat.calculateChatboxHeight(f2) + "px") : ((settingOption == Options.CHAT_WIDTH) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + GuiNewChat.calculateChatboxWidth(f2) + "px") : ((settingOption == Options.RENDER_DISTANCE) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1 + " chunks") : ((settingOption == Options.MIPMAP_LEVELS) ? ((f1 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.off", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1)) : ((settingOption == Options.STREAM_FPS) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + TwitchStream.formatStreamFps(f2) + " fps") : ((settingOption == Options.STREAM_KBPS) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + TwitchStream.formatStreamKbps(f2) + " Kbps") : ((settingOption == Options.STREAM_BYTES_PER_PIXEL) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + String.format("%.3f bpp", new Object[] { Float.valueOf(TwitchStream.formatStreamBps(f2)) })) : ((f2 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.off", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 100.0F) + "%")))))))))))))))));
+/* 4446 */     String s2 = String.valueOf(String.valueOf(String.valueOf(I18n.format(settingOption.getEnumString(), new Object[0])))) + ": ";
+/* 4447 */     if (settingOption.getEnumFloat()) {
+/* 4448 */       float f1 = getOptionFloatValue(settingOption);
+/* 4449 */       float f2 = settingOption.normalizeValue(f1);
+/* 4450 */       return (settingOption == Options.MIPMAP_LEVELS && f1 >= 4.0D) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + Lang.get("of.general.max")) : ((settingOption == Options.SENSITIVITY) ? ((f2 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.sensitivity.min", new Object[0])) : ((f2 == 1.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.sensitivity.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 200.0F) + "%"))) : ((settingOption == Options.FOV) ? ((f1 == 70.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.fov.min", new Object[0])) : ((f1 == 110.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.fov.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1))) : ((settingOption == Options.FRAMERATE_LIMIT) ? ((f1 == settingOption.$VALUES) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.framerateLimit.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1 + " fps")) : ((settingOption == Options.RENDER_CLOUDS) ? ((f1 == settingOption.valueMax) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.cloudHeight.min", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + ((int)f1 + 128))) : ((settingOption == Options.GAMMA) ? ((f2 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.gamma.min", new Object[0])) : ((f2 == 1.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.gamma.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + "+" + (int)(f2 * 100.0F) + "%"))) : ((settingOption == Options.SATURATION) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 400.0F) + "%") : ((settingOption == Options.CHAT_OPACITY) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 90.0F + 10.0F) + "%") : ((settingOption == Options.CHAT_HEIGHT_UNFOCUSED) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + GuiNewChat.calculateChatboxHeight(f2) + "px") : ((settingOption == Options.CHAT_HEIGHT_FOCUSED) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + GuiNewChat.calculateChatboxHeight(f2) + "px") : ((settingOption == Options.CHAT_WIDTH) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + GuiNewChat.calculateChatboxWidth(f2) + "px") : ((settingOption == Options.RENDER_DISTANCE) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1 + " chunks") : ((settingOption == Options.MIPMAP_LEVELS) ? ((f1 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.off", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)f1)) : ((settingOption == Options.STREAM_FPS) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + TwitchStream.formatStreamFps(f2) + " fps") : ((settingOption == Options.STREAM_KBPS) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + TwitchStream.formatStreamKbps(f2) + " Kbps") : ((settingOption == Options.STREAM_BYTES_PER_PIXEL) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + String.format("%.3f bpp", new Object[] { Float.valueOf(TwitchStream.formatStreamBps(f2)) })) : ((f2 == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.off", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + (int)(f2 * 100.0F) + "%")))))))))))))))));
 /*      */     } 
-/* 4451 */     if (settingOption.getEnumBoolean()) {
-/* 4452 */       boolean flag = getOptionOrdinalValue(settingOption);
-/* 4453 */       return flag ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.on", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.off", new Object[0]));
+/* 4452 */     if (settingOption.getEnumBoolean()) {
+/* 4453 */       boolean flag = getOptionOrdinalValue(settingOption);
+/* 4454 */       return flag ? (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.on", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.off", new Object[0]));
 /*      */     } 
-/* 4455 */     if (settingOption == Options.GUI_SCALE) {
-/* 4456 */       return (this.particleSetting >= PARTICLES.length) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + this.particleSetting + "x") : (String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(PARTICLES, this.particleSetting));
+/* 4456 */     if (settingOption == Options.GUI_SCALE) {
+/* 4457 */       return (this.particleSetting >= PARTICLES.length) ? (String.valueOf(String.valueOf(String.valueOf(s2))) + this.particleSetting + "x") : (String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(PARTICLES, this.particleSetting));
 /*      */     }
-/* 4458 */     if (settingOption == Options.CHAT_VISIBILITY) {
-/* 4459 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format(this.chatVisibility.getResourceKey(), new Object[0]);
+/* 4459 */     if (settingOption == Options.CHAT_VISIBILITY) {
+/* 4460 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format(this.chatVisibility.getResourceKey(), new Object[0]);
 /*      */     }
-/* 4461 */     if (settingOption == Options.PARTICLES) {
-/* 4462 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(AMBIENT_OCCLUSIONS, this.language);
+/* 4462 */     if (settingOption == Options.PARTICLES) {
+/* 4463 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(AMBIENT_OCCLUSIONS, this.language);
 /*      */     }
-/* 4464 */     if (settingOption == Options.AMBIENT_OCCLUSION) {
-/* 4465 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_COMPRESSIONS, this.ambientOcclusion);
+/* 4465 */     if (settingOption == Options.AMBIENT_OCCLUSION) {
+/* 4466 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_COMPRESSIONS, this.ambientOcclusion);
 /*      */     }
-/* 4467 */     if (settingOption == Options.STREAM_COMPRESSION) {
-/* 4468 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_CHAT_MODES, this.streamCompression);
+/* 4468 */     if (settingOption == Options.STREAM_COMPRESSION) {
+/* 4469 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_CHAT_MODES, this.streamCompression);
 /*      */     }
-/* 4470 */     if (settingOption == Options.STREAM_CHAT_ENABLED) {
-/* 4471 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_CHAT_FILTER_MODES, this.streamChatEnabled);
+/* 4471 */     if (settingOption == Options.STREAM_CHAT_ENABLED) {
+/* 4472 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_CHAT_FILTER_MODES, this.streamChatEnabled);
 /*      */     }
-/* 4473 */     if (settingOption == Options.STREAM_CHAT_USER_FILTER) {
-/* 4474 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_MIC_MODES, this.streamChatUserFilter);
+/* 4474 */     if (settingOption == Options.STREAM_CHAT_USER_FILTER) {
+/* 4475 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(STREAM_MIC_MODES, this.streamChatUserFilter);
 /*      */     }
-/* 4476 */     if (settingOption == Options.STREAM_MIC_TOGGLE_BEHAVIOR) {
-/* 4477 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(CLOUDS_TYPES, this.streamMicToggleBehavior);
+/* 4477 */     if (settingOption == Options.STREAM_MIC_TOGGLE_BEHAVIOR) {
+/* 4478 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(CLOUDS_TYPES, this.streamMicToggleBehavior);
 /*      */     }
-/* 4479 */     if (settingOption == Options.RENDER_CLOUDS) {
-/* 4480 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(setModelParts, this.clouds);
+/* 4480 */     if (settingOption == Options.RENDER_CLOUDS) {
+/* 4481 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + getTranslation(setModelParts, this.clouds);
 /*      */     }
-/* 4482 */     if (settingOption != Options.GRAPHICS) {
-/* 4483 */       return s2;
+/* 4483 */     if (settingOption != Options.GRAPHICS) {
+/* 4484 */       return s2;
 /*      */     }
-/* 4485 */     if (this.fancyGraphics) {
-/* 4486 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.graphics.fancy", new Object[0]);
+/* 4486 */     if (this.fancyGraphics) {
+/* 4487 */       return String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.graphics.fancy", new Object[0]);
 /*      */     }
-/* 4488 */     String s3 = "options.graphics.fast";
-/* 4489 */     return String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.graphics.fast", new Object[0]);
+/* 4489 */     String s3 = "options.graphics.fast";
+/* 4490 */     return String.valueOf(String.valueOf(String.valueOf(s2))) + I18n.format("options.graphics.fast", new Object[0]);
 /*      */   }
 /*      */   
 /*      */   public void loadOptions() {
-/* 4493 */     FileInputStream fileinputstream = null;
+/* 4494 */     FileInputStream fileinputstream = null;
 /*      */ 
 /*      */     
 /*      */     try {
-/* 4497 */       if (this.bc.exists())
-/* 4498 */       { BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(fileinputstream = new FileInputStream(this.bc)));
-/* 4499 */         String s = "";
-/* 4500 */         this.optionsFile.clear();
-/* 4501 */         while ((s = bufferedreader.readLine()) != null) {
+/* 4498 */       if (this.bc.exists())
+/* 4499 */       { BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(fileinputstream = new FileInputStream(this.bc)));
+/* 4500 */         String s = "";
+/* 4501 */         this.optionsFile.clear();
+/* 4502 */         while ((s = bufferedreader.readLine()) != null) {
 /*      */           try {
-/* 4503 */             String[] astring = s.split(":");
-/* 4504 */             if (astring[0].equals("mouseSensitivity")) {
-/* 4505 */               this.mouseSensitivity = parseFloat(astring[1]);
+/* 4504 */             String[] astring = s.split(":");
+/* 4505 */             if (astring[0].equals("mouseSensitivity")) {
+/* 4506 */               this.mouseSensitivity = parseFloat(astring[1]);
 /*      */             }
-/* 4507 */             if (astring[0].equals("fov")) {
-/* 4508 */               this.gammaSetting = parseFloat(astring[1]) * 40.0F + 70.0F;
+/* 4508 */             if (astring[0].equals("fov")) {
+/* 4509 */               this.gammaSetting = parseFloat(astring[1]) * 40.0F + 70.0F;
 /*      */             }
-/* 4510 */             if (astring[0].equals("gamma")) {
-/* 4511 */               this.saturation = parseFloat(astring[1]);
+/* 4511 */             if (astring[0].equals("gamma")) {
+/* 4512 */               this.saturation = parseFloat(astring[1]);
 /*      */             }
-/* 4513 */             if (astring[0].equals("saturation")) {
-/* 4514 */               this.guiScale = parseFloat(astring[1]);
+/* 4514 */             if (astring[0].equals("saturation")) {
+/* 4515 */               this.guiScale = parseFloat(astring[1]);
 /*      */             }
-/* 4516 */             if (astring[0].equals("invertYMouse")) {
-/* 4517 */               this.invertMouse = astring[1].equals("true");
+/* 4517 */             if (astring[0].equals("invertYMouse")) {
+/* 4518 */               this.invertMouse = astring[1].equals("true");
 /*      */             }
-/* 4519 */             if (astring[0].equals("renderDistance")) {
-/* 4520 */               this.renderDistanceChunks = Integer.parseInt(astring[1]);
+/* 4520 */             if (astring[0].equals("renderDistance")) {
+/* 4521 */               this.renderDistanceChunks = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4522 */             if (astring[0].equals("guiScale")) {
-/* 4523 */               this.particleSetting = Integer.parseInt(astring[1]);
+/* 4523 */             if (astring[0].equals("guiScale")) {
+/* 4524 */               this.particleSetting = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4525 */             if (astring[0].equals("particles")) {
-/* 4526 */               this.language = Integer.parseInt(astring[1]);
+/* 4526 */             if (astring[0].equals("particles")) {
+/* 4527 */               this.language = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4528 */             if (astring[0].equals("bobView")) {
-/* 4529 */               this.viewBobbing = astring[1].equals("true");
+/* 4529 */             if (astring[0].equals("bobView")) {
+/* 4530 */               this.viewBobbing = astring[1].equals("true");
 /*      */             }
-/* 4531 */             if (astring[0].equals("anaglyph3d")) {
-/* 4532 */               this.anaglyph = astring[1].equals("true");
+/* 4532 */             if (astring[0].equals("anaglyph3d")) {
+/* 4533 */               this.anaglyph = astring[1].equals("true");
 /*      */             }
-/* 4534 */             if (astring[0].equals("maxFps")) {
-/* 4535 */               this.limitFramerate = Integer.parseInt(astring[1]);
-/* 4536 */               if (this.enableVsync) {
-/* 4537 */                 this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
+/* 4535 */             if (astring[0].equals("maxFps")) {
+/* 4536 */               this.limitFramerate = Integer.parseInt(astring[1]);
+/* 4537 */               if (this.enableVsync) {
+/* 4538 */                 this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
 /*      */               }
-/* 4539 */               if (this.limitFramerate <= 0) {
-/* 4540 */                 this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
+/* 4540 */               if (this.limitFramerate <= 0) {
+/* 4541 */                 this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
 /*      */               }
 /*      */             } 
-/* 4543 */             if (astring[0].equals("fboEnable")) {
-/* 4544 */               this.fboEnable = astring[1].equals("true");
+/* 4544 */             if (astring[0].equals("fboEnable")) {
+/* 4545 */               this.fboEnable = astring[1].equals("true");
 /*      */             }
-/* 4546 */             if (astring[0].equals("difficulty")) {
-/* 4547 */               this.hideGUI = EnumDifficulty.getDifficultyEnum(Integer.parseInt(astring[1]));
+/* 4547 */             if (astring[0].equals("difficulty")) {
+/* 4548 */               this.hideGUI = EnumDifficulty.getDifficultyEnum(Integer.parseInt(astring[1]));
 /*      */             }
-/* 4549 */             if (astring[0].equals("fancyGraphics")) {
-/* 4550 */               this.fancyGraphics = astring[1].equals("true");
-/* 4551 */               updateRenderClouds();
+/* 4550 */             if (astring[0].equals("fancyGraphics")) {
+/* 4551 */               this.fancyGraphics = astring[1].equals("true");
+/* 4552 */               updateRenderClouds();
 /*      */             } 
-/* 4553 */             if (astring[0].equals("ao")) {
-/* 4554 */               if (astring[1].equals("true")) {
-/* 4555 */                 this.ambientOcclusion = 2;
-/* 4556 */               } else if (astring[1].equals("false")) {
-/* 4557 */                 this.ambientOcclusion = 0;
+/* 4554 */             if (astring[0].equals("ao")) {
+/* 4555 */               if (astring[1].equals("true")) {
+/* 4556 */                 this.ambientOcclusion = 2;
+/* 4557 */               } else if (astring[1].equals("false")) {
+/* 4558 */                 this.ambientOcclusion = 0;
 /*      */               } else {
-/* 4559 */                 this.ambientOcclusion = Integer.parseInt(astring[1]);
+/* 4560 */                 this.ambientOcclusion = Integer.parseInt(astring[1]);
 /*      */               } 
 /*      */             }
-/* 4562 */             if (astring[0].equals("renderClouds")) {
-/* 4563 */               if (astring[1].equals("true")) {
-/* 4564 */                 this.clouds = 2;
-/* 4565 */               } else if (astring[1].equals("false")) {
-/* 4566 */                 this.clouds = 0;
-/* 4567 */               } else if (astring[1].equals("fast")) {
-/* 4568 */                 this.clouds = 1;
+/* 4563 */             if (astring[0].equals("renderClouds")) {
+/* 4564 */               if (astring[1].equals("true")) {
+/* 4565 */                 this.clouds = 2;
+/* 4566 */               } else if (astring[1].equals("false")) {
+/* 4567 */                 this.clouds = 0;
+/* 4568 */               } else if (astring[1].equals("fast")) {
+/* 4569 */                 this.clouds = 1;
 /*      */               } 
 /*      */             }
-/* 4571 */             if (astring[0].equals("resourcePacks")) {
-/* 4572 */               this.resourcePacks = (List<String>)typeListString.fromJson(s.substring(s.indexOf(':') + 1), GUISCALES);
-/* 4573 */               if (this.resourcePacks == null) {
-/* 4574 */                 this.resourcePacks = Lists.newArrayList();
+/* 4572 */             if (astring[0].equals("resourcePacks")) {
+/* 4573 */               this.resourcePacks = (List<String>)typeListString.fromJson(s.substring(s.indexOf(':') + 1), GUISCALES);
+/* 4574 */               if (this.resourcePacks == null) {
+/* 4575 */                 this.resourcePacks = Lists.newArrayList();
 /*      */               }
 /*      */             } 
-/* 4577 */             if (astring[0].equals("incompatibleResourcePacks")) {
-/* 4578 */               this.incompatibleResourcePacks = (List<String>)typeListString.fromJson(s.substring(s.indexOf(':') + 1), GUISCALES);
-/* 4579 */               if (this.incompatibleResourcePacks == null) {
-/* 4580 */                 this.incompatibleResourcePacks = Lists.newArrayList();
+/* 4578 */             if (astring[0].equals("incompatibleResourcePacks")) {
+/* 4579 */               this.incompatibleResourcePacks = (List<String>)typeListString.fromJson(s.substring(s.indexOf(':') + 1), GUISCALES);
+/* 4580 */               if (this.incompatibleResourcePacks == null) {
+/* 4581 */                 this.incompatibleResourcePacks = Lists.newArrayList();
 /*      */               }
 /*      */             } 
-/* 4583 */             if (astring[0].equals("lastServer") && astring.length >= 2) {
-/* 4584 */               this.smoothCamera = s.substring(s.indexOf(':') + 1);
+/* 4584 */             if (astring[0].equals("lastServer") && astring.length >= 2) {
+/* 4585 */               this.smoothCamera = s.substring(s.indexOf(':') + 1);
 /*      */             }
-/* 4586 */             if (astring[0].equals("lang") && astring.length >= 2) {
-/* 4587 */               this.forceUnicodeFont = astring[1];
+/* 4587 */             if (astring[0].equals("lang") && astring.length >= 2) {
+/* 4588 */               this.forceUnicodeFont = astring[1];
 /*      */             }
-/* 4589 */             if (astring[0].equals("chatVisibility")) {
-/* 4590 */               this.chatVisibility = EntityPlayer.EnumChatVisibility.getEnumChatVisibility(Integer.parseInt(astring[1]));
+/* 4590 */             if (astring[0].equals("chatVisibility")) {
+/* 4591 */               this.chatVisibility = EntityPlayer.EnumChatVisibility.getEnumChatVisibility(Integer.parseInt(astring[1]));
 /*      */             }
-/* 4592 */             if (astring[0].equals("chatColors")) {
-/* 4593 */               this.chatColours = astring[1].equals("true");
+/* 4593 */             if (astring[0].equals("chatColors")) {
+/* 4594 */               this.chatColours = astring[1].equals("true");
 /*      */             }
-/* 4595 */             if (astring[0].equals("chatLinks")) {
-/* 4596 */               this.chatLinks = astring[1].equals("true");
+/* 4596 */             if (astring[0].equals("chatLinks")) {
+/* 4597 */               this.chatLinks = astring[1].equals("true");
 /*      */             }
-/* 4598 */             if (astring[0].equals("chatLinksPrompt")) {
-/* 4599 */               this.chatLinksPrompt = astring[1].equals("true");
+/* 4599 */             if (astring[0].equals("chatLinksPrompt")) {
+/* 4600 */               this.chatLinksPrompt = astring[1].equals("true");
 /*      */             }
-/* 4601 */             if (astring[0].equals("chatOpacity")) {
-/* 4602 */               this.chatOpacity = parseFloat(astring[1]);
+/* 4602 */             if (astring[0].equals("chatOpacity")) {
+/* 4603 */               this.chatOpacity = parseFloat(astring[1]);
 /*      */             }
-/* 4604 */             if (astring[0].equals("snooperEnabled")) {
-/* 4605 */               this.snooperEnabled = astring[1].equals("true");
+/* 4605 */             if (astring[0].equals("snooperEnabled")) {
+/* 4606 */               this.snooperEnabled = astring[1].equals("true");
 /*      */             }
-/* 4607 */             if (astring[0].equals("fullscreen")) {
-/* 4608 */               this.fullScreen = astring[1].equals("true");
+/* 4608 */             if (astring[0].equals("fullscreen")) {
+/* 4609 */               this.fullScreen = astring[1].equals("true");
 /*      */             }
-/* 4610 */             if (astring[0].equals("enableVsync")) {
-/* 4611 */               this.enableVsync = astring[1].equals("true");
-/* 4612 */               if (this.enableVsync) {
-/* 4613 */                 this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
+/* 4611 */             if (astring[0].equals("enableVsync")) {
+/* 4612 */               this.enableVsync = astring[1].equals("true");
+/* 4613 */               if (this.enableVsync) {
+/* 4614 */                 this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
 /*      */               }
-/* 4615 */               updateVSync();
+/* 4616 */               updateVSync();
 /*      */             } 
-/* 4617 */             if (astring[0].equals("useVbo")) {
-/* 4618 */               this.useVbo = astring[1].equals("true");
+/* 4618 */             if (astring[0].equals("useVbo")) {
+/* 4619 */               this.useVbo = astring[1].equals("true");
 /*      */             }
-/* 4620 */             if (astring[0].equals("hideServerAddress")) {
-/* 4621 */               this.hideServerAddress = astring[1].equals("true");
+/* 4621 */             if (astring[0].equals("hideServerAddress")) {
+/* 4622 */               this.hideServerAddress = astring[1].equals("true");
 /*      */             }
-/* 4623 */             if (astring[0].equals("advancedItemTooltips")) {
-/* 4624 */               this.advancedItemTooltips = astring[1].equals("true");
+/* 4624 */             if (astring[0].equals("advancedItemTooltips")) {
+/* 4625 */               this.advancedItemTooltips = astring[1].equals("true");
 /*      */             }
-/* 4626 */             if (astring[0].equals("pauseOnLostFocus")) {
-/* 4627 */               this.pauseOnLostFocus = astring[1].equals("true");
+/* 4627 */             if (astring[0].equals("pauseOnLostFocus")) {
+/* 4628 */               this.pauseOnLostFocus = astring[1].equals("true");
 /*      */             }
-/* 4629 */             if (astring[0].equals("touchscreen")) {
-/* 4630 */               this.touchscreen = astring[1].equals("true");
+/* 4630 */             if (astring[0].equals("touchscreen")) {
+/* 4631 */               this.touchscreen = astring[1].equals("true");
 /*      */             }
-/* 4632 */             if (astring[0].equals("overrideHeight")) {
-/* 4633 */               this.overrideHeight = Integer.parseInt(astring[1]);
+/* 4633 */             if (astring[0].equals("overrideHeight")) {
+/* 4634 */               this.overrideHeight = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4635 */             if (astring[0].equals("overrideWidth")) {
-/* 4636 */               this.overrideWidth = Integer.parseInt(astring[1]);
+/* 4636 */             if (astring[0].equals("overrideWidth")) {
+/* 4637 */               this.overrideWidth = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4638 */             if (astring[0].equals("heldItemTooltips")) {
-/* 4639 */               this.heldItemTooltips = astring[1].equals("true");
+/* 4639 */             if (astring[0].equals("heldItemTooltips")) {
+/* 4640 */               this.heldItemTooltips = astring[1].equals("true");
 /*      */             }
-/* 4641 */             if (astring[0].equals("chatHeightFocused")) {
-/* 4642 */               this.chatHeightFocused = parseFloat(astring[1]);
+/* 4642 */             if (astring[0].equals("chatHeightFocused")) {
+/* 4643 */               this.chatHeightFocused = parseFloat(astring[1]);
 /*      */             }
-/* 4644 */             if (astring[0].equals("chatHeightUnfocused")) {
-/* 4645 */               this.chatHeightUnfocused = parseFloat(astring[1]);
+/* 4645 */             if (astring[0].equals("chatHeightUnfocused")) {
+/* 4646 */               this.chatHeightUnfocused = parseFloat(astring[1]);
 /*      */             }
-/* 4647 */             if (astring[0].equals("chatScale")) {
-/* 4648 */               this.chatScale = parseFloat(astring[1]);
+/* 4648 */             if (astring[0].equals("chatScale")) {
+/* 4649 */               this.chatScale = parseFloat(astring[1]);
 /*      */             }
-/* 4650 */             if (astring[0].equals("chatWidth")) {
-/* 4651 */               this.chatWidth = parseFloat(astring[1]);
+/* 4651 */             if (astring[0].equals("chatWidth")) {
+/* 4652 */               this.chatWidth = parseFloat(astring[1]);
 /*      */             }
-/* 4653 */             if (astring[0].equals("showInventoryAchievementHint")) {
-/* 4654 */               this.showInventoryAchievementHint = astring[1].equals("true");
+/* 4654 */             if (astring[0].equals("showInventoryAchievementHint")) {
+/* 4655 */               this.showInventoryAchievementHint = astring[1].equals("true");
 /*      */             }
-/* 4656 */             if (astring[0].equals("mipmapLevels")) {
-/* 4657 */               this.mipmapLevels = Integer.parseInt(astring[1]);
+/* 4657 */             if (astring[0].equals("mipmapLevels")) {
+/* 4658 */               this.mipmapLevels = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4659 */             if (astring[0].equals("streamBytesPerPixel")) {
-/* 4660 */               this.streamBytesPerPixel = parseFloat(astring[1]);
+/* 4660 */             if (astring[0].equals("streamBytesPerPixel")) {
+/* 4661 */               this.streamBytesPerPixel = parseFloat(astring[1]);
 /*      */             }
-/* 4662 */             if (astring[0].equals("streamMicVolume")) {
-/* 4663 */               this.streamMicVolume = parseFloat(astring[1]);
+/* 4663 */             if (astring[0].equals("streamMicVolume")) {
+/* 4664 */               this.streamMicVolume = parseFloat(astring[1]);
 /*      */             }
-/* 4665 */             if (astring[0].equals("streamSystemVolume")) {
-/* 4666 */               this.streamGameVolume = parseFloat(astring[1]);
+/* 4666 */             if (astring[0].equals("streamSystemVolume")) {
+/* 4667 */               this.streamGameVolume = parseFloat(astring[1]);
 /*      */             }
-/* 4668 */             if (astring[0].equals("streamKbps")) {
-/* 4669 */               this.streamKbps = parseFloat(astring[1]);
+/* 4669 */             if (astring[0].equals("streamKbps")) {
+/* 4670 */               this.streamKbps = parseFloat(astring[1]);
 /*      */             }
-/* 4671 */             if (astring[0].equals("streamFps")) {
-/* 4672 */               this.streamFps = parseFloat(astring[1]);
+/* 4672 */             if (astring[0].equals("streamFps")) {
+/* 4673 */               this.streamFps = parseFloat(astring[1]);
 /*      */             }
-/* 4674 */             if (astring[0].equals("streamCompression")) {
-/* 4675 */               this.streamCompression = Integer.parseInt(astring[1]);
+/* 4675 */             if (astring[0].equals("streamCompression")) {
+/* 4676 */               this.streamCompression = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4677 */             if (astring[0].equals("streamSendMetadata")) {
-/* 4678 */               this.streamSendMetadata = astring[1].equals("true");
+/* 4678 */             if (astring[0].equals("streamSendMetadata")) {
+/* 4679 */               this.streamSendMetadata = astring[1].equals("true");
 /*      */             }
-/* 4680 */             if (astring[0].equals("streamPreferredServer") && astring.length >= 2) {
-/* 4681 */               this.streamPreferredServer = s.substring(s.indexOf(':') + 1);
+/* 4681 */             if (astring[0].equals("streamPreferredServer") && astring.length >= 2) {
+/* 4682 */               this.streamPreferredServer = s.substring(s.indexOf(':') + 1);
 /*      */             }
-/* 4683 */             if (astring[0].equals("streamChatEnabled")) {
-/* 4684 */               this.streamChatEnabled = Integer.parseInt(astring[1]);
+/* 4684 */             if (astring[0].equals("streamChatEnabled")) {
+/* 4685 */               this.streamChatEnabled = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4686 */             if (astring[0].equals("streamChatUserFilter")) {
-/* 4687 */               this.streamChatUserFilter = Integer.parseInt(astring[1]);
+/* 4687 */             if (astring[0].equals("streamChatUserFilter")) {
+/* 4688 */               this.streamChatUserFilter = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4689 */             if (astring[0].equals("streamMicToggleBehavior")) {
-/* 4690 */               this.streamMicToggleBehavior = Integer.parseInt(astring[1]);
+/* 4690 */             if (astring[0].equals("streamMicToggleBehavior")) {
+/* 4691 */               this.streamMicToggleBehavior = Integer.parseInt(astring[1]);
 /*      */             }
-/* 4692 */             if (astring[0].equals("forceUnicodeFont")) {
-/* 4693 */               this.logger = astring[1].equals("true");
+/* 4693 */             if (astring[0].equals("forceUnicodeFont")) {
+/* 4694 */               this.logger = astring[1].equals("true");
 /*      */             }
-/* 4695 */             if (astring[0].equals("allowBlockAlternatives")) {
-/* 4696 */               this.allowBlockAlternatives = astring[1].equals("true");
+/* 4696 */             if (astring[0].equals("allowBlockAlternatives")) {
+/* 4697 */               this.allowBlockAlternatives = astring[1].equals("true");
 /*      */             }
-/* 4698 */             if (astring[0].equals("reducedDebugInfo")) {
-/* 4699 */               this.reducedDebugInfo = astring[1].equals("true");
+/* 4699 */             if (astring[0].equals("reducedDebugInfo")) {
+/* 4700 */               this.reducedDebugInfo = astring[1].equals("true");
 /*      */             }
-/* 4701 */             if (astring[0].equals("useNativeTransport")) {
-/* 4702 */               this.useNativeTransport = astring[1].equals("true");
+/* 4702 */             if (astring[0].equals("useNativeTransport")) {
+/* 4703 */               this.useNativeTransport = astring[1].equals("true");
 /*      */             }
-/* 4704 */             if (astring[0].equals("entityShadows")) {
-/* 4705 */               this.entityShadows = astring[1].equals("true");
+/* 4705 */             if (astring[0].equals("entityShadows")) {
+/* 4706 */               this.entityShadows = astring[1].equals("true");
 /*      */             }
-/* 4707 */             if (astring[0].equals("realmsNotifications")) {
-/* 4708 */               this.keyBindForward = astring[1].equals("true");
+/* 4708 */             if (astring[0].equals("realmsNotifications")) {
+/* 4709 */               this.keyBindForward = astring[1].equals("true");
 /*      */             }
 /*      */             KeyBinding[] mc;
-/* 4711 */             for (int length = (mc = this.mc).length, i = 0; i < length; i++) {
-/* 4712 */               KeyBinding keybinding = mc[i];
-/* 4713 */               if (astring[0].equals("key_" + keybinding.getKeyDescription())) {
-/* 4714 */                 keybinding.setKeyCode(Integer.parseInt(astring[1]));
+/* 4712 */             for (int length = (mc = this.mc).length, i = 0; i < length; i++) {
+/* 4713 */               KeyBinding keybinding = mc[i];
+/* 4714 */               if (astring[0].equals("key_" + keybinding.getKeyDescription())) {
+/* 4715 */                 keybinding.setKeyCode(Integer.parseInt(astring[1]));
 /*      */               }
 /*      */             } 
 /*      */             SoundCategory[] values;
-/* 4718 */             for (int length2 = (values = SoundCategory.values()).length, j = 0; j < length2; j++) {
-/* 4719 */               SoundCategory soundcategory = values[j];
-/* 4720 */               if (astring[0].equals("soundCategory_" + soundcategory.getCategoryName())) {
-/* 4721 */                 this.optionsFile.put(soundcategory, Float.valueOf(parseFloat(astring[1])));
+/* 4719 */             for (int length2 = (values = SoundCategory.values()).length, j = 0; j < length2; j++) {
+/* 4720 */               SoundCategory soundcategory = values[j];
+/* 4721 */               if (astring[0].equals("soundCategory_" + soundcategory.getCategoryName())) {
+/* 4722 */                 this.optionsFile.put(soundcategory, Float.valueOf(parseFloat(astring[1])));
 /*      */               }
 /*      */             } 
 /*      */             EnumPlayerModelParts[] values2;
-/* 4725 */             for (int length3 = (values2 = EnumPlayerModelParts.values()).length, k = 0; k < length3; k++) {
-/* 4726 */               EnumPlayerModelParts enumplayermodelparts = values2[k];
-/* 4727 */               if (astring[0].equals("modelPart_" + enumplayermodelparts.getPartName())) {
-/* 4728 */                 setModelPartEnabled(enumplayermodelparts, astring[1].equals("true"));
+/* 4726 */             for (int length3 = (values2 = EnumPlayerModelParts.values()).length, k = 0; k < length3; k++) {
+/* 4727 */               EnumPlayerModelParts enumplayermodelparts = values2[k];
+/* 4728 */               if (astring[0].equals("modelPart_" + enumplayermodelparts.getPartName())) {
+/* 4729 */                 setModelPartEnabled(enumplayermodelparts, astring[1].equals("true"));
 /*      */               }
 /*      */             } 
-/* 4731 */           } catch (Exception exception) {
-/* 4732 */             gson.warn("Skipping bad option: " + s);
-/* 4733 */             exception.printStackTrace();
+/* 4732 */           } catch (Exception exception) {
+/* 4733 */             gson.warn("Skipping bad option: " + s);
+/* 4734 */             exception.printStackTrace();
 /*      */           } 
 /*      */         } 
-/* 4736 */         KeyBinding.resetKeyBindingArrayAndHash();
-/* 4737 */         bufferedreader.close();
+/* 4737 */         KeyBinding.resetKeyBindingArrayAndHash();
+/* 4738 */         bufferedreader.close();
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */ 
 /*      */         
-/* 4744 */         IOUtils.closeQuietly(fileinputstream); } else { IOUtils.closeQuietly(fileinputstream);
+/* 4745 */         IOUtils.closeQuietly(fileinputstream); } else { IOUtils.closeQuietly(fileinputstream);
 /*      */         
-/* 4746 */         IOUtils.closeQuietly(fileinputstream);
+/* 4747 */         IOUtils.closeQuietly(fileinputstream);
 /*      */         return; }
 /*      */     
 /*      */     } catch (Exception exception2) {
@@ -4751,950 +4752,950 @@
 /*      */     } finally {
 /*      */       IOUtils.closeQuietly(fileinputstream);
 /*      */     }  } private float parseFloat(String str) {
-/* 4754 */     return str.equals("true") ? 1.0F : (str.equals("false") ? 0.0F : Float.parseFloat(str));
+/* 4755 */     return str.equals("true") ? 1.0F : (str.equals("false") ? 0.0F : Float.parseFloat(str));
 /*      */   }
 /*      */   
 /*      */   public void saveOptions() {
-/* 4758 */     if (Reflector.FMLClientHandler.exists()) {
-/* 4759 */       Object object = Reflector.call(Reflector.FMLClientHandler_instance, new Object[0]);
-/* 4760 */       if (object != null && Reflector.callBoolean(object, Reflector.FMLClientHandler_isLoading, new Object[0])) {
+/* 4759 */     if (Reflector.FMLClientHandler.exists()) {
+/* 4760 */       Object object = Reflector.call(Reflector.FMLClientHandler_instance, new Object[0]);
+/* 4761 */       if (object != null && Reflector.callBoolean(object, Reflector.FMLClientHandler_isLoading, new Object[0])) {
 /*      */         return;
 /*      */       }
 /*      */     } 
 /*      */     try {
-/* 4765 */       PrintWriter printwriter = new PrintWriter(new FileWriter(this.bc));
-/* 4766 */       printwriter.println("invertYMouse:" + this.invertMouse);
-/* 4767 */       printwriter.println("mouseSensitivity:" + this.mouseSensitivity);
-/* 4768 */       printwriter.println("fov:" + ((this.gammaSetting - 70.0F) / 40.0F));
-/* 4769 */       printwriter.println("gamma:" + this.saturation);
-/* 4770 */       printwriter.println("saturation:" + this.guiScale);
-/* 4771 */       printwriter.println("renderDistance:" + this.renderDistanceChunks);
-/* 4772 */       printwriter.println("guiScale:" + this.particleSetting);
-/* 4773 */       printwriter.println("particles:" + this.language);
-/* 4774 */       printwriter.println("bobView:" + this.viewBobbing);
-/* 4775 */       printwriter.println("anaglyph3d:" + this.anaglyph);
-/* 4776 */       printwriter.println("maxFps:" + this.limitFramerate);
-/* 4777 */       printwriter.println("fboEnable:" + this.fboEnable);
-/* 4778 */       printwriter.println("difficulty:" + this.hideGUI.getDifficultyId());
-/* 4779 */       printwriter.println("fancyGraphics:" + this.fancyGraphics);
-/* 4780 */       printwriter.println("ao:" + this.ambientOcclusion);
-/* 4781 */       switch (this.clouds) {
+/* 4766 */       PrintWriter printwriter = new PrintWriter(new FileWriter(this.bc));
+/* 4767 */       printwriter.println("invertYMouse:" + this.invertMouse);
+/* 4768 */       printwriter.println("mouseSensitivity:" + this.mouseSensitivity);
+/* 4769 */       printwriter.println("fov:" + ((this.gammaSetting - 70.0F) / 40.0F));
+/* 4770 */       printwriter.println("gamma:" + this.saturation);
+/* 4771 */       printwriter.println("saturation:" + this.guiScale);
+/* 4772 */       printwriter.println("renderDistance:" + this.renderDistanceChunks);
+/* 4773 */       printwriter.println("guiScale:" + this.particleSetting);
+/* 4774 */       printwriter.println("particles:" + this.language);
+/* 4775 */       printwriter.println("bobView:" + this.viewBobbing);
+/* 4776 */       printwriter.println("anaglyph3d:" + this.anaglyph);
+/* 4777 */       printwriter.println("maxFps:" + this.limitFramerate);
+/* 4778 */       printwriter.println("fboEnable:" + this.fboEnable);
+/* 4779 */       printwriter.println("difficulty:" + this.hideGUI.getDifficultyId());
+/* 4780 */       printwriter.println("fancyGraphics:" + this.fancyGraphics);
+/* 4781 */       printwriter.println("ao:" + this.ambientOcclusion);
+/* 4782 */       switch (this.clouds) {
 /*      */         case 0:
-/* 4783 */           printwriter.println("renderClouds:false");
+/* 4784 */           printwriter.println("renderClouds:false");
 /*      */           break;
 /*      */         
 /*      */         case 1:
-/* 4787 */           printwriter.println("renderClouds:fast");
+/* 4788 */           printwriter.println("renderClouds:fast");
 /*      */           break;
 /*      */         
 /*      */         case 2:
-/* 4791 */           printwriter.println("renderClouds:true");
+/* 4792 */           printwriter.println("renderClouds:true");
 /*      */           break;
 /*      */       } 
 /*      */       
-/* 4795 */       printwriter.println("resourcePacks:" + typeListString.toJson(this.resourcePacks));
-/* 4796 */       printwriter.println("incompatibleResourcePacks:" + typeListString.toJson(this.incompatibleResourcePacks));
-/* 4797 */       printwriter.println("lastServer:" + this.smoothCamera);
-/* 4798 */       printwriter.println("lang:" + this.forceUnicodeFont);
-/* 4799 */       printwriter.println("chatVisibility:" + this.chatVisibility.getChatVisibility());
-/* 4800 */       printwriter.println("chatColors:" + this.chatColours);
-/* 4801 */       printwriter.println("chatLinks:" + this.chatLinks);
-/* 4802 */       printwriter.println("chatLinksPrompt:" + this.chatLinksPrompt);
-/* 4803 */       printwriter.println("chatOpacity:" + this.chatOpacity);
-/* 4804 */       printwriter.println("snooperEnabled:" + this.snooperEnabled);
-/* 4805 */       printwriter.println("fullscreen:" + this.fullScreen);
-/* 4806 */       printwriter.println("enableVsync:" + this.enableVsync);
-/* 4807 */       printwriter.println("useVbo:" + this.useVbo);
-/* 4808 */       printwriter.println("hideServerAddress:" + this.hideServerAddress);
-/* 4809 */       printwriter.println("advancedItemTooltips:" + this.advancedItemTooltips);
-/* 4810 */       printwriter.println("pauseOnLostFocus:" + this.pauseOnLostFocus);
-/* 4811 */       printwriter.println("touchscreen:" + this.touchscreen);
-/* 4812 */       printwriter.println("overrideWidth:" + this.overrideWidth);
-/* 4813 */       printwriter.println("overrideHeight:" + this.overrideHeight);
-/* 4814 */       printwriter.println("heldItemTooltips:" + this.heldItemTooltips);
-/* 4815 */       printwriter.println("chatHeightFocused:" + this.chatHeightFocused);
-/* 4816 */       printwriter.println("chatHeightUnfocused:" + this.chatHeightUnfocused);
-/* 4817 */       printwriter.println("chatScale:" + this.chatScale);
-/* 4818 */       printwriter.println("chatWidth:" + this.chatWidth);
-/* 4819 */       printwriter.println("showInventoryAchievementHint:" + this.showInventoryAchievementHint);
-/* 4820 */       printwriter.println("mipmapLevels:" + this.mipmapLevels);
-/* 4821 */       printwriter.println("streamBytesPerPixel:" + this.streamBytesPerPixel);
-/* 4822 */       printwriter.println("streamMicVolume:" + this.streamMicVolume);
-/* 4823 */       printwriter.println("streamSystemVolume:" + this.streamGameVolume);
-/* 4824 */       printwriter.println("streamKbps:" + this.streamKbps);
-/* 4825 */       printwriter.println("streamFps:" + this.streamFps);
-/* 4826 */       printwriter.println("streamCompression:" + this.streamCompression);
-/* 4827 */       printwriter.println("streamSendMetadata:" + this.streamSendMetadata);
-/* 4828 */       printwriter.println("streamPreferredServer:" + this.streamPreferredServer);
-/* 4829 */       printwriter.println("streamChatEnabled:" + this.streamChatEnabled);
-/* 4830 */       printwriter.println("streamChatUserFilter:" + this.streamChatUserFilter);
-/* 4831 */       printwriter.println("streamMicToggleBehavior:" + this.streamMicToggleBehavior);
-/* 4832 */       printwriter.println("forceUnicodeFont:" + this.logger);
-/* 4833 */       printwriter.println("allowBlockAlternatives:" + this.allowBlockAlternatives);
-/* 4834 */       printwriter.println("reducedDebugInfo:" + this.reducedDebugInfo);
-/* 4835 */       printwriter.println("useNativeTransport:" + this.useNativeTransport);
-/* 4836 */       printwriter.println("entityShadows:" + this.entityShadows);
-/* 4837 */       printwriter.println("realmsNotifications:" + this.keyBindForward);
+/* 4796 */       printwriter.println("resourcePacks:" + typeListString.toJson(this.resourcePacks));
+/* 4797 */       printwriter.println("incompatibleResourcePacks:" + typeListString.toJson(this.incompatibleResourcePacks));
+/* 4798 */       printwriter.println("lastServer:" + this.smoothCamera);
+/* 4799 */       printwriter.println("lang:" + this.forceUnicodeFont);
+/* 4800 */       printwriter.println("chatVisibility:" + this.chatVisibility.getChatVisibility());
+/* 4801 */       printwriter.println("chatColors:" + this.chatColours);
+/* 4802 */       printwriter.println("chatLinks:" + this.chatLinks);
+/* 4803 */       printwriter.println("chatLinksPrompt:" + this.chatLinksPrompt);
+/* 4804 */       printwriter.println("chatOpacity:" + this.chatOpacity);
+/* 4805 */       printwriter.println("snooperEnabled:" + this.snooperEnabled);
+/* 4806 */       printwriter.println("fullscreen:" + this.fullScreen);
+/* 4807 */       printwriter.println("enableVsync:" + this.enableVsync);
+/* 4808 */       printwriter.println("useVbo:" + this.useVbo);
+/* 4809 */       printwriter.println("hideServerAddress:" + this.hideServerAddress);
+/* 4810 */       printwriter.println("advancedItemTooltips:" + this.advancedItemTooltips);
+/* 4811 */       printwriter.println("pauseOnLostFocus:" + this.pauseOnLostFocus);
+/* 4812 */       printwriter.println("touchscreen:" + this.touchscreen);
+/* 4813 */       printwriter.println("overrideWidth:" + this.overrideWidth);
+/* 4814 */       printwriter.println("overrideHeight:" + this.overrideHeight);
+/* 4815 */       printwriter.println("heldItemTooltips:" + this.heldItemTooltips);
+/* 4816 */       printwriter.println("chatHeightFocused:" + this.chatHeightFocused);
+/* 4817 */       printwriter.println("chatHeightUnfocused:" + this.chatHeightUnfocused);
+/* 4818 */       printwriter.println("chatScale:" + this.chatScale);
+/* 4819 */       printwriter.println("chatWidth:" + this.chatWidth);
+/* 4820 */       printwriter.println("showInventoryAchievementHint:" + this.showInventoryAchievementHint);
+/* 4821 */       printwriter.println("mipmapLevels:" + this.mipmapLevels);
+/* 4822 */       printwriter.println("streamBytesPerPixel:" + this.streamBytesPerPixel);
+/* 4823 */       printwriter.println("streamMicVolume:" + this.streamMicVolume);
+/* 4824 */       printwriter.println("streamSystemVolume:" + this.streamGameVolume);
+/* 4825 */       printwriter.println("streamKbps:" + this.streamKbps);
+/* 4826 */       printwriter.println("streamFps:" + this.streamFps);
+/* 4827 */       printwriter.println("streamCompression:" + this.streamCompression);
+/* 4828 */       printwriter.println("streamSendMetadata:" + this.streamSendMetadata);
+/* 4829 */       printwriter.println("streamPreferredServer:" + this.streamPreferredServer);
+/* 4830 */       printwriter.println("streamChatEnabled:" + this.streamChatEnabled);
+/* 4831 */       printwriter.println("streamChatUserFilter:" + this.streamChatUserFilter);
+/* 4832 */       printwriter.println("streamMicToggleBehavior:" + this.streamMicToggleBehavior);
+/* 4833 */       printwriter.println("forceUnicodeFont:" + this.logger);
+/* 4834 */       printwriter.println("allowBlockAlternatives:" + this.allowBlockAlternatives);
+/* 4835 */       printwriter.println("reducedDebugInfo:" + this.reducedDebugInfo);
+/* 4836 */       printwriter.println("useNativeTransport:" + this.useNativeTransport);
+/* 4837 */       printwriter.println("entityShadows:" + this.entityShadows);
+/* 4838 */       printwriter.println("realmsNotifications:" + this.keyBindForward);
 /*      */       KeyBinding[] mc;
-/* 4839 */       for (int length = (mc = this.mc).length, i = 0; i < length; i++) {
-/* 4840 */         KeyBinding keybinding = mc[i];
-/* 4841 */         printwriter.println("key_" + keybinding.getKeyDescription() + ":" + keybinding.getKeyCode());
+/* 4840 */       for (int length = (mc = this.mc).length, i = 0; i < length; i++) {
+/* 4841 */         KeyBinding keybinding = mc[i];
+/* 4842 */         printwriter.println("key_" + keybinding.getKeyDescription() + ":" + keybinding.getKeyCode());
 /*      */       } 
 /*      */       SoundCategory[] values;
-/* 4844 */       for (int length2 = (values = SoundCategory.values()).length, j = 0; j < length2; j++) {
-/* 4845 */         SoundCategory soundcategory = values[j];
-/* 4846 */         printwriter.println("soundCategory_" + soundcategory.getCategoryName() + ":" + getSoundLevel(soundcategory));
+/* 4845 */       for (int length2 = (values = SoundCategory.values()).length, j = 0; j < length2; j++) {
+/* 4846 */         SoundCategory soundcategory = values[j];
+/* 4847 */         printwriter.println("soundCategory_" + soundcategory.getCategoryName() + ":" + getSoundLevel(soundcategory));
 /*      */       } 
 /*      */       EnumPlayerModelParts[] values2;
-/* 4849 */       for (int length3 = (values2 = EnumPlayerModelParts.values()).length, k = 0; k < length3; k++) {
-/* 4850 */         EnumPlayerModelParts enumplayermodelparts = values2[k];
-/* 4851 */         printwriter.println("modelPart_" + enumplayermodelparts.getPartName() + ":" + this.mapSoundLevels.contains(enumplayermodelparts));
+/* 4850 */       for (int length3 = (values2 = EnumPlayerModelParts.values()).length, k = 0; k < length3; k++) {
+/* 4851 */         EnumPlayerModelParts enumplayermodelparts = values2[k];
+/* 4852 */         printwriter.println("modelPart_" + enumplayermodelparts.getPartName() + ":" + this.mapSoundLevels.contains(enumplayermodelparts));
 /*      */       } 
-/* 4853 */       printwriter.close();
-/* 4854 */     } catch (Exception exception) {
-/* 4855 */       gson.error("Failed to save options", exception);
+/* 4854 */       printwriter.close();
+/* 4855 */     } catch (Exception exception) {
+/* 4856 */       gson.error("Failed to save options", exception);
 /*      */     } 
-/* 4857 */     saveOfOptions();
-/* 4858 */     sendSettingsToServer();
+/* 4858 */     saveOfOptions();
+/* 4859 */     sendSettingsToServer();
 /*      */   }
 /*      */   
 /*      */   public float getSoundLevel(SoundCategory sndCategory) {
-/* 4862 */     return this.optionsFile.containsKey(sndCategory) ? ((Float)this.optionsFile.get(sndCategory)).floatValue() : 1.0F;
+/* 4863 */     return this.optionsFile.containsKey(sndCategory) ? ((Float)this.optionsFile.get(sndCategory)).floatValue() : 1.0F;
 /*      */   }
 /*      */   
 /*      */   public void setSoundLevel(SoundCategory sndCategory, float soundLevel) {
-/* 4866 */     this.difficulty.getSoundHandler().setSoundLevel(sndCategory, soundLevel);
-/* 4867 */     this.optionsFile.put(sndCategory, Float.valueOf(soundLevel));
+/* 4867 */     this.difficulty.getSoundHandler().setSoundLevel(sndCategory, soundLevel);
+/* 4868 */     this.optionsFile.put(sndCategory, Float.valueOf(soundLevel));
 /*      */   }
 /*      */   
 /*      */   public void sendSettingsToServer() {
-/* 4871 */     if (this.difficulty.thePlayer != null) {
-/* 4872 */       int i = 0;
-/* 4873 */       for (EnumPlayerModelParts enumplayermodelparts : this.mapSoundLevels) {
-/* 4874 */         i |= enumplayermodelparts.getPartMask();
+/* 4872 */     if (this.difficulty.thePlayer != null) {
+/* 4873 */       int i = 0;
+/* 4874 */       for (EnumPlayerModelParts enumplayermodelparts : this.mapSoundLevels) {
+/* 4875 */         i |= enumplayermodelparts.getPartMask();
 /*      */       }
-/* 4876 */       this.difficulty.thePlayer.sendQueue.addToSendQueue((Packet)new C15PacketClientSettings(this.forceUnicodeFont, this.renderDistanceChunks, this.chatVisibility, this.chatColours, i));
+/* 4877 */       this.difficulty.thePlayer.sendQueue.addToSendQueue((Packet)new C15PacketClientSettings(this.forceUnicodeFont, this.renderDistanceChunks, this.chatVisibility, this.chatColours, i));
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   public Set<EnumPlayerModelParts> getModelParts() {
-/* 4881 */     return (Set<EnumPlayerModelParts>)ImmutableSet.copyOf(this.mapSoundLevels);
+/* 4882 */     return (Set<EnumPlayerModelParts>)ImmutableSet.copyOf(this.mapSoundLevels);
 /*      */   }
 /*      */   
 /*      */   public void setModelPartEnabled(EnumPlayerModelParts modelPart, boolean enable) {
-/* 4885 */     if (enable) {
-/* 4886 */       this.mapSoundLevels.add(modelPart);
+/* 4886 */     if (enable) {
+/* 4887 */       this.mapSoundLevels.add(modelPart);
 /*      */     } else {
-/* 4888 */       this.mapSoundLevels.remove(modelPart);
+/* 4889 */       this.mapSoundLevels.remove(modelPart);
 /*      */     } 
-/* 4890 */     sendSettingsToServer();
+/* 4891 */     sendSettingsToServer();
 /*      */   }
 /*      */   
 /*      */   public void switchModelPartEnabled(EnumPlayerModelParts modelPart) {
-/* 4894 */     if (!getModelParts().contains(modelPart)) {
-/* 4895 */       this.mapSoundLevels.add(modelPart);
+/* 4895 */     if (!getModelParts().contains(modelPart)) {
+/* 4896 */       this.mapSoundLevels.add(modelPart);
 /*      */     } else {
-/* 4897 */       this.mapSoundLevels.remove(modelPart);
+/* 4898 */       this.mapSoundLevels.remove(modelPart);
 /*      */     } 
-/* 4899 */     sendSettingsToServer();
+/* 4900 */     sendSettingsToServer();
 /*      */   }
 /*      */   
 /*      */   public int shouldRenderClouds() {
-/* 4903 */     return (this.renderDistanceChunks >= 4) ? this.clouds : 0;
+/* 4904 */     return (this.renderDistanceChunks >= 4) ? this.clouds : 0;
 /*      */   }
 /*      */   
 /*      */   public boolean isUsingNativeTransport() {
-/* 4907 */     return this.useNativeTransport;
+/* 4908 */     return this.useNativeTransport;
 /*      */   }
 /*      */   
 /*      */   private void setOptionFloatValueOF(Options p_setOptionFloatValueOF_1_, float p_setOptionFloatValueOF_2_) {
-/* 4911 */     if (p_setOptionFloatValueOF_1_ == Options.CLOUD_HEIGHT) {
-/* 4912 */       this.ofCloudsHeight = p_setOptionFloatValueOF_2_;
-/* 4913 */       this.difficulty.renderGlobal.resetClouds();
+/* 4912 */     if (p_setOptionFloatValueOF_1_ == Options.CLOUD_HEIGHT) {
+/* 4913 */       this.ofCloudsHeight = p_setOptionFloatValueOF_2_;
+/* 4914 */       this.difficulty.renderGlobal.resetClouds();
 /*      */     } 
-/* 4915 */     if (p_setOptionFloatValueOF_1_ == Options.AO_LEVEL) {
-/* 4916 */       this.ofAoLevel = p_setOptionFloatValueOF_2_;
-/* 4917 */       this.difficulty.renderGlobal.loadRenderers();
+/* 4916 */     if (p_setOptionFloatValueOF_1_ == Options.AO_LEVEL) {
+/* 4917 */       this.ofAoLevel = p_setOptionFloatValueOF_2_;
+/* 4918 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 4919 */     if (p_setOptionFloatValueOF_1_ == Options.AA_LEVEL) {
-/* 4920 */       int i = (int)p_setOptionFloatValueOF_2_;
-/* 4921 */       if (i > 0 && Config.isShaders()) {
-/* 4922 */         Config.showGuiMessage(Lang.get("of.message.aa.shaders1"), Lang.get("of.message.aa.shaders2"));
+/* 4920 */     if (p_setOptionFloatValueOF_1_ == Options.AA_LEVEL) {
+/* 4921 */       int i = (int)p_setOptionFloatValueOF_2_;
+/* 4922 */       if (i > 0 && Config.isShaders()) {
+/* 4923 */         Config.showGuiMessage(Lang.get("of.message.aa.shaders1"), Lang.get("of.message.aa.shaders2"));
 /*      */         return;
 /*      */       } 
-/* 4925 */       int[] aint = { 0, 2, 4, 6, 8, 12, 16 };
-/* 4926 */       this.ofAaLevel = 0;
-/* 4927 */       for (int j = 0; j < aint.length; j++) {
-/* 4928 */         if (i >= aint[j]) {
-/* 4929 */           this.ofAaLevel = aint[j];
+/* 4926 */       int[] aint = { 0, 2, 4, 6, 8, 12, 16 };
+/* 4927 */       this.ofAaLevel = 0;
+/* 4928 */       for (int j = 0; j < aint.length; j++) {
+/* 4929 */         if (i >= aint[j]) {
+/* 4930 */           this.ofAaLevel = aint[j];
 /*      */         }
 /*      */       } 
-/* 4932 */       this.ofAaLevel = Config.limit(this.ofAaLevel, 0, 16);
+/* 4933 */       this.ofAaLevel = Config.limit(this.ofAaLevel, 0, 16);
 /*      */     } 
-/* 4934 */     if (p_setOptionFloatValueOF_1_ == Options.AF_LEVEL) {
-/* 4935 */       int k = (int)p_setOptionFloatValueOF_2_;
-/* 4936 */       if (k > 1 && Config.isShaders()) {
-/* 4937 */         Config.showGuiMessage(Lang.get("of.message.af.shaders1"), Lang.get("of.message.af.shaders2"));
+/* 4935 */     if (p_setOptionFloatValueOF_1_ == Options.AF_LEVEL) {
+/* 4936 */       int k = (int)p_setOptionFloatValueOF_2_;
+/* 4937 */       if (k > 1 && Config.isShaders()) {
+/* 4938 */         Config.showGuiMessage(Lang.get("of.message.af.shaders1"), Lang.get("of.message.af.shaders2"));
 /*      */         return;
 /*      */       } 
-/* 4940 */       this.ofAfLevel = 1;
-/* 4941 */       while (this.ofAfLevel * 2 <= k) {
-/* 4942 */         this.ofAfLevel *= 2;
+/* 4941 */       this.ofAfLevel = 1;
+/* 4942 */       while (this.ofAfLevel * 2 <= k) {
+/* 4943 */         this.ofAfLevel *= 2;
 /*      */       }
-/* 4944 */       this.ofAfLevel = Config.limit(this.ofAfLevel, 1, 16);
-/* 4945 */       this.difficulty.refreshResources();
+/* 4945 */       this.ofAfLevel = Config.limit(this.ofAfLevel, 1, 16);
+/* 4946 */       this.difficulty.refreshResources();
 /*      */     } 
-/* 4947 */     if (p_setOptionFloatValueOF_1_ == Options.MIPMAP_TYPE) {
-/* 4948 */       int l = (int)p_setOptionFloatValueOF_2_;
-/* 4949 */       this.ofMipmapType = Config.limit(l, 0, 3);
-/* 4950 */       this.difficulty.refreshResources();
+/* 4948 */     if (p_setOptionFloatValueOF_1_ == Options.MIPMAP_TYPE) {
+/* 4949 */       int l = (int)p_setOptionFloatValueOF_2_;
+/* 4950 */       this.ofMipmapType = Config.limit(l, 0, 3);
+/* 4951 */       this.difficulty.refreshResources();
 /*      */     } 
-/* 4952 */     if (p_setOptionFloatValueOF_1_ == Options.FULLSCREEN_MODE) {
-/* 4953 */       int i2 = (int)p_setOptionFloatValueOF_2_ - 1;
-/* 4954 */       String[] astring = Config.getDisplayModeNames();
-/* 4955 */       if (i2 < 0 || i2 >= astring.length) {
-/* 4956 */         this.ofFullscreenMode = "Default";
+/* 4953 */     if (p_setOptionFloatValueOF_1_ == Options.FULLSCREEN_MODE) {
+/* 4954 */       int i2 = (int)p_setOptionFloatValueOF_2_ - 1;
+/* 4955 */       String[] astring = Config.getDisplayModeNames();
+/* 4956 */       if (i2 < 0 || i2 >= astring.length) {
+/* 4957 */         this.ofFullscreenMode = "Default";
 /*      */         return;
 /*      */       } 
-/* 4959 */       this.ofFullscreenMode = astring[i2];
+/* 4960 */       this.ofFullscreenMode = astring[i2];
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   private float getOptionFloatValueOF(Options p_getOptionFloatValueOF_1_) {
-/* 4964 */     if (p_getOptionFloatValueOF_1_ == Options.CLOUD_HEIGHT) {
-/* 4965 */       return this.ofCloudsHeight;
+/* 4965 */     if (p_getOptionFloatValueOF_1_ == Options.CLOUD_HEIGHT) {
+/* 4966 */       return this.ofCloudsHeight;
 /*      */     }
-/* 4967 */     if (p_getOptionFloatValueOF_1_ == Options.AO_LEVEL) {
-/* 4968 */       return this.ofAoLevel;
+/* 4968 */     if (p_getOptionFloatValueOF_1_ == Options.AO_LEVEL) {
+/* 4969 */       return this.ofAoLevel;
 /*      */     }
-/* 4970 */     if (p_getOptionFloatValueOF_1_ == Options.AA_LEVEL) {
-/* 4971 */       return this.ofAaLevel;
+/* 4971 */     if (p_getOptionFloatValueOF_1_ == Options.AA_LEVEL) {
+/* 4972 */       return this.ofAaLevel;
 /*      */     }
-/* 4973 */     if (p_getOptionFloatValueOF_1_ == Options.AF_LEVEL) {
-/* 4974 */       return this.ofAfLevel;
+/* 4974 */     if (p_getOptionFloatValueOF_1_ == Options.AF_LEVEL) {
+/* 4975 */       return this.ofAfLevel;
 /*      */     }
-/* 4976 */     if (p_getOptionFloatValueOF_1_ == Options.MIPMAP_TYPE) {
-/* 4977 */       return this.ofMipmapType;
+/* 4977 */     if (p_getOptionFloatValueOF_1_ == Options.MIPMAP_TYPE) {
+/* 4978 */       return this.ofMipmapType;
 /*      */     }
-/* 4979 */     if (p_getOptionFloatValueOF_1_ == Options.FRAMERATE_LIMIT) {
-/* 4980 */       return (this.limitFramerate == Options.FRAMERATE_LIMIT.getValueMax() && this.enableVsync) ? 0.0F : this.limitFramerate;
+/* 4980 */     if (p_getOptionFloatValueOF_1_ == Options.FRAMERATE_LIMIT) {
+/* 4981 */       return (this.limitFramerate == Options.FRAMERATE_LIMIT.getValueMax() && this.enableVsync) ? 0.0F : this.limitFramerate;
 /*      */     }
-/* 4982 */     if (p_getOptionFloatValueOF_1_ != Options.FULLSCREEN_MODE) {
-/* 4983 */       return Float.MAX_VALUE;
+/* 4983 */     if (p_getOptionFloatValueOF_1_ != Options.FULLSCREEN_MODE) {
+/* 4984 */       return Float.MAX_VALUE;
 /*      */     }
-/* 4985 */     if (this.ofFullscreenMode.equals("Default")) {
-/* 4986 */       return 0.0F;
+/* 4986 */     if (this.ofFullscreenMode.equals("Default")) {
+/* 4987 */       return 0.0F;
 /*      */     }
-/* 4988 */     List<String> list = Arrays.asList(Config.getDisplayModeNames());
-/* 4989 */     int i = list.indexOf(this.ofFullscreenMode);
-/* 4990 */     return (i < 0) ? 0.0F : (i + 1);
+/* 4989 */     List<String> list = Arrays.asList(Config.getDisplayModeNames());
+/* 4990 */     int i = list.indexOf(this.ofFullscreenMode);
+/* 4991 */     return (i < 0) ? 0.0F : (i + 1);
 /*      */   }
 /*      */   
 /*      */   private void setOptionValueOF(Options p_setOptionValueOF_1_, int p_setOptionValueOF_2_) {
-/* 4994 */     if (p_setOptionValueOF_1_ == Options.FOG_FANCY) {
-/* 4995 */       switch (this.ofFogType) {
+/* 4995 */     if (p_setOptionValueOF_1_ == Options.FOG_FANCY) {
+/* 4996 */       switch (this.ofFogType) {
 /*      */         case 1:
-/* 4997 */           this.ofFogType = 2;
-/* 4998 */           if (!Config.isFancyFogAvailable()) {
-/* 4999 */             this.ofFogType = 3;
+/* 4998 */           this.ofFogType = 2;
+/* 4999 */           if (!Config.isFancyFogAvailable()) {
+/* 5000 */             this.ofFogType = 3;
 /*      */           }
 /*      */           break;
 /*      */ 
 /*      */         
 /*      */         case 2:
-/* 5005 */           this.ofFogType = 3;
+/* 5006 */           this.ofFogType = 3;
 /*      */           break;
 /*      */         
 /*      */         case 3:
-/* 5009 */           this.ofFogType = 1;
+/* 5010 */           this.ofFogType = 1;
 /*      */           break;
 /*      */         
 /*      */         default:
-/* 5013 */           this.ofFogType = 1;
+/* 5014 */           this.ofFogType = 1;
 /*      */           break;
 /*      */       } 
 /*      */     
 /*      */     }
-/* 5018 */     if (p_setOptionValueOF_1_ == Options.FOG_START) {
-/* 5019 */       this.ofFogStart += 0.2F;
-/* 5020 */       if (this.ofFogStart > 0.81F) {
-/* 5021 */         this.ofFogStart = 0.2F;
+/* 5019 */     if (p_setOptionValueOF_1_ == Options.FOG_START) {
+/* 5020 */       this.ofFogStart += 0.2F;
+/* 5021 */       if (this.ofFogStart > 0.81F) {
+/* 5022 */         this.ofFogStart = 0.2F;
 /*      */       }
 /*      */     } 
-/* 5024 */     if (p_setOptionValueOF_1_ == Options.SMOOTH_FPS) {
-/* 5025 */       this.ofSmoothFps = !this.ofSmoothFps;
+/* 5025 */     if (p_setOptionValueOF_1_ == Options.SMOOTH_FPS) {
+/* 5026 */       this.ofSmoothFps = !this.ofSmoothFps;
 /*      */     }
-/* 5027 */     if (p_setOptionValueOF_1_ == Options.SMOOTH_WORLD) {
-/* 5028 */       this.ofSmoothWorld = !this.ofSmoothWorld;
-/* 5029 */       Config.updateThreadPriorities();
+/* 5028 */     if (p_setOptionValueOF_1_ == Options.SMOOTH_WORLD) {
+/* 5029 */       this.ofSmoothWorld = !this.ofSmoothWorld;
+/* 5030 */       Config.updateThreadPriorities();
 /*      */     } 
-/* 5031 */     if (p_setOptionValueOF_1_ == Options.CLOUDS) {
-/* 5032 */       this.ofClouds++;
-/* 5033 */       if (this.ofClouds > 3) {
-/* 5034 */         this.ofClouds = 0;
+/* 5032 */     if (p_setOptionValueOF_1_ == Options.CLOUDS) {
+/* 5033 */       this.ofClouds++;
+/* 5034 */       if (this.ofClouds > 3) {
+/* 5035 */         this.ofClouds = 0;
 /*      */       }
-/* 5036 */       updateRenderClouds();
-/* 5037 */       this.difficulty.renderGlobal.resetClouds();
+/* 5037 */       updateRenderClouds();
+/* 5038 */       this.difficulty.renderGlobal.resetClouds();
 /*      */     } 
-/* 5039 */     if (p_setOptionValueOF_1_ == Options.TREES) {
-/* 5040 */       this.ofTrees = nextValue(this.ofTrees, OF_TREES_VALUES);
-/* 5041 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5040 */     if (p_setOptionValueOF_1_ == Options.TREES) {
+/* 5041 */       this.ofTrees = nextValue(this.ofTrees, OF_TREES_VALUES);
+/* 5042 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5043 */     if (p_setOptionValueOF_1_ == Options.DROPPED_ITEMS) {
-/* 5044 */       this.ofDroppedItems++;
-/* 5045 */       if (this.ofDroppedItems > 2) {
-/* 5046 */         this.ofDroppedItems = 0;
-/*      */       }
-/*      */     } 
-/* 5049 */     if (p_setOptionValueOF_1_ == Options.RAIN) {
-/* 5050 */       this.ofRain++;
-/* 5051 */       if (this.ofRain > 3) {
-/* 5052 */         this.ofRain = 0;
+/* 5044 */     if (p_setOptionValueOF_1_ == Options.DROPPED_ITEMS) {
+/* 5045 */       this.ofDroppedItems++;
+/* 5046 */       if (this.ofDroppedItems > 2) {
+/* 5047 */         this.ofDroppedItems = 0;
 /*      */       }
 /*      */     } 
-/* 5055 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_WATER) {
-/* 5056 */       this.ofAnimatedWater++;
-/* 5057 */       if (this.ofAnimatedWater == 1) {
-/* 5058 */         this.ofAnimatedWater++;
-/*      */       }
-/* 5060 */       if (this.ofAnimatedWater > 2) {
-/* 5061 */         this.ofAnimatedWater = 0;
+/* 5050 */     if (p_setOptionValueOF_1_ == Options.RAIN) {
+/* 5051 */       this.ofRain++;
+/* 5052 */       if (this.ofRain > 3) {
+/* 5053 */         this.ofRain = 0;
 /*      */       }
 /*      */     } 
-/* 5064 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_LAVA) {
-/* 5065 */       this.ofAnimatedLava++;
-/* 5066 */       if (this.ofAnimatedLava == 1) {
-/* 5067 */         this.ofAnimatedLava++;
+/* 5056 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_WATER) {
+/* 5057 */       this.ofAnimatedWater++;
+/* 5058 */       if (this.ofAnimatedWater == 1) {
+/* 5059 */         this.ofAnimatedWater++;
 /*      */       }
-/* 5069 */       if (this.ofAnimatedLava > 2) {
-/* 5070 */         this.ofAnimatedLava = 0;
-/*      */       }
-/*      */     } 
-/* 5073 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_FIRE) {
-/* 5074 */       this.ofAnimatedFire = !this.ofAnimatedFire;
-/*      */     }
-/* 5076 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_PORTAL) {
-/* 5077 */       this.ofAnimatedPortal = !this.ofAnimatedPortal;
-/*      */     }
-/* 5079 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_REDSTONE) {
-/* 5080 */       this.ofAnimatedRedstone = !this.ofAnimatedRedstone;
-/*      */     }
-/* 5082 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_EXPLOSION) {
-/* 5083 */       this.ofAnimatedExplosion = !this.ofAnimatedExplosion;
-/*      */     }
-/* 5085 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_FLAME) {
-/* 5086 */       this.ofAnimatedFlame = !this.ofAnimatedFlame;
-/*      */     }
-/* 5088 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_SMOKE) {
-/* 5089 */       this.ofAnimatedSmoke = !this.ofAnimatedSmoke;
-/*      */     }
-/* 5091 */     if (p_setOptionValueOF_1_ == Options.VOID_PARTICLES) {
-/* 5092 */       this.ofVoidParticles = !this.ofVoidParticles;
-/*      */     }
-/* 5094 */     if (p_setOptionValueOF_1_ == Options.WATER_PARTICLES) {
-/* 5095 */       this.ofWaterParticles = !this.ofWaterParticles;
-/*      */     }
-/* 5097 */     if (p_setOptionValueOF_1_ == Options.PORTAL_PARTICLES) {
-/* 5098 */       this.ofPortalParticles = !this.ofPortalParticles;
-/*      */     }
-/* 5100 */     if (p_setOptionValueOF_1_ == Options.POTION_PARTICLES) {
-/* 5101 */       this.ofPotionParticles = !this.ofPotionParticles;
-/*      */     }
-/* 5103 */     if (p_setOptionValueOF_1_ == Options.FIREWORK_PARTICLES) {
-/* 5104 */       this.ofFireworkParticles = !this.ofFireworkParticles;
-/*      */     }
-/* 5106 */     if (p_setOptionValueOF_1_ == Options.DRIPPING_WATER_LAVA) {
-/* 5107 */       this.ofDrippingWaterLava = !this.ofDrippingWaterLava;
-/*      */     }
-/* 5109 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_TERRAIN) {
-/* 5110 */       this.ofAnimatedTerrain = !this.ofAnimatedTerrain;
-/*      */     }
-/* 5112 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_TEXTURES) {
-/* 5113 */       this.ofAnimatedTextures = !this.ofAnimatedTextures;
-/*      */     }
-/* 5115 */     if (p_setOptionValueOF_1_ == Options.RAIN_SPLASH) {
-/* 5116 */       this.ofRainSplash = !this.ofRainSplash;
-/*      */     }
-/* 5118 */     if (p_setOptionValueOF_1_ == Options.LAGOMETER) {
-/* 5119 */       this.ofLagometer = !this.ofLagometer;
-/*      */     }
-/* 5121 */     if (p_setOptionValueOF_1_ == Options.SHOW_FPS) {
-/* 5122 */       this.ofShowFps = !this.ofShowFps;
-/*      */     }
-/* 5124 */     if (p_setOptionValueOF_1_ == Options.AUTOSAVE_TICKS) {
-/* 5125 */       int i = 900;
-/* 5126 */       this.ofAutoSaveTicks = Math.max(this.ofAutoSaveTicks / 900 * 900, 900);
-/* 5127 */       this.ofAutoSaveTicks *= 2;
-/* 5128 */       if (this.ofAutoSaveTicks > 28800) {
-/* 5129 */         this.ofAutoSaveTicks = 900;
+/* 5061 */       if (this.ofAnimatedWater > 2) {
+/* 5062 */         this.ofAnimatedWater = 0;
 /*      */       }
 /*      */     } 
-/* 5132 */     if (p_setOptionValueOF_1_ == Options.BETTER_GRASS) {
-/* 5133 */       this.ofBetterGrass++;
-/* 5134 */       if (this.ofBetterGrass > 3) {
-/* 5135 */         this.ofBetterGrass = 1;
+/* 5065 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_LAVA) {
+/* 5066 */       this.ofAnimatedLava++;
+/* 5067 */       if (this.ofAnimatedLava == 1) {
+/* 5068 */         this.ofAnimatedLava++;
 /*      */       }
-/* 5137 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5070 */       if (this.ofAnimatedLava > 2) {
+/* 5071 */         this.ofAnimatedLava = 0;
+/*      */       }
 /*      */     } 
-/* 5139 */     if (p_setOptionValueOF_1_ == Options.CONNECTED_TEXTURES) {
-/* 5140 */       this.ofConnectedTextures++;
-/* 5141 */       if (this.ofConnectedTextures > 3) {
-/* 5142 */         this.ofConnectedTextures = 1;
+/* 5074 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_FIRE) {
+/* 5075 */       this.ofAnimatedFire = !this.ofAnimatedFire;
+/*      */     }
+/* 5077 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_PORTAL) {
+/* 5078 */       this.ofAnimatedPortal = !this.ofAnimatedPortal;
+/*      */     }
+/* 5080 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_REDSTONE) {
+/* 5081 */       this.ofAnimatedRedstone = !this.ofAnimatedRedstone;
+/*      */     }
+/* 5083 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_EXPLOSION) {
+/* 5084 */       this.ofAnimatedExplosion = !this.ofAnimatedExplosion;
+/*      */     }
+/* 5086 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_FLAME) {
+/* 5087 */       this.ofAnimatedFlame = !this.ofAnimatedFlame;
+/*      */     }
+/* 5089 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_SMOKE) {
+/* 5090 */       this.ofAnimatedSmoke = !this.ofAnimatedSmoke;
+/*      */     }
+/* 5092 */     if (p_setOptionValueOF_1_ == Options.VOID_PARTICLES) {
+/* 5093 */       this.ofVoidParticles = !this.ofVoidParticles;
+/*      */     }
+/* 5095 */     if (p_setOptionValueOF_1_ == Options.WATER_PARTICLES) {
+/* 5096 */       this.ofWaterParticles = !this.ofWaterParticles;
+/*      */     }
+/* 5098 */     if (p_setOptionValueOF_1_ == Options.PORTAL_PARTICLES) {
+/* 5099 */       this.ofPortalParticles = !this.ofPortalParticles;
+/*      */     }
+/* 5101 */     if (p_setOptionValueOF_1_ == Options.POTION_PARTICLES) {
+/* 5102 */       this.ofPotionParticles = !this.ofPotionParticles;
+/*      */     }
+/* 5104 */     if (p_setOptionValueOF_1_ == Options.FIREWORK_PARTICLES) {
+/* 5105 */       this.ofFireworkParticles = !this.ofFireworkParticles;
+/*      */     }
+/* 5107 */     if (p_setOptionValueOF_1_ == Options.DRIPPING_WATER_LAVA) {
+/* 5108 */       this.ofDrippingWaterLava = !this.ofDrippingWaterLava;
+/*      */     }
+/* 5110 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_TERRAIN) {
+/* 5111 */       this.ofAnimatedTerrain = !this.ofAnimatedTerrain;
+/*      */     }
+/* 5113 */     if (p_setOptionValueOF_1_ == Options.ANIMATED_TEXTURES) {
+/* 5114 */       this.ofAnimatedTextures = !this.ofAnimatedTextures;
+/*      */     }
+/* 5116 */     if (p_setOptionValueOF_1_ == Options.RAIN_SPLASH) {
+/* 5117 */       this.ofRainSplash = !this.ofRainSplash;
+/*      */     }
+/* 5119 */     if (p_setOptionValueOF_1_ == Options.LAGOMETER) {
+/* 5120 */       this.ofLagometer = !this.ofLagometer;
+/*      */     }
+/* 5122 */     if (p_setOptionValueOF_1_ == Options.SHOW_FPS) {
+/* 5123 */       this.ofShowFps = !this.ofShowFps;
+/*      */     }
+/* 5125 */     if (p_setOptionValueOF_1_ == Options.AUTOSAVE_TICKS) {
+/* 5126 */       int i = 900;
+/* 5127 */       this.ofAutoSaveTicks = Math.max(this.ofAutoSaveTicks / 900 * 900, 900);
+/* 5128 */       this.ofAutoSaveTicks *= 2;
+/* 5129 */       if (this.ofAutoSaveTicks > 28800) {
+/* 5130 */         this.ofAutoSaveTicks = 900;
 /*      */       }
-/* 5144 */       if (this.ofConnectedTextures == 2) {
-/* 5145 */         this.difficulty.renderGlobal.loadRenderers();
+/*      */     } 
+/* 5133 */     if (p_setOptionValueOF_1_ == Options.BETTER_GRASS) {
+/* 5134 */       this.ofBetterGrass++;
+/* 5135 */       if (this.ofBetterGrass > 3) {
+/* 5136 */         this.ofBetterGrass = 1;
+/*      */       }
+/* 5138 */       this.difficulty.renderGlobal.loadRenderers();
+/*      */     } 
+/* 5140 */     if (p_setOptionValueOF_1_ == Options.CONNECTED_TEXTURES) {
+/* 5141 */       this.ofConnectedTextures++;
+/* 5142 */       if (this.ofConnectedTextures > 3) {
+/* 5143 */         this.ofConnectedTextures = 1;
+/*      */       }
+/* 5145 */       if (this.ofConnectedTextures == 2) {
+/* 5146 */         this.difficulty.renderGlobal.loadRenderers();
 /*      */       } else {
-/* 5147 */         this.difficulty.refreshResources();
+/* 5148 */         this.difficulty.refreshResources();
 /*      */       } 
 /*      */     } 
-/* 5150 */     if (p_setOptionValueOF_1_ == Options.WEATHER) {
-/* 5151 */       this.ofWeather = !this.ofWeather;
+/* 5151 */     if (p_setOptionValueOF_1_ == Options.WEATHER) {
+/* 5152 */       this.ofWeather = !this.ofWeather;
 /*      */     }
-/* 5153 */     if (p_setOptionValueOF_1_ == Options.SKY) {
-/* 5154 */       this.ofSky = !this.ofSky;
+/* 5154 */     if (p_setOptionValueOF_1_ == Options.SKY) {
+/* 5155 */       this.ofSky = !this.ofSky;
 /*      */     }
-/* 5156 */     if (p_setOptionValueOF_1_ == Options.STARS) {
-/* 5157 */       this.ofStars = !this.ofStars;
+/* 5157 */     if (p_setOptionValueOF_1_ == Options.STARS) {
+/* 5158 */       this.ofStars = !this.ofStars;
 /*      */     }
-/* 5159 */     if (p_setOptionValueOF_1_ == Options.SUN_MOON) {
-/* 5160 */       this.ofSunMoon = !this.ofSunMoon;
+/* 5160 */     if (p_setOptionValueOF_1_ == Options.SUN_MOON) {
+/* 5161 */       this.ofSunMoon = !this.ofSunMoon;
 /*      */     }
-/* 5162 */     if (p_setOptionValueOF_1_ == Options.VIGNETTE) {
-/* 5163 */       this.ofVignette++;
-/* 5164 */       if (this.ofVignette > 2) {
-/* 5165 */         this.ofVignette = 0;
+/* 5163 */     if (p_setOptionValueOF_1_ == Options.VIGNETTE) {
+/* 5164 */       this.ofVignette++;
+/* 5165 */       if (this.ofVignette > 2) {
+/* 5166 */         this.ofVignette = 0;
 /*      */       }
 /*      */     } 
-/* 5168 */     if (p_setOptionValueOF_1_ == Options.CHUNK_UPDATES) {
-/* 5169 */       this.ofChunkUpdates++;
-/* 5170 */       if (this.ofChunkUpdates > 5) {
-/* 5171 */         this.ofChunkUpdates = 1;
+/* 5169 */     if (p_setOptionValueOF_1_ == Options.CHUNK_UPDATES) {
+/* 5170 */       this.ofChunkUpdates++;
+/* 5171 */       if (this.ofChunkUpdates > 5) {
+/* 5172 */         this.ofChunkUpdates = 1;
 /*      */       }
 /*      */     } 
-/* 5174 */     if (p_setOptionValueOF_1_ == Options.CHUNK_UPDATES_DYNAMIC) {
-/* 5175 */       this.ofChunkUpdatesDynamic = !this.ofChunkUpdatesDynamic;
+/* 5175 */     if (p_setOptionValueOF_1_ == Options.CHUNK_UPDATES_DYNAMIC) {
+/* 5176 */       this.ofChunkUpdatesDynamic = !this.ofChunkUpdatesDynamic;
 /*      */     }
-/* 5177 */     if (p_setOptionValueOF_1_ == Options.TIME) {
-/* 5178 */       this.ofTime++;
-/* 5179 */       if (this.ofTime > 2) {
-/* 5180 */         this.ofTime = 0;
+/* 5178 */     if (p_setOptionValueOF_1_ == Options.TIME) {
+/* 5179 */       this.ofTime++;
+/* 5180 */       if (this.ofTime > 2) {
+/* 5181 */         this.ofTime = 0;
 /*      */       }
 /*      */     } 
-/* 5183 */     if (p_setOptionValueOF_1_ == Options.CLEAR_WATER) {
-/* 5184 */       this.ofClearWater = !this.ofClearWater;
-/* 5185 */       updateWaterOpacity();
+/* 5184 */     if (p_setOptionValueOF_1_ == Options.CLEAR_WATER) {
+/* 5185 */       this.ofClearWater = !this.ofClearWater;
+/* 5186 */       updateWaterOpacity();
 /*      */     } 
-/* 5187 */     if (p_setOptionValueOF_1_ == Options.PROFILER) {
-/* 5188 */       this.ofProfiler = !this.ofProfiler;
+/* 5188 */     if (p_setOptionValueOF_1_ == Options.PROFILER) {
+/* 5189 */       this.ofProfiler = !this.ofProfiler;
 /*      */     }
-/* 5190 */     if (p_setOptionValueOF_1_ == Options.BETTER_SNOW) {
-/* 5191 */       this.ofBetterSnow = !this.ofBetterSnow;
-/* 5192 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5191 */     if (p_setOptionValueOF_1_ == Options.BETTER_SNOW) {
+/* 5192 */       this.ofBetterSnow = !this.ofBetterSnow;
+/* 5193 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5194 */     if (p_setOptionValueOF_1_ == Options.SWAMP_COLORS) {
-/* 5195 */       this.ofSwampColors = !this.ofSwampColors;
-/* 5196 */       CustomColors.updateUseDefaultGrassFoliageColors();
-/* 5197 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5195 */     if (p_setOptionValueOF_1_ == Options.SWAMP_COLORS) {
+/* 5196 */       this.ofSwampColors = !this.ofSwampColors;
+/* 5197 */       CustomColors.updateUseDefaultGrassFoliageColors();
+/* 5198 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5199 */     if (p_setOptionValueOF_1_ == Options.RANDOM_ENTITIES) {
-/* 5200 */       this.ofRandomEntities = !this.ofRandomEntities;
-/* 5201 */       RandomEntities.update();
+/* 5200 */     if (p_setOptionValueOF_1_ == Options.RANDOM_ENTITIES) {
+/* 5201 */       this.ofRandomEntities = !this.ofRandomEntities;
+/* 5202 */       RandomEntities.update();
 /*      */     } 
-/* 5203 */     if (p_setOptionValueOF_1_ == Options.SMOOTH_BIOMES) {
-/* 5204 */       this.ofSmoothBiomes = !this.ofSmoothBiomes;
-/* 5205 */       CustomColors.updateUseDefaultGrassFoliageColors();
-/* 5206 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5204 */     if (p_setOptionValueOF_1_ == Options.SMOOTH_BIOMES) {
+/* 5205 */       this.ofSmoothBiomes = !this.ofSmoothBiomes;
+/* 5206 */       CustomColors.updateUseDefaultGrassFoliageColors();
+/* 5207 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5208 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_FONTS) {
-/* 5209 */       this.ofCustomFonts = !this.ofCustomFonts;
-/* 5210 */       this.difficulty.fontRendererObj.onResourceManagerReload(Config.getResourceManager());
-/* 5211 */       this.difficulty.standardGalacticFontRenderer.onResourceManagerReload(Config.getResourceManager());
+/* 5209 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_FONTS) {
+/* 5210 */       this.ofCustomFonts = !this.ofCustomFonts;
+/* 5211 */       this.difficulty.fontRendererObj.onResourceManagerReload(Config.getResourceManager());
+/* 5212 */       this.difficulty.standardGalacticFontRenderer.onResourceManagerReload(Config.getResourceManager());
 /*      */     } 
-/* 5213 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_COLORS) {
-/* 5214 */       this.ofCustomColors = !this.ofCustomColors;
-/* 5215 */       CustomColors.update();
-/* 5216 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5214 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_COLORS) {
+/* 5215 */       this.ofCustomColors = !this.ofCustomColors;
+/* 5216 */       CustomColors.update();
+/* 5217 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5218 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_ITEMS) {
-/* 5219 */       this.ofCustomItems = !this.ofCustomItems;
-/* 5220 */       this.difficulty.refreshResources();
+/* 5219 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_ITEMS) {
+/* 5220 */       this.ofCustomItems = !this.ofCustomItems;
+/* 5221 */       this.difficulty.refreshResources();
 /*      */     } 
-/* 5222 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_SKY) {
-/* 5223 */       this.ofCustomSky = !this.ofCustomSky;
-/* 5224 */       CustomSky.update();
+/* 5223 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_SKY) {
+/* 5224 */       this.ofCustomSky = !this.ofCustomSky;
+/* 5225 */       CustomSky.update();
 /*      */     } 
-/* 5226 */     if (p_setOptionValueOF_1_ == Options.SHOW_CAPES) {
-/* 5227 */       this.ofShowCapes = !this.ofShowCapes;
+/* 5227 */     if (p_setOptionValueOF_1_ == Options.SHOW_CAPES) {
+/* 5228 */       this.ofShowCapes = !this.ofShowCapes;
 /*      */     }
-/* 5229 */     if (p_setOptionValueOF_1_ == Options.NATURAL_TEXTURES) {
-/* 5230 */       this.ofNaturalTextures = !this.ofNaturalTextures;
-/* 5231 */       NaturalTextures.update();
-/* 5232 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5230 */     if (p_setOptionValueOF_1_ == Options.NATURAL_TEXTURES) {
+/* 5231 */       this.ofNaturalTextures = !this.ofNaturalTextures;
+/* 5232 */       NaturalTextures.update();
+/* 5233 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5234 */     if (p_setOptionValueOF_1_ == Options.EMISSIVE_TEXTURES) {
-/* 5235 */       this.ofEmissiveTextures = !this.ofEmissiveTextures;
-/* 5236 */       this.difficulty.refreshResources();
+/* 5235 */     if (p_setOptionValueOF_1_ == Options.EMISSIVE_TEXTURES) {
+/* 5236 */       this.ofEmissiveTextures = !this.ofEmissiveTextures;
+/* 5237 */       this.difficulty.refreshResources();
 /*      */     } 
-/* 5238 */     if (p_setOptionValueOF_1_ == Options.FAST_MATH) {
-/* 5239 */       this.ofFastMath = !this.ofFastMath;
-/* 5240 */       MathHelper.fastMath = this.ofFastMath;
+/* 5239 */     if (p_setOptionValueOF_1_ == Options.FAST_MATH) {
+/* 5240 */       this.ofFastMath = !this.ofFastMath;
+/* 5241 */       MathHelper.fastMath = this.ofFastMath;
 /*      */     } 
-/* 5242 */     if (p_setOptionValueOF_1_ == Options.FAST_RENDER) {
-/* 5243 */       if (!this.ofFastRender && Config.isShaders()) {
-/* 5244 */         Config.showGuiMessage(Lang.get("of.message.fr.shaders1"), Lang.get("of.message.fr.shaders2"));
+/* 5243 */     if (p_setOptionValueOF_1_ == Options.FAST_RENDER) {
+/* 5244 */       if (!this.ofFastRender && Config.isShaders()) {
+/* 5245 */         Config.showGuiMessage(Lang.get("of.message.fr.shaders1"), Lang.get("of.message.fr.shaders2"));
 /*      */         return;
 /*      */       } 
-/* 5247 */       this.ofFastRender = !this.ofFastRender;
-/* 5248 */       if (this.ofFastRender) {
-/* 5249 */         this.difficulty.entityRenderer.stopUseShader();
+/* 5248 */       this.ofFastRender = !this.ofFastRender;
+/* 5249 */       if (this.ofFastRender) {
+/* 5250 */         this.difficulty.entityRenderer.stopUseShader();
 /*      */       }
-/* 5251 */       Config.updateFramebufferSize();
+/* 5252 */       Config.updateFramebufferSize();
 /*      */     } 
-/* 5253 */     if (p_setOptionValueOF_1_ == Options.TRANSLUCENT_BLOCKS) {
-/* 5254 */       if (this.ofTranslucentBlocks == 0) {
-/* 5255 */         this.ofTranslucentBlocks = 1;
-/* 5256 */       } else if (this.ofTranslucentBlocks == 1) {
-/* 5257 */         this.ofTranslucentBlocks = 2;
-/* 5258 */       } else if (this.ofTranslucentBlocks == 2) {
-/* 5259 */         this.ofTranslucentBlocks = 0;
+/* 5254 */     if (p_setOptionValueOF_1_ == Options.TRANSLUCENT_BLOCKS) {
+/* 5255 */       if (this.ofTranslucentBlocks == 0) {
+/* 5256 */         this.ofTranslucentBlocks = 1;
+/* 5257 */       } else if (this.ofTranslucentBlocks == 1) {
+/* 5258 */         this.ofTranslucentBlocks = 2;
+/* 5259 */       } else if (this.ofTranslucentBlocks == 2) {
+/* 5260 */         this.ofTranslucentBlocks = 0;
 /*      */       } else {
-/* 5261 */         this.ofTranslucentBlocks = 0;
+/* 5262 */         this.ofTranslucentBlocks = 0;
 /*      */       } 
-/* 5263 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5264 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5265 */     if (p_setOptionValueOF_1_ == Options.LAZY_CHUNK_LOADING) {
-/* 5266 */       this.ofLazyChunkLoading = !this.ofLazyChunkLoading;
+/* 5266 */     if (p_setOptionValueOF_1_ == Options.LAZY_CHUNK_LOADING) {
+/* 5267 */       this.ofLazyChunkLoading = !this.ofLazyChunkLoading;
 /*      */     }
-/* 5268 */     if (p_setOptionValueOF_1_ == Options.RENDER_REGIONS) {
-/* 5269 */       this.ofRenderRegions = !this.ofRenderRegions;
-/* 5270 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5269 */     if (p_setOptionValueOF_1_ == Options.RENDER_REGIONS) {
+/* 5270 */       this.ofRenderRegions = !this.ofRenderRegions;
+/* 5271 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5272 */     if (p_setOptionValueOF_1_ == Options.SMART_ANIMATIONS) {
-/* 5273 */       this.ofSmartAnimations = !this.ofSmartAnimations;
-/* 5274 */       this.difficulty.renderGlobal.loadRenderers();
+/* 5273 */     if (p_setOptionValueOF_1_ == Options.SMART_ANIMATIONS) {
+/* 5274 */       this.ofSmartAnimations = !this.ofSmartAnimations;
+/* 5275 */       this.difficulty.renderGlobal.loadRenderers();
 /*      */     } 
-/* 5276 */     if (p_setOptionValueOF_1_ == Options.DYNAMIC_FOV) {
-/* 5277 */       this.ofDynamicFov = !this.ofDynamicFov;
+/* 5277 */     if (p_setOptionValueOF_1_ == Options.DYNAMIC_FOV) {
+/* 5278 */       this.ofDynamicFov = !this.ofDynamicFov;
 /*      */     }
-/* 5279 */     if (p_setOptionValueOF_1_ == Options.ALTERNATE_BLOCKS) {
-/* 5280 */       this.ofAlternateBlocks = !this.ofAlternateBlocks;
-/* 5281 */       this.difficulty.refreshResources();
+/* 5280 */     if (p_setOptionValueOF_1_ == Options.ALTERNATE_BLOCKS) {
+/* 5281 */       this.ofAlternateBlocks = !this.ofAlternateBlocks;
+/* 5282 */       this.difficulty.refreshResources();
 /*      */     } 
-/* 5283 */     if (p_setOptionValueOF_1_ == Options.DYNAMIC_LIGHTS) {
-/* 5284 */       this.ofDynamicLights = nextValue(this.ofDynamicLights, OF_DYNAMIC_LIGHTS);
-/* 5285 */       DynamicLights.removeLights(this.difficulty.renderGlobal);
+/* 5284 */     if (p_setOptionValueOF_1_ == Options.DYNAMIC_LIGHTS) {
+/* 5285 */       this.ofDynamicLights = nextValue(this.ofDynamicLights, OF_DYNAMIC_LIGHTS);
+/* 5286 */       DynamicLights.removeLights(this.difficulty.renderGlobal);
 /*      */     } 
-/* 5287 */     if (p_setOptionValueOF_1_ == Options.SCREENSHOT_SIZE) {
-/* 5288 */       this.ofScreenshotSize++;
-/* 5289 */       if (this.ofScreenshotSize > 4) {
-/* 5290 */         this.ofScreenshotSize = 1;
+/* 5288 */     if (p_setOptionValueOF_1_ == Options.SCREENSHOT_SIZE) {
+/* 5289 */       this.ofScreenshotSize++;
+/* 5290 */       if (this.ofScreenshotSize > 4) {
+/* 5291 */         this.ofScreenshotSize = 1;
 /*      */       }
-/* 5292 */       if (!OpenGlHelper.isFramebufferEnabled()) {
-/* 5293 */         this.ofScreenshotSize = 1;
+/* 5293 */       if (!OpenGlHelper.isFramebufferEnabled()) {
+/* 5294 */         this.ofScreenshotSize = 1;
 /*      */       }
 /*      */     } 
-/* 5296 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_ENTITY_MODELS) {
-/* 5297 */       this.ofCustomEntityModels = !this.ofCustomEntityModels;
-/* 5298 */       this.difficulty.refreshResources();
+/* 5297 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_ENTITY_MODELS) {
+/* 5298 */       this.ofCustomEntityModels = !this.ofCustomEntityModels;
+/* 5299 */       this.difficulty.refreshResources();
 /*      */     } 
-/* 5300 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_GUIS) {
-/* 5301 */       this.ofCustomGuis = !this.ofCustomGuis;
-/* 5302 */       CustomGuis.update();
+/* 5301 */     if (p_setOptionValueOF_1_ == Options.CUSTOM_GUIS) {
+/* 5302 */       this.ofCustomGuis = !this.ofCustomGuis;
+/* 5303 */       CustomGuis.update();
 /*      */     } 
-/* 5304 */     if (p_setOptionValueOF_1_ == Options.SHOW_GL_ERRORS) {
-/* 5305 */       this.ofShowGlErrors = !this.ofShowGlErrors;
+/* 5305 */     if (p_setOptionValueOF_1_ == Options.SHOW_GL_ERRORS) {
+/* 5306 */       this.ofShowGlErrors = !this.ofShowGlErrors;
 /*      */     }
-/* 5307 */     if (p_setOptionValueOF_1_ == Options.HELD_ITEM_TOOLTIPS) {
-/* 5308 */       this.heldItemTooltips = !this.heldItemTooltips;
+/* 5308 */     if (p_setOptionValueOF_1_ == Options.HELD_ITEM_TOOLTIPS) {
+/* 5309 */       this.heldItemTooltips = !this.heldItemTooltips;
 /*      */     }
-/* 5310 */     if (p_setOptionValueOF_1_ == Options.ADVANCED_TOOLTIPS) {
-/* 5311 */       this.advancedItemTooltips = !this.advancedItemTooltips;
+/* 5311 */     if (p_setOptionValueOF_1_ == Options.ADVANCED_TOOLTIPS) {
+/* 5312 */       this.advancedItemTooltips = !this.advancedItemTooltips;
 /*      */     }
 /*      */   }
 /*      */   
 /*      */   private String getKeyBindingOF(Options p_getKeyBindingOF_1_) {
-/* 5316 */     String s = String.valueOf(String.valueOf(String.valueOf(I18n.format(p_getKeyBindingOF_1_.getEnumString(), new Object[0])))) + ": ";
-/* 5317 */     if (s == null) {
-/* 5318 */       s = p_getKeyBindingOF_1_.getEnumString();
+/* 5317 */     String s = String.valueOf(String.valueOf(String.valueOf(I18n.format(p_getKeyBindingOF_1_.getEnumString(), new Object[0])))) + ": ";
+/* 5318 */     if (s == null) {
+/* 5319 */       s = p_getKeyBindingOF_1_.getEnumString();
 /*      */     }
-/* 5320 */     if (p_getKeyBindingOF_1_ == Options.RENDER_DISTANCE) {
-/* 5321 */       int i1 = (int)getOptionFloatValue(p_getKeyBindingOF_1_);
-/* 5322 */       String s2 = I18n.format("options.renderDistance.tiny", new Object[0]);
-/* 5323 */       int j = 2;
-/* 5324 */       if (i1 >= 4) {
-/* 5325 */         s2 = I18n.format("options.renderDistance.short", new Object[0]);
-/* 5326 */         j = 4;
+/* 5321 */     if (p_getKeyBindingOF_1_ == Options.RENDER_DISTANCE) {
+/* 5322 */       int i1 = (int)getOptionFloatValue(p_getKeyBindingOF_1_);
+/* 5323 */       String s2 = I18n.format("options.renderDistance.tiny", new Object[0]);
+/* 5324 */       int j = 2;
+/* 5325 */       if (i1 >= 4) {
+/* 5326 */         s2 = I18n.format("options.renderDistance.short", new Object[0]);
+/* 5327 */         j = 4;
 /*      */       } 
-/* 5328 */       if (i1 >= 8) {
-/* 5329 */         s2 = I18n.format("options.renderDistance.normal", new Object[0]);
-/* 5330 */         j = 8;
+/* 5329 */       if (i1 >= 8) {
+/* 5330 */         s2 = I18n.format("options.renderDistance.normal", new Object[0]);
+/* 5331 */         j = 8;
 /*      */       } 
-/* 5332 */       if (i1 >= 16) {
-/* 5333 */         s2 = I18n.format("options.renderDistance.far", new Object[0]);
-/* 5334 */         j = 16;
+/* 5333 */       if (i1 >= 16) {
+/* 5334 */         s2 = I18n.format("options.renderDistance.far", new Object[0]);
+/* 5335 */         j = 16;
 /*      */       } 
-/* 5336 */       if (i1 >= 32) {
-/* 5337 */         s2 = Lang.get("of.options.renderDistance.extreme");
-/* 5338 */         j = 32;
+/* 5337 */       if (i1 >= 32) {
+/* 5338 */         s2 = Lang.get("of.options.renderDistance.extreme");
+/* 5339 */         j = 32;
 /*      */       } 
-/* 5340 */       if (i1 >= 48) {
-/* 5341 */         s2 = Lang.get("of.options.renderDistance.insane");
-/* 5342 */         j = 48;
+/* 5341 */       if (i1 >= 48) {
+/* 5342 */         s2 = Lang.get("of.options.renderDistance.insane");
+/* 5343 */         j = 48;
 /*      */       } 
-/* 5344 */       if (i1 >= 64) {
-/* 5345 */         s2 = Lang.get("of.options.renderDistance.ludicrous");
-/* 5346 */         j = 64;
+/* 5345 */       if (i1 >= 64) {
+/* 5346 */         s2 = Lang.get("of.options.renderDistance.ludicrous");
+/* 5347 */         j = 64;
 /*      */       } 
-/* 5348 */       int k = this.renderDistanceChunks - j;
-/* 5349 */       String s3 = s2;
-/* 5350 */       if (k > 0) {
-/* 5351 */         s3 = String.valueOf(String.valueOf(String.valueOf(s2))) + "+";
+/* 5349 */       int k = this.renderDistanceChunks - j;
+/* 5350 */       String s3 = s2;
+/* 5351 */       if (k > 0) {
+/* 5352 */         s3 = String.valueOf(String.valueOf(String.valueOf(s2))) + "+";
 /*      */       }
-/* 5353 */       return String.valueOf(String.valueOf(String.valueOf(s))) + i1 + " " + s3;
+/* 5354 */       return String.valueOf(String.valueOf(String.valueOf(s))) + i1 + " " + s3;
 /*      */     } 
-/* 5355 */     if (p_getKeyBindingOF_1_ == Options.FOG_FANCY) {
-/* 5356 */       switch (this.ofFogType) {
+/* 5356 */     if (p_getKeyBindingOF_1_ == Options.FOG_FANCY) {
+/* 5357 */       switch (this.ofFogType) {
 /*      */         case 1:
-/* 5358 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5359 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5361 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5362 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */         
 /*      */         case 3:
-/* 5364 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5365 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */       } 
 /*      */       
-/* 5367 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5368 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */     } 
 /*      */ 
 /*      */     
-/* 5371 */     if (p_getKeyBindingOF_1_ == Options.FOG_START) {
-/* 5372 */       return String.valueOf(String.valueOf(String.valueOf(s))) + this.ofFogStart;
+/* 5372 */     if (p_getKeyBindingOF_1_ == Options.FOG_START) {
+/* 5373 */       return String.valueOf(String.valueOf(String.valueOf(s))) + this.ofFogStart;
 /*      */     }
-/* 5374 */     if (p_getKeyBindingOF_1_ == Options.MIPMAP_TYPE) {
-/* 5375 */       switch (this.ofMipmapType) {
+/* 5375 */     if (p_getKeyBindingOF_1_ == Options.MIPMAP_TYPE) {
+/* 5376 */       switch (this.ofMipmapType) {
 /*      */         case 0:
-/* 5377 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.nearest");
+/* 5378 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.nearest");
 /*      */         
 /*      */         case 1:
-/* 5380 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.linear");
+/* 5381 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.linear");
 /*      */         
 /*      */         case 2:
-/* 5383 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.bilinear");
+/* 5384 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.bilinear");
 /*      */         
 /*      */         case 3:
-/* 5386 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.trilinear");
+/* 5387 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.mipmap.trilinear");
 /*      */       } 
 /*      */       
-/* 5389 */       return String.valueOf(String.valueOf(String.valueOf(s))) + "of.options.mipmap.nearest";
+/* 5390 */       return String.valueOf(String.valueOf(String.valueOf(s))) + "of.options.mipmap.nearest";
 /*      */     } 
 /*      */ 
 /*      */     
-/* 5393 */     if (p_getKeyBindingOF_1_ == Options.SMOOTH_FPS) {
-/* 5394 */       return this.ofSmoothFps ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5394 */     if (p_getKeyBindingOF_1_ == Options.SMOOTH_FPS) {
+/* 5395 */       return this.ofSmoothFps ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5396 */     if (p_getKeyBindingOF_1_ == Options.SMOOTH_WORLD) {
-/* 5397 */       return this.ofSmoothWorld ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5397 */     if (p_getKeyBindingOF_1_ == Options.SMOOTH_WORLD) {
+/* 5398 */       return this.ofSmoothWorld ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5399 */     if (p_getKeyBindingOF_1_ == Options.CLOUDS) {
-/* 5400 */       switch (this.ofClouds) {
+/* 5400 */     if (p_getKeyBindingOF_1_ == Options.CLOUDS) {
+/* 5401 */       switch (this.ofClouds) {
 /*      */         case 1:
-/* 5402 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5403 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5405 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5406 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */         
 /*      */         case 3:
-/* 5408 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5409 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */       } 
 /*      */       
-/* 5411 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
+/* 5412 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
 /*      */     } 
 /*      */     
-/* 5414 */     if (p_getKeyBindingOF_1_ == Options.TREES) {
-/* 5415 */       switch (this.ofTrees) {
+/* 5415 */     if (p_getKeyBindingOF_1_ == Options.TREES) {
+/* 5416 */       switch (this.ofTrees) {
 /*      */         case 1:
-/* 5417 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5418 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5420 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5421 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */         
 /*      */         default:
-/* 5423 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
+/* 5424 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
 /*      */         case 4:
 /*      */           break;
-/* 5426 */       }  return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.general.smart");
+/* 5427 */       }  return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.general.smart");
 /*      */     } 
 /*      */     
-/* 5429 */     if (p_getKeyBindingOF_1_ == Options.DROPPED_ITEMS) {
-/* 5430 */       switch (this.ofDroppedItems) {
+/* 5430 */     if (p_getKeyBindingOF_1_ == Options.DROPPED_ITEMS) {
+/* 5431 */       switch (this.ofDroppedItems) {
 /*      */         case 1:
-/* 5432 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5433 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5435 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5436 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */       } 
 /*      */       
-/* 5438 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
+/* 5439 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
 /*      */     } 
 /*      */     
-/* 5441 */     if (p_getKeyBindingOF_1_ == Options.RAIN) {
-/* 5442 */       switch (this.ofRain) {
+/* 5442 */     if (p_getKeyBindingOF_1_ == Options.RAIN) {
+/* 5443 */       switch (this.ofRain) {
 /*      */         case 1:
-/* 5444 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5445 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5447 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5448 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */         
 /*      */         case 3:
-/* 5450 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5451 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */       } 
 /*      */       
-/* 5453 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
+/* 5454 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
 /*      */     } 
 /*      */     
-/* 5456 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_WATER) {
-/* 5457 */       switch (this.ofAnimatedWater) {
+/* 5457 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_WATER) {
+/* 5458 */       switch (this.ofAnimatedWater) {
 /*      */         case 1:
-/* 5459 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.animation.dynamic");
+/* 5460 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.animation.dynamic");
 /*      */         
 /*      */         case 2:
-/* 5462 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5463 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */       } 
 /*      */       
-/* 5465 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn();
+/* 5466 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn();
 /*      */     } 
 /*      */     
-/* 5468 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_LAVA) {
-/* 5469 */       switch (this.ofAnimatedLava) {
+/* 5469 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_LAVA) {
+/* 5470 */       switch (this.ofAnimatedLava) {
 /*      */         case 1:
-/* 5471 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.animation.dynamic");
+/* 5472 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.animation.dynamic");
 /*      */         
 /*      */         case 2:
-/* 5474 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5475 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */       } 
 /*      */       
-/* 5477 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn();
+/* 5478 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn();
 /*      */     } 
 /*      */ 
 /*      */     
-/* 5481 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_FIRE) {
-/* 5482 */       return this.ofAnimatedFire ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5482 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_FIRE) {
+/* 5483 */       return this.ofAnimatedFire ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5484 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_PORTAL) {
-/* 5485 */       return this.ofAnimatedPortal ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5485 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_PORTAL) {
+/* 5486 */       return this.ofAnimatedPortal ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5487 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_REDSTONE) {
-/* 5488 */       return this.ofAnimatedRedstone ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5488 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_REDSTONE) {
+/* 5489 */       return this.ofAnimatedRedstone ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5490 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_EXPLOSION) {
-/* 5491 */       return this.ofAnimatedExplosion ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5491 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_EXPLOSION) {
+/* 5492 */       return this.ofAnimatedExplosion ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5493 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_FLAME) {
-/* 5494 */       return this.ofAnimatedFlame ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5494 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_FLAME) {
+/* 5495 */       return this.ofAnimatedFlame ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5496 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_SMOKE) {
-/* 5497 */       return this.ofAnimatedSmoke ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5497 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_SMOKE) {
+/* 5498 */       return this.ofAnimatedSmoke ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5499 */     if (p_getKeyBindingOF_1_ == Options.VOID_PARTICLES) {
-/* 5500 */       return this.ofVoidParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5500 */     if (p_getKeyBindingOF_1_ == Options.VOID_PARTICLES) {
+/* 5501 */       return this.ofVoidParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5502 */     if (p_getKeyBindingOF_1_ == Options.WATER_PARTICLES) {
-/* 5503 */       return this.ofWaterParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5503 */     if (p_getKeyBindingOF_1_ == Options.WATER_PARTICLES) {
+/* 5504 */       return this.ofWaterParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5505 */     if (p_getKeyBindingOF_1_ == Options.PORTAL_PARTICLES) {
-/* 5506 */       return this.ofPortalParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5506 */     if (p_getKeyBindingOF_1_ == Options.PORTAL_PARTICLES) {
+/* 5507 */       return this.ofPortalParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5508 */     if (p_getKeyBindingOF_1_ == Options.POTION_PARTICLES) {
-/* 5509 */       return this.ofPotionParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5509 */     if (p_getKeyBindingOF_1_ == Options.POTION_PARTICLES) {
+/* 5510 */       return this.ofPotionParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5511 */     if (p_getKeyBindingOF_1_ == Options.FIREWORK_PARTICLES) {
-/* 5512 */       return this.ofFireworkParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5512 */     if (p_getKeyBindingOF_1_ == Options.FIREWORK_PARTICLES) {
+/* 5513 */       return this.ofFireworkParticles ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5514 */     if (p_getKeyBindingOF_1_ == Options.DRIPPING_WATER_LAVA) {
-/* 5515 */       return this.ofDrippingWaterLava ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5515 */     if (p_getKeyBindingOF_1_ == Options.DRIPPING_WATER_LAVA) {
+/* 5516 */       return this.ofDrippingWaterLava ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5517 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_TERRAIN) {
-/* 5518 */       return this.ofAnimatedTerrain ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5518 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_TERRAIN) {
+/* 5519 */       return this.ofAnimatedTerrain ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5520 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_TEXTURES) {
-/* 5521 */       return this.ofAnimatedTextures ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5521 */     if (p_getKeyBindingOF_1_ == Options.ANIMATED_TEXTURES) {
+/* 5522 */       return this.ofAnimatedTextures ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5523 */     if (p_getKeyBindingOF_1_ == Options.RAIN_SPLASH) {
-/* 5524 */       return this.ofRainSplash ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5524 */     if (p_getKeyBindingOF_1_ == Options.RAIN_SPLASH) {
+/* 5525 */       return this.ofRainSplash ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5526 */     if (p_getKeyBindingOF_1_ == Options.LAGOMETER) {
-/* 5527 */       return this.ofLagometer ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5527 */     if (p_getKeyBindingOF_1_ == Options.LAGOMETER) {
+/* 5528 */       return this.ofLagometer ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5529 */     if (p_getKeyBindingOF_1_ == Options.SHOW_FPS) {
-/* 5530 */       return this.ofShowFps ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5530 */     if (p_getKeyBindingOF_1_ == Options.SHOW_FPS) {
+/* 5531 */       return this.ofShowFps ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5532 */     if (p_getKeyBindingOF_1_ == Options.AUTOSAVE_TICKS) {
-/* 5533 */       int l = 900;
-/* 5534 */       return (this.ofAutoSaveTicks <= 900) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.45s")) : ((this.ofAutoSaveTicks <= 1800) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.90s")) : ((this.ofAutoSaveTicks <= 3600) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.3min")) : ((this.ofAutoSaveTicks <= 7200) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.6min")) : ((this.ofAutoSaveTicks <= 14400) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.12min")) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.24min"))))));
+/* 5533 */     if (p_getKeyBindingOF_1_ == Options.AUTOSAVE_TICKS) {
+/* 5534 */       int l = 900;
+/* 5535 */       return (this.ofAutoSaveTicks <= 900) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.45s")) : ((this.ofAutoSaveTicks <= 1800) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.90s")) : ((this.ofAutoSaveTicks <= 3600) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.3min")) : ((this.ofAutoSaveTicks <= 7200) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.6min")) : ((this.ofAutoSaveTicks <= 14400) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.12min")) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.save.24min"))))));
 /*      */     } 
-/* 5536 */     if (p_getKeyBindingOF_1_ == Options.BETTER_GRASS) {
-/* 5537 */       switch (this.ofBetterGrass) {
+/* 5537 */     if (p_getKeyBindingOF_1_ == Options.BETTER_GRASS) {
+/* 5538 */       switch (this.ofBetterGrass) {
 /*      */         case 1:
-/* 5539 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5540 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5542 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5543 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */       } 
 /*      */       
-/* 5545 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5546 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */     } 
 /*      */     
-/* 5548 */     if (p_getKeyBindingOF_1_ == Options.CONNECTED_TEXTURES) {
-/* 5549 */       switch (this.ofConnectedTextures) {
+/* 5549 */     if (p_getKeyBindingOF_1_ == Options.CONNECTED_TEXTURES) {
+/* 5550 */       switch (this.ofConnectedTextures) {
 /*      */         case 1:
-/* 5551 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5552 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5554 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5555 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */       } 
 /*      */       
-/* 5557 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
+/* 5558 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff();
 /*      */     } 
 /*      */ 
 /*      */     
-/* 5561 */     if (p_getKeyBindingOF_1_ == Options.WEATHER) {
-/* 5562 */       return this.ofWeather ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5562 */     if (p_getKeyBindingOF_1_ == Options.WEATHER) {
+/* 5563 */       return this.ofWeather ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5564 */     if (p_getKeyBindingOF_1_ == Options.SKY) {
-/* 5565 */       return this.ofSky ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5565 */     if (p_getKeyBindingOF_1_ == Options.SKY) {
+/* 5566 */       return this.ofSky ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5567 */     if (p_getKeyBindingOF_1_ == Options.STARS) {
-/* 5568 */       return this.ofStars ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5568 */     if (p_getKeyBindingOF_1_ == Options.STARS) {
+/* 5569 */       return this.ofStars ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5570 */     if (p_getKeyBindingOF_1_ == Options.SUN_MOON) {
-/* 5571 */       return this.ofSunMoon ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5571 */     if (p_getKeyBindingOF_1_ == Options.SUN_MOON) {
+/* 5572 */       return this.ofSunMoon ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5573 */     if (p_getKeyBindingOF_1_ == Options.VIGNETTE) {
-/* 5574 */       switch (this.ofVignette) {
+/* 5574 */     if (p_getKeyBindingOF_1_ == Options.VIGNETTE) {
+/* 5575 */       switch (this.ofVignette) {
 /*      */         case 1:
-/* 5576 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
+/* 5577 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast();
 /*      */         
 /*      */         case 2:
-/* 5579 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
+/* 5580 */           return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy();
 /*      */       } 
 /*      */       
-/* 5582 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
+/* 5583 */       return String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault();
 /*      */     } 
 /*      */ 
 /*      */     
-/* 5586 */     if (p_getKeyBindingOF_1_ == Options.CHUNK_UPDATES) {
-/* 5587 */       return String.valueOf(String.valueOf(String.valueOf(s))) + this.ofChunkUpdates;
+/* 5587 */     if (p_getKeyBindingOF_1_ == Options.CHUNK_UPDATES) {
+/* 5588 */       return String.valueOf(String.valueOf(String.valueOf(s))) + this.ofChunkUpdates;
 /*      */     }
-/* 5589 */     if (p_getKeyBindingOF_1_ == Options.CHUNK_UPDATES_DYNAMIC) {
-/* 5590 */       return this.ofChunkUpdatesDynamic ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5590 */     if (p_getKeyBindingOF_1_ == Options.CHUNK_UPDATES_DYNAMIC) {
+/* 5591 */       return this.ofChunkUpdatesDynamic ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5592 */     if (p_getKeyBindingOF_1_ == Options.TIME) {
-/* 5593 */       return (this.ofTime == 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.time.dayOnly")) : ((this.ofTime == 2) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.time.nightOnly")) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()));
+/* 5593 */     if (p_getKeyBindingOF_1_ == Options.TIME) {
+/* 5594 */       return (this.ofTime == 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.time.dayOnly")) : ((this.ofTime == 2) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.time.nightOnly")) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()));
 /*      */     }
-/* 5595 */     if (p_getKeyBindingOF_1_ == Options.CLEAR_WATER) {
-/* 5596 */       return this.ofClearWater ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5596 */     if (p_getKeyBindingOF_1_ == Options.CLEAR_WATER) {
+/* 5597 */       return this.ofClearWater ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5598 */     if (p_getKeyBindingOF_1_ == Options.AA_LEVEL) {
-/* 5599 */       String s4 = "";
-/* 5600 */       if (this.ofAaLevel != Config.getAntialiasingLevel()) {
-/* 5601 */         s4 = " (" + Lang.get("of.general.restart") + ")";
+/* 5599 */     if (p_getKeyBindingOF_1_ == Options.AA_LEVEL) {
+/* 5600 */       String s4 = "";
+/* 5601 */       if (this.ofAaLevel != Config.getAntialiasingLevel()) {
+/* 5602 */         s4 = " (" + Lang.get("of.general.restart") + ")";
 /*      */       }
-/* 5603 */       return (this.ofAaLevel == 0) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff() + s4) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofAaLevel + s4);
+/* 5604 */       return (this.ofAaLevel == 0) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff() + s4) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofAaLevel + s4);
 /*      */     } 
-/* 5605 */     if (p_getKeyBindingOF_1_ == Options.AF_LEVEL) {
-/* 5606 */       return (this.ofAfLevel == 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff()) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofAfLevel);
+/* 5606 */     if (p_getKeyBindingOF_1_ == Options.AF_LEVEL) {
+/* 5607 */       return (this.ofAfLevel == 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff()) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofAfLevel);
 /*      */     }
-/* 5608 */     if (p_getKeyBindingOF_1_ == Options.PROFILER) {
-/* 5609 */       return this.ofProfiler ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5609 */     if (p_getKeyBindingOF_1_ == Options.PROFILER) {
+/* 5610 */       return this.ofProfiler ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5611 */     if (p_getKeyBindingOF_1_ == Options.BETTER_SNOW) {
-/* 5612 */       return this.ofBetterSnow ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5612 */     if (p_getKeyBindingOF_1_ == Options.BETTER_SNOW) {
+/* 5613 */       return this.ofBetterSnow ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5614 */     if (p_getKeyBindingOF_1_ == Options.SWAMP_COLORS) {
-/* 5615 */       return this.ofSwampColors ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5615 */     if (p_getKeyBindingOF_1_ == Options.SWAMP_COLORS) {
+/* 5616 */       return this.ofSwampColors ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5617 */     if (p_getKeyBindingOF_1_ == Options.RANDOM_ENTITIES) {
-/* 5618 */       return this.ofRandomEntities ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5618 */     if (p_getKeyBindingOF_1_ == Options.RANDOM_ENTITIES) {
+/* 5619 */       return this.ofRandomEntities ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5620 */     if (p_getKeyBindingOF_1_ == Options.SMOOTH_BIOMES) {
-/* 5621 */       return this.ofSmoothBiomes ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5621 */     if (p_getKeyBindingOF_1_ == Options.SMOOTH_BIOMES) {
+/* 5622 */       return this.ofSmoothBiomes ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5623 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_FONTS) {
-/* 5624 */       return this.ofCustomFonts ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5624 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_FONTS) {
+/* 5625 */       return this.ofCustomFonts ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5626 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_COLORS) {
-/* 5627 */       return this.ofCustomColors ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5627 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_COLORS) {
+/* 5628 */       return this.ofCustomColors ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5629 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_SKY) {
-/* 5630 */       return this.ofCustomSky ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5630 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_SKY) {
+/* 5631 */       return this.ofCustomSky ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5632 */     if (p_getKeyBindingOF_1_ == Options.SHOW_CAPES) {
-/* 5633 */       return this.ofShowCapes ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5633 */     if (p_getKeyBindingOF_1_ == Options.SHOW_CAPES) {
+/* 5634 */       return this.ofShowCapes ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5635 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_ITEMS) {
-/* 5636 */       return this.ofCustomItems ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5636 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_ITEMS) {
+/* 5637 */       return this.ofCustomItems ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5638 */     if (p_getKeyBindingOF_1_ == Options.NATURAL_TEXTURES) {
-/* 5639 */       return this.ofNaturalTextures ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5639 */     if (p_getKeyBindingOF_1_ == Options.NATURAL_TEXTURES) {
+/* 5640 */       return this.ofNaturalTextures ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5641 */     if (p_getKeyBindingOF_1_ == Options.EMISSIVE_TEXTURES) {
-/* 5642 */       return this.ofEmissiveTextures ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5642 */     if (p_getKeyBindingOF_1_ == Options.EMISSIVE_TEXTURES) {
+/* 5643 */       return this.ofEmissiveTextures ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5644 */     if (p_getKeyBindingOF_1_ == Options.FAST_MATH) {
-/* 5645 */       return this.ofFastMath ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5645 */     if (p_getKeyBindingOF_1_ == Options.FAST_MATH) {
+/* 5646 */       return this.ofFastMath ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5647 */     if (p_getKeyBindingOF_1_ == Options.FAST_RENDER) {
-/* 5648 */       return this.ofFastRender ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5648 */     if (p_getKeyBindingOF_1_ == Options.FAST_RENDER) {
+/* 5649 */       return this.ofFastRender ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5650 */     if (p_getKeyBindingOF_1_ == Options.TRANSLUCENT_BLOCKS) {
-/* 5651 */       return (this.ofTranslucentBlocks == 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast()) : ((this.ofTranslucentBlocks == 2) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()));
+/* 5651 */     if (p_getKeyBindingOF_1_ == Options.TRANSLUCENT_BLOCKS) {
+/* 5652 */       return (this.ofTranslucentBlocks == 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFast()) : ((this.ofTranslucentBlocks == 2) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getFancy()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()));
 /*      */     }
-/* 5653 */     if (p_getKeyBindingOF_1_ == Options.LAZY_CHUNK_LOADING) {
-/* 5654 */       return this.ofLazyChunkLoading ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5654 */     if (p_getKeyBindingOF_1_ == Options.LAZY_CHUNK_LOADING) {
+/* 5655 */       return this.ofLazyChunkLoading ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5656 */     if (p_getKeyBindingOF_1_ == Options.RENDER_REGIONS) {
-/* 5657 */       return this.ofRenderRegions ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5657 */     if (p_getKeyBindingOF_1_ == Options.RENDER_REGIONS) {
+/* 5658 */       return this.ofRenderRegions ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5659 */     if (p_getKeyBindingOF_1_ == Options.SMART_ANIMATIONS) {
-/* 5660 */       return this.ofSmartAnimations ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5660 */     if (p_getKeyBindingOF_1_ == Options.SMART_ANIMATIONS) {
+/* 5661 */       return this.ofSmartAnimations ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5662 */     if (p_getKeyBindingOF_1_ == Options.DYNAMIC_FOV) {
-/* 5663 */       return this.ofDynamicFov ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5663 */     if (p_getKeyBindingOF_1_ == Options.DYNAMIC_FOV) {
+/* 5664 */       return this.ofDynamicFov ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5665 */     if (p_getKeyBindingOF_1_ == Options.ALTERNATE_BLOCKS) {
-/* 5666 */       return this.ofAlternateBlocks ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5666 */     if (p_getKeyBindingOF_1_ == Options.ALTERNATE_BLOCKS) {
+/* 5667 */       return this.ofAlternateBlocks ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5668 */     if (p_getKeyBindingOF_1_ == Options.DYNAMIC_LIGHTS) {
-/* 5669 */       int m = indexOf(this.ofDynamicLights, OF_DYNAMIC_LIGHTS);
-/* 5670 */       return String.valueOf(String.valueOf(String.valueOf(s))) + getTranslation(KEYS_DYNAMIC_LIGHTS, m);
+/* 5669 */     if (p_getKeyBindingOF_1_ == Options.DYNAMIC_LIGHTS) {
+/* 5670 */       int m = indexOf(this.ofDynamicLights, OF_DYNAMIC_LIGHTS);
+/* 5671 */       return String.valueOf(String.valueOf(String.valueOf(s))) + getTranslation(KEYS_DYNAMIC_LIGHTS, m);
 /*      */     } 
-/* 5672 */     if (p_getKeyBindingOF_1_ == Options.SCREENSHOT_SIZE) {
-/* 5673 */       return (this.ofScreenshotSize <= 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofScreenshotSize + "x");
+/* 5673 */     if (p_getKeyBindingOF_1_ == Options.SCREENSHOT_SIZE) {
+/* 5674 */       return (this.ofScreenshotSize <= 1) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofScreenshotSize + "x");
 /*      */     }
-/* 5675 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_ENTITY_MODELS) {
-/* 5676 */       return this.ofCustomEntityModels ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5676 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_ENTITY_MODELS) {
+/* 5677 */       return this.ofCustomEntityModels ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5678 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_GUIS) {
-/* 5679 */       return this.ofCustomGuis ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5679 */     if (p_getKeyBindingOF_1_ == Options.CUSTOM_GUIS) {
+/* 5680 */       return this.ofCustomGuis ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5681 */     if (p_getKeyBindingOF_1_ == Options.SHOW_GL_ERRORS) {
-/* 5682 */       return this.ofShowGlErrors ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5682 */     if (p_getKeyBindingOF_1_ == Options.SHOW_GL_ERRORS) {
+/* 5683 */       return this.ofShowGlErrors ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5684 */     if (p_getKeyBindingOF_1_ == Options.FULLSCREEN_MODE) {
-/* 5685 */       return this.ofFullscreenMode.equals("Default") ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofFullscreenMode);
+/* 5685 */     if (p_getKeyBindingOF_1_ == Options.FULLSCREEN_MODE) {
+/* 5686 */       return this.ofFullscreenMode.equals("Default") ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getDefault()) : (String.valueOf(String.valueOf(String.valueOf(s))) + this.ofFullscreenMode);
 /*      */     }
-/* 5687 */     if (p_getKeyBindingOF_1_ == Options.HELD_ITEM_TOOLTIPS) {
-/* 5688 */       return this.heldItemTooltips ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5688 */     if (p_getKeyBindingOF_1_ == Options.HELD_ITEM_TOOLTIPS) {
+/* 5689 */       return this.heldItemTooltips ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5690 */     if (p_getKeyBindingOF_1_ == Options.ADVANCED_TOOLTIPS) {
-/* 5691 */       return this.advancedItemTooltips ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
+/* 5691 */     if (p_getKeyBindingOF_1_ == Options.ADVANCED_TOOLTIPS) {
+/* 5692 */       return this.advancedItemTooltips ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOn()) : (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.getOff());
 /*      */     }
-/* 5693 */     if (p_getKeyBindingOF_1_ == Options.FRAMERATE_LIMIT) {
-/* 5694 */       float f = getOptionFloatValue(p_getKeyBindingOF_1_);
-/* 5695 */       return (f == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.framerateLimit.vsync")) : ((f == p_getKeyBindingOF_1_.$VALUES) ? (String.valueOf(String.valueOf(String.valueOf(s))) + I18n.format("options.framerateLimit.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s))) + (int)f + " fps"));
+/* 5694 */     if (p_getKeyBindingOF_1_ == Options.FRAMERATE_LIMIT) {
+/* 5695 */       float f = getOptionFloatValue(p_getKeyBindingOF_1_);
+/* 5696 */       return (f == 0.0F) ? (String.valueOf(String.valueOf(String.valueOf(s))) + Lang.get("of.options.framerateLimit.vsync")) : ((f == p_getKeyBindingOF_1_.$VALUES) ? (String.valueOf(String.valueOf(String.valueOf(s))) + I18n.format("options.framerateLimit.max", new Object[0])) : (String.valueOf(String.valueOf(String.valueOf(s))) + (int)f + " fps"));
 /*      */     } 
-/* 5697 */     return null;
+/* 5698 */     return null;
 /*      */   }
 /*      */ 
 /*      */ 
@@ -5704,667 +5705,667 @@
 /*      */   
 /*      */   public void loadOfOptions() {
 /*      */     try {
-/* 5707 */       File file1 = this.optionsFileOF;
-/* 5708 */       if (!file1.exists()) {
-/* 5709 */         file1 = this.bc;
+/* 5708 */       File file1 = this.optionsFileOF;
+/* 5709 */       if (!file1.exists()) {
+/* 5710 */         file1 = this.bc;
 /*      */       }
-/* 5711 */       if (!file1.exists()) {
+/* 5712 */       if (!file1.exists()) {
 /*      */         return;
 /*      */       }
-/* 5714 */       BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(new FileInputStream(file1), "UTF-8"));
-/* 5715 */       String s = "";
-/* 5716 */       while ((s = bufferedreader.readLine()) != null) {
+/* 5715 */       BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(new FileInputStream(file1), "UTF-8"));
+/* 5716 */       String s = "";
+/* 5717 */       while ((s = bufferedreader.readLine()) != null) {
 /*      */         try {
-/* 5718 */           String[] astring = s.split(":");
-/* 5719 */           if (astring[0].equals("ofRenderDistanceChunks") && astring.length >= 2) {
-/* 5720 */             this.renderDistanceChunks = Integer.valueOf(astring[1]).intValue();
-/* 5721 */             this.renderDistanceChunks = Config.limit(this.renderDistanceChunks, 2, 1024);
+/* 5719 */           String[] astring = s.split(":");
+/* 5720 */           if (astring[0].equals("ofRenderDistanceChunks") && astring.length >= 2) {
+/* 5721 */             this.renderDistanceChunks = Integer.valueOf(astring[1]).intValue();
+/* 5722 */             this.renderDistanceChunks = Config.limit(this.renderDistanceChunks, 2, 1024);
 /*      */           } 
-/* 5723 */           if (astring[0].equals("ofFogType") && astring.length >= 2) {
-/* 5724 */             this.ofFogType = Integer.valueOf(astring[1]).intValue();
-/* 5725 */             this.ofFogType = Config.limit(this.ofFogType, 1, 3);
+/* 5724 */           if (astring[0].equals("ofFogType") && astring.length >= 2) {
+/* 5725 */             this.ofFogType = Integer.valueOf(astring[1]).intValue();
+/* 5726 */             this.ofFogType = Config.limit(this.ofFogType, 1, 3);
 /*      */           } 
-/* 5727 */           if (astring[0].equals("ofFogStart") && astring.length >= 2) {
-/* 5728 */             this.ofFogStart = Float.valueOf(astring[1]).floatValue();
-/* 5729 */             if (this.ofFogStart < 0.2F) {
-/* 5730 */               this.ofFogStart = 0.2F;
+/* 5728 */           if (astring[0].equals("ofFogStart") && astring.length >= 2) {
+/* 5729 */             this.ofFogStart = Float.valueOf(astring[1]).floatValue();
+/* 5730 */             if (this.ofFogStart < 0.2F) {
+/* 5731 */               this.ofFogStart = 0.2F;
 /*      */             }
-/* 5732 */             if (this.ofFogStart > 0.81F) {
-/* 5733 */               this.ofFogStart = 0.8F;
+/* 5733 */             if (this.ofFogStart > 0.81F) {
+/* 5734 */               this.ofFogStart = 0.8F;
 /*      */             }
 /*      */           } 
-/* 5736 */           if (astring[0].equals("ofMipmapType") && astring.length >= 2) {
-/* 5737 */             this.ofMipmapType = Integer.valueOf(astring[1]).intValue();
-/* 5738 */             this.ofMipmapType = Config.limit(this.ofMipmapType, 0, 3);
+/* 5737 */           if (astring[0].equals("ofMipmapType") && astring.length >= 2) {
+/* 5738 */             this.ofMipmapType = Integer.valueOf(astring[1]).intValue();
+/* 5739 */             this.ofMipmapType = Config.limit(this.ofMipmapType, 0, 3);
 /*      */           } 
-/* 5740 */           if (astring[0].equals("ofOcclusionFancy") && astring.length >= 2) {
-/* 5741 */             this.ofOcclusionFancy = Boolean.valueOf(astring[1]).booleanValue();
+/* 5741 */           if (astring[0].equals("ofOcclusionFancy") && astring.length >= 2) {
+/* 5742 */             this.ofOcclusionFancy = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5743 */           if (astring[0].equals("ofSmoothFps") && astring.length >= 2) {
-/* 5744 */             this.ofSmoothFps = Boolean.valueOf(astring[1]).booleanValue();
+/* 5744 */           if (astring[0].equals("ofSmoothFps") && astring.length >= 2) {
+/* 5745 */             this.ofSmoothFps = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5746 */           if (astring[0].equals("ofSmoothWorld") && astring.length >= 2) {
-/* 5747 */             this.ofSmoothWorld = Boolean.valueOf(astring[1]).booleanValue();
+/* 5747 */           if (astring[0].equals("ofSmoothWorld") && astring.length >= 2) {
+/* 5748 */             this.ofSmoothWorld = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5749 */           if (astring[0].equals("ofAoLevel") && astring.length >= 2) {
-/* 5750 */             this.ofAoLevel = Float.valueOf(astring[1]).floatValue();
-/* 5751 */             this.ofAoLevel = Config.limit(this.ofAoLevel, 0.0F, 1.0F);
+/* 5750 */           if (astring[0].equals("ofAoLevel") && astring.length >= 2) {
+/* 5751 */             this.ofAoLevel = Float.valueOf(astring[1]).floatValue();
+/* 5752 */             this.ofAoLevel = Config.limit(this.ofAoLevel, 0.0F, 1.0F);
 /*      */           } 
-/* 5753 */           if (astring[0].equals("ofClouds") && astring.length >= 2) {
-/* 5754 */             this.ofClouds = Integer.valueOf(astring[1]).intValue();
-/* 5755 */             this.ofClouds = Config.limit(this.ofClouds, 0, 3);
-/* 5756 */             updateRenderClouds();
+/* 5754 */           if (astring[0].equals("ofClouds") && astring.length >= 2) {
+/* 5755 */             this.ofClouds = Integer.valueOf(astring[1]).intValue();
+/* 5756 */             this.ofClouds = Config.limit(this.ofClouds, 0, 3);
+/* 5757 */             updateRenderClouds();
 /*      */           } 
-/* 5758 */           if (astring[0].equals("ofCloudsHeight") && astring.length >= 2) {
-/* 5759 */             this.ofCloudsHeight = Float.valueOf(astring[1]).floatValue();
-/* 5760 */             this.ofCloudsHeight = Config.limit(this.ofCloudsHeight, 0.0F, 1.0F);
+/* 5759 */           if (astring[0].equals("ofCloudsHeight") && astring.length >= 2) {
+/* 5760 */             this.ofCloudsHeight = Float.valueOf(astring[1]).floatValue();
+/* 5761 */             this.ofCloudsHeight = Config.limit(this.ofCloudsHeight, 0.0F, 1.0F);
 /*      */           } 
-/* 5762 */           if (astring[0].equals("ofTrees") && astring.length >= 2) {
-/* 5763 */             this.ofTrees = Integer.valueOf(astring[1]).intValue();
-/* 5764 */             this.ofTrees = limit(this.ofTrees, OF_TREES_VALUES);
+/* 5763 */           if (astring[0].equals("ofTrees") && astring.length >= 2) {
+/* 5764 */             this.ofTrees = Integer.valueOf(astring[1]).intValue();
+/* 5765 */             this.ofTrees = limit(this.ofTrees, OF_TREES_VALUES);
 /*      */           } 
-/* 5766 */           if (astring[0].equals("ofDroppedItems") && astring.length >= 2) {
-/* 5767 */             this.ofDroppedItems = Integer.valueOf(astring[1]).intValue();
-/* 5768 */             this.ofDroppedItems = Config.limit(this.ofDroppedItems, 0, 2);
+/* 5767 */           if (astring[0].equals("ofDroppedItems") && astring.length >= 2) {
+/* 5768 */             this.ofDroppedItems = Integer.valueOf(astring[1]).intValue();
+/* 5769 */             this.ofDroppedItems = Config.limit(this.ofDroppedItems, 0, 2);
 /*      */           } 
-/* 5770 */           if (astring[0].equals("ofRain") && astring.length >= 2) {
-/* 5771 */             this.ofRain = Integer.valueOf(astring[1]).intValue();
-/* 5772 */             this.ofRain = Config.limit(this.ofRain, 0, 3);
+/* 5771 */           if (astring[0].equals("ofRain") && astring.length >= 2) {
+/* 5772 */             this.ofRain = Integer.valueOf(astring[1]).intValue();
+/* 5773 */             this.ofRain = Config.limit(this.ofRain, 0, 3);
 /*      */           } 
-/* 5774 */           if (astring[0].equals("ofAnimatedWater") && astring.length >= 2) {
-/* 5775 */             this.ofAnimatedWater = Integer.valueOf(astring[1]).intValue();
-/* 5776 */             this.ofAnimatedWater = Config.limit(this.ofAnimatedWater, 0, 2);
+/* 5775 */           if (astring[0].equals("ofAnimatedWater") && astring.length >= 2) {
+/* 5776 */             this.ofAnimatedWater = Integer.valueOf(astring[1]).intValue();
+/* 5777 */             this.ofAnimatedWater = Config.limit(this.ofAnimatedWater, 0, 2);
 /*      */           } 
-/* 5778 */           if (astring[0].equals("ofAnimatedLava") && astring.length >= 2) {
-/* 5779 */             this.ofAnimatedLava = Integer.valueOf(astring[1]).intValue();
-/* 5780 */             this.ofAnimatedLava = Config.limit(this.ofAnimatedLava, 0, 2);
+/* 5779 */           if (astring[0].equals("ofAnimatedLava") && astring.length >= 2) {
+/* 5780 */             this.ofAnimatedLava = Integer.valueOf(astring[1]).intValue();
+/* 5781 */             this.ofAnimatedLava = Config.limit(this.ofAnimatedLava, 0, 2);
 /*      */           } 
-/* 5782 */           if (astring[0].equals("ofAnimatedFire") && astring.length >= 2) {
-/* 5783 */             this.ofAnimatedFire = Boolean.valueOf(astring[1]).booleanValue();
+/* 5783 */           if (astring[0].equals("ofAnimatedFire") && astring.length >= 2) {
+/* 5784 */             this.ofAnimatedFire = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5785 */           if (astring[0].equals("ofAnimatedPortal") && astring.length >= 2) {
-/* 5786 */             this.ofAnimatedPortal = Boolean.valueOf(astring[1]).booleanValue();
+/* 5786 */           if (astring[0].equals("ofAnimatedPortal") && astring.length >= 2) {
+/* 5787 */             this.ofAnimatedPortal = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5788 */           if (astring[0].equals("ofAnimatedRedstone") && astring.length >= 2) {
-/* 5789 */             this.ofAnimatedRedstone = Boolean.valueOf(astring[1]).booleanValue();
+/* 5789 */           if (astring[0].equals("ofAnimatedRedstone") && astring.length >= 2) {
+/* 5790 */             this.ofAnimatedRedstone = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5791 */           if (astring[0].equals("ofAnimatedExplosion") && astring.length >= 2) {
-/* 5792 */             this.ofAnimatedExplosion = Boolean.valueOf(astring[1]).booleanValue();
+/* 5792 */           if (astring[0].equals("ofAnimatedExplosion") && astring.length >= 2) {
+/* 5793 */             this.ofAnimatedExplosion = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5794 */           if (astring[0].equals("ofAnimatedFlame") && astring.length >= 2) {
-/* 5795 */             this.ofAnimatedFlame = Boolean.valueOf(astring[1]).booleanValue();
+/* 5795 */           if (astring[0].equals("ofAnimatedFlame") && astring.length >= 2) {
+/* 5796 */             this.ofAnimatedFlame = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5797 */           if (astring[0].equals("ofAnimatedSmoke") && astring.length >= 2) {
-/* 5798 */             this.ofAnimatedSmoke = Boolean.valueOf(astring[1]).booleanValue();
+/* 5798 */           if (astring[0].equals("ofAnimatedSmoke") && astring.length >= 2) {
+/* 5799 */             this.ofAnimatedSmoke = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5800 */           if (astring[0].equals("ofVoidParticles") && astring.length >= 2) {
-/* 5801 */             this.ofVoidParticles = Boolean.valueOf(astring[1]).booleanValue();
+/* 5801 */           if (astring[0].equals("ofVoidParticles") && astring.length >= 2) {
+/* 5802 */             this.ofVoidParticles = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5803 */           if (astring[0].equals("ofWaterParticles") && astring.length >= 2) {
-/* 5804 */             this.ofWaterParticles = Boolean.valueOf(astring[1]).booleanValue();
+/* 5804 */           if (astring[0].equals("ofWaterParticles") && astring.length >= 2) {
+/* 5805 */             this.ofWaterParticles = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5806 */           if (astring[0].equals("ofPortalParticles") && astring.length >= 2) {
-/* 5807 */             this.ofPortalParticles = Boolean.valueOf(astring[1]).booleanValue();
+/* 5807 */           if (astring[0].equals("ofPortalParticles") && astring.length >= 2) {
+/* 5808 */             this.ofPortalParticles = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5809 */           if (astring[0].equals("ofPotionParticles") && astring.length >= 2) {
-/* 5810 */             this.ofPotionParticles = Boolean.valueOf(astring[1]).booleanValue();
+/* 5810 */           if (astring[0].equals("ofPotionParticles") && astring.length >= 2) {
+/* 5811 */             this.ofPotionParticles = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5812 */           if (astring[0].equals("ofFireworkParticles") && astring.length >= 2) {
-/* 5813 */             this.ofFireworkParticles = Boolean.valueOf(astring[1]).booleanValue();
+/* 5813 */           if (astring[0].equals("ofFireworkParticles") && astring.length >= 2) {
+/* 5814 */             this.ofFireworkParticles = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5815 */           if (astring[0].equals("ofDrippingWaterLava") && astring.length >= 2) {
-/* 5816 */             this.ofDrippingWaterLava = Boolean.valueOf(astring[1]).booleanValue();
+/* 5816 */           if (astring[0].equals("ofDrippingWaterLava") && astring.length >= 2) {
+/* 5817 */             this.ofDrippingWaterLava = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5818 */           if (astring[0].equals("ofAnimatedTerrain") && astring.length >= 2) {
-/* 5819 */             this.ofAnimatedTerrain = Boolean.valueOf(astring[1]).booleanValue();
+/* 5819 */           if (astring[0].equals("ofAnimatedTerrain") && astring.length >= 2) {
+/* 5820 */             this.ofAnimatedTerrain = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5821 */           if (astring[0].equals("ofAnimatedTextures") && astring.length >= 2) {
-/* 5822 */             this.ofAnimatedTextures = Boolean.valueOf(astring[1]).booleanValue();
+/* 5822 */           if (astring[0].equals("ofAnimatedTextures") && astring.length >= 2) {
+/* 5823 */             this.ofAnimatedTextures = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5824 */           if (astring[0].equals("ofRainSplash") && astring.length >= 2) {
-/* 5825 */             this.ofRainSplash = Boolean.valueOf(astring[1]).booleanValue();
+/* 5825 */           if (astring[0].equals("ofRainSplash") && astring.length >= 2) {
+/* 5826 */             this.ofRainSplash = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5827 */           if (astring[0].equals("ofLagometer") && astring.length >= 2) {
-/* 5828 */             this.ofLagometer = Boolean.valueOf(astring[1]).booleanValue();
+/* 5828 */           if (astring[0].equals("ofLagometer") && astring.length >= 2) {
+/* 5829 */             this.ofLagometer = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5830 */           if (astring[0].equals("ofShowFps") && astring.length >= 2) {
-/* 5831 */             this.ofShowFps = Boolean.valueOf(astring[1]).booleanValue();
+/* 5831 */           if (astring[0].equals("ofShowFps") && astring.length >= 2) {
+/* 5832 */             this.ofShowFps = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5833 */           if (astring[0].equals("ofAutoSaveTicks") && astring.length >= 2) {
-/* 5834 */             this.ofAutoSaveTicks = Integer.valueOf(astring[1]).intValue();
-/* 5835 */             this.ofAutoSaveTicks = Config.limit(this.ofAutoSaveTicks, 40, 40000);
+/* 5834 */           if (astring[0].equals("ofAutoSaveTicks") && astring.length >= 2) {
+/* 5835 */             this.ofAutoSaveTicks = Integer.valueOf(astring[1]).intValue();
+/* 5836 */             this.ofAutoSaveTicks = Config.limit(this.ofAutoSaveTicks, 40, 40000);
 /*      */           } 
-/* 5837 */           if (astring[0].equals("ofBetterGrass") && astring.length >= 2) {
-/* 5838 */             this.ofBetterGrass = Integer.valueOf(astring[1]).intValue();
-/* 5839 */             this.ofBetterGrass = Config.limit(this.ofBetterGrass, 1, 3);
+/* 5838 */           if (astring[0].equals("ofBetterGrass") && astring.length >= 2) {
+/* 5839 */             this.ofBetterGrass = Integer.valueOf(astring[1]).intValue();
+/* 5840 */             this.ofBetterGrass = Config.limit(this.ofBetterGrass, 1, 3);
 /*      */           } 
-/* 5841 */           if (astring[0].equals("ofConnectedTextures") && astring.length >= 2) {
-/* 5842 */             this.ofConnectedTextures = Integer.valueOf(astring[1]).intValue();
-/* 5843 */             this.ofConnectedTextures = Config.limit(this.ofConnectedTextures, 1, 3);
+/* 5842 */           if (astring[0].equals("ofConnectedTextures") && astring.length >= 2) {
+/* 5843 */             this.ofConnectedTextures = Integer.valueOf(astring[1]).intValue();
+/* 5844 */             this.ofConnectedTextures = Config.limit(this.ofConnectedTextures, 1, 3);
 /*      */           } 
-/* 5845 */           if (astring[0].equals("ofWeather") && astring.length >= 2) {
-/* 5846 */             this.ofWeather = Boolean.valueOf(astring[1]).booleanValue();
+/* 5846 */           if (astring[0].equals("ofWeather") && astring.length >= 2) {
+/* 5847 */             this.ofWeather = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5848 */           if (astring[0].equals("ofSky") && astring.length >= 2) {
-/* 5849 */             this.ofSky = Boolean.valueOf(astring[1]).booleanValue();
+/* 5849 */           if (astring[0].equals("ofSky") && astring.length >= 2) {
+/* 5850 */             this.ofSky = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5851 */           if (astring[0].equals("ofStars") && astring.length >= 2) {
-/* 5852 */             this.ofStars = Boolean.valueOf(astring[1]).booleanValue();
+/* 5852 */           if (astring[0].equals("ofStars") && astring.length >= 2) {
+/* 5853 */             this.ofStars = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5854 */           if (astring[0].equals("ofSunMoon") && astring.length >= 2) {
-/* 5855 */             this.ofSunMoon = Boolean.valueOf(astring[1]).booleanValue();
+/* 5855 */           if (astring[0].equals("ofSunMoon") && astring.length >= 2) {
+/* 5856 */             this.ofSunMoon = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5857 */           if (astring[0].equals("ofVignette") && astring.length >= 2) {
-/* 5858 */             this.ofVignette = Integer.valueOf(astring[1]).intValue();
-/* 5859 */             this.ofVignette = Config.limit(this.ofVignette, 0, 2);
+/* 5858 */           if (astring[0].equals("ofVignette") && astring.length >= 2) {
+/* 5859 */             this.ofVignette = Integer.valueOf(astring[1]).intValue();
+/* 5860 */             this.ofVignette = Config.limit(this.ofVignette, 0, 2);
 /*      */           } 
-/* 5861 */           if (astring[0].equals("ofChunkUpdates") && astring.length >= 2) {
-/* 5862 */             this.ofChunkUpdates = Integer.valueOf(astring[1]).intValue();
-/* 5863 */             this.ofChunkUpdates = Config.limit(this.ofChunkUpdates, 1, 5);
+/* 5862 */           if (astring[0].equals("ofChunkUpdates") && astring.length >= 2) {
+/* 5863 */             this.ofChunkUpdates = Integer.valueOf(astring[1]).intValue();
+/* 5864 */             this.ofChunkUpdates = Config.limit(this.ofChunkUpdates, 1, 5);
 /*      */           } 
-/* 5865 */           if (astring[0].equals("ofChunkUpdatesDynamic") && astring.length >= 2) {
-/* 5866 */             this.ofChunkUpdatesDynamic = Boolean.valueOf(astring[1]).booleanValue();
+/* 5866 */           if (astring[0].equals("ofChunkUpdatesDynamic") && astring.length >= 2) {
+/* 5867 */             this.ofChunkUpdatesDynamic = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5868 */           if (astring[0].equals("ofTime") && astring.length >= 2) {
-/* 5869 */             this.ofTime = Integer.valueOf(astring[1]).intValue();
-/* 5870 */             this.ofTime = Config.limit(this.ofTime, 0, 2);
+/* 5869 */           if (astring[0].equals("ofTime") && astring.length >= 2) {
+/* 5870 */             this.ofTime = Integer.valueOf(astring[1]).intValue();
+/* 5871 */             this.ofTime = Config.limit(this.ofTime, 0, 2);
 /*      */           } 
-/* 5872 */           if (astring[0].equals("ofClearWater") && astring.length >= 2) {
-/* 5873 */             this.ofClearWater = Boolean.valueOf(astring[1]).booleanValue();
-/* 5874 */             updateWaterOpacity();
+/* 5873 */           if (astring[0].equals("ofClearWater") && astring.length >= 2) {
+/* 5874 */             this.ofClearWater = Boolean.valueOf(astring[1]).booleanValue();
+/* 5875 */             updateWaterOpacity();
 /*      */           } 
-/* 5876 */           if (astring[0].equals("ofAaLevel") && astring.length >= 2) {
-/* 5877 */             this.ofAaLevel = Integer.valueOf(astring[1]).intValue();
-/* 5878 */             this.ofAaLevel = Config.limit(this.ofAaLevel, 0, 16);
+/* 5877 */           if (astring[0].equals("ofAaLevel") && astring.length >= 2) {
+/* 5878 */             this.ofAaLevel = Integer.valueOf(astring[1]).intValue();
+/* 5879 */             this.ofAaLevel = Config.limit(this.ofAaLevel, 0, 16);
 /*      */           } 
-/* 5880 */           if (astring[0].equals("ofAfLevel") && astring.length >= 2) {
-/* 5881 */             this.ofAfLevel = Integer.valueOf(astring[1]).intValue();
-/* 5882 */             this.ofAfLevel = Config.limit(this.ofAfLevel, 1, 16);
+/* 5881 */           if (astring[0].equals("ofAfLevel") && astring.length >= 2) {
+/* 5882 */             this.ofAfLevel = Integer.valueOf(astring[1]).intValue();
+/* 5883 */             this.ofAfLevel = Config.limit(this.ofAfLevel, 1, 16);
 /*      */           } 
-/* 5884 */           if (astring[0].equals("ofProfiler") && astring.length >= 2) {
-/* 5885 */             this.ofProfiler = Boolean.valueOf(astring[1]).booleanValue();
+/* 5885 */           if (astring[0].equals("ofProfiler") && astring.length >= 2) {
+/* 5886 */             this.ofProfiler = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5887 */           if (astring[0].equals("ofBetterSnow") && astring.length >= 2) {
-/* 5888 */             this.ofBetterSnow = Boolean.valueOf(astring[1]).booleanValue();
+/* 5888 */           if (astring[0].equals("ofBetterSnow") && astring.length >= 2) {
+/* 5889 */             this.ofBetterSnow = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5890 */           if (astring[0].equals("ofSwampColors") && astring.length >= 2) {
-/* 5891 */             this.ofSwampColors = Boolean.valueOf(astring[1]).booleanValue();
+/* 5891 */           if (astring[0].equals("ofSwampColors") && astring.length >= 2) {
+/* 5892 */             this.ofSwampColors = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5893 */           if (astring[0].equals("ofRandomEntities") && astring.length >= 2) {
-/* 5894 */             this.ofRandomEntities = Boolean.valueOf(astring[1]).booleanValue();
+/* 5894 */           if (astring[0].equals("ofRandomEntities") && astring.length >= 2) {
+/* 5895 */             this.ofRandomEntities = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5896 */           if (astring[0].equals("ofSmoothBiomes") && astring.length >= 2) {
-/* 5897 */             this.ofSmoothBiomes = Boolean.valueOf(astring[1]).booleanValue();
+/* 5897 */           if (astring[0].equals("ofSmoothBiomes") && astring.length >= 2) {
+/* 5898 */             this.ofSmoothBiomes = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5899 */           if (astring[0].equals("ofCustomFonts") && astring.length >= 2) {
-/* 5900 */             this.ofCustomFonts = Boolean.valueOf(astring[1]).booleanValue();
+/* 5900 */           if (astring[0].equals("ofCustomFonts") && astring.length >= 2) {
+/* 5901 */             this.ofCustomFonts = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5902 */           if (astring[0].equals("ofCustomColors") && astring.length >= 2) {
-/* 5903 */             this.ofCustomColors = Boolean.valueOf(astring[1]).booleanValue();
+/* 5903 */           if (astring[0].equals("ofCustomColors") && astring.length >= 2) {
+/* 5904 */             this.ofCustomColors = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5905 */           if (astring[0].equals("ofCustomItems") && astring.length >= 2) {
-/* 5906 */             this.ofCustomItems = Boolean.valueOf(astring[1]).booleanValue();
+/* 5906 */           if (astring[0].equals("ofCustomItems") && astring.length >= 2) {
+/* 5907 */             this.ofCustomItems = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5908 */           if (astring[0].equals("ofCustomSky") && astring.length >= 2) {
-/* 5909 */             this.ofCustomSky = Boolean.valueOf(astring[1]).booleanValue();
+/* 5909 */           if (astring[0].equals("ofCustomSky") && astring.length >= 2) {
+/* 5910 */             this.ofCustomSky = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5911 */           if (astring[0].equals("ofShowCapes") && astring.length >= 2) {
-/* 5912 */             this.ofShowCapes = Boolean.valueOf(astring[1]).booleanValue();
+/* 5912 */           if (astring[0].equals("ofShowCapes") && astring.length >= 2) {
+/* 5913 */             this.ofShowCapes = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5914 */           if (astring[0].equals("ofNaturalTextures") && astring.length >= 2) {
-/* 5915 */             this.ofNaturalTextures = Boolean.valueOf(astring[1]).booleanValue();
+/* 5915 */           if (astring[0].equals("ofNaturalTextures") && astring.length >= 2) {
+/* 5916 */             this.ofNaturalTextures = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5917 */           if (astring[0].equals("ofEmissiveTextures") && astring.length >= 2) {
-/* 5918 */             this.ofEmissiveTextures = Boolean.valueOf(astring[1]).booleanValue();
+/* 5918 */           if (astring[0].equals("ofEmissiveTextures") && astring.length >= 2) {
+/* 5919 */             this.ofEmissiveTextures = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5920 */           if (astring[0].equals("ofLazyChunkLoading") && astring.length >= 2) {
-/* 5921 */             this.ofLazyChunkLoading = Boolean.valueOf(astring[1]).booleanValue();
+/* 5921 */           if (astring[0].equals("ofLazyChunkLoading") && astring.length >= 2) {
+/* 5922 */             this.ofLazyChunkLoading = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5923 */           if (astring[0].equals("ofRenderRegions") && astring.length >= 2) {
-/* 5924 */             this.ofRenderRegions = Boolean.valueOf(astring[1]).booleanValue();
+/* 5924 */           if (astring[0].equals("ofRenderRegions") && astring.length >= 2) {
+/* 5925 */             this.ofRenderRegions = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5926 */           if (astring[0].equals("ofSmartAnimations") && astring.length >= 2) {
-/* 5927 */             this.ofSmartAnimations = Boolean.valueOf(astring[1]).booleanValue();
+/* 5927 */           if (astring[0].equals("ofSmartAnimations") && astring.length >= 2) {
+/* 5928 */             this.ofSmartAnimations = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5929 */           if (astring[0].equals("ofDynamicFov") && astring.length >= 2) {
-/* 5930 */             this.ofDynamicFov = Boolean.valueOf(astring[1]).booleanValue();
+/* 5930 */           if (astring[0].equals("ofDynamicFov") && astring.length >= 2) {
+/* 5931 */             this.ofDynamicFov = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5932 */           if (astring[0].equals("ofAlternateBlocks") && astring.length >= 2) {
-/* 5933 */             this.ofAlternateBlocks = Boolean.valueOf(astring[1]).booleanValue();
+/* 5933 */           if (astring[0].equals("ofAlternateBlocks") && astring.length >= 2) {
+/* 5934 */             this.ofAlternateBlocks = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5935 */           if (astring[0].equals("ofDynamicLights") && astring.length >= 2) {
-/* 5936 */             this.ofDynamicLights = Integer.valueOf(astring[1]).intValue();
-/* 5937 */             this.ofDynamicLights = limit(this.ofDynamicLights, OF_DYNAMIC_LIGHTS);
+/* 5936 */           if (astring[0].equals("ofDynamicLights") && astring.length >= 2) {
+/* 5937 */             this.ofDynamicLights = Integer.valueOf(astring[1]).intValue();
+/* 5938 */             this.ofDynamicLights = limit(this.ofDynamicLights, OF_DYNAMIC_LIGHTS);
 /*      */           } 
-/* 5939 */           if (astring[0].equals("ofScreenshotSize") && astring.length >= 2) {
-/* 5940 */             this.ofScreenshotSize = Integer.valueOf(astring[1]).intValue();
-/* 5941 */             this.ofScreenshotSize = Config.limit(this.ofScreenshotSize, 1, 4);
+/* 5940 */           if (astring[0].equals("ofScreenshotSize") && astring.length >= 2) {
+/* 5941 */             this.ofScreenshotSize = Integer.valueOf(astring[1]).intValue();
+/* 5942 */             this.ofScreenshotSize = Config.limit(this.ofScreenshotSize, 1, 4);
 /*      */           } 
-/* 5943 */           if (astring[0].equals("ofCustomEntityModels") && astring.length >= 2) {
-/* 5944 */             this.ofCustomEntityModels = Boolean.valueOf(astring[1]).booleanValue();
+/* 5944 */           if (astring[0].equals("ofCustomEntityModels") && astring.length >= 2) {
+/* 5945 */             this.ofCustomEntityModels = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5946 */           if (astring[0].equals("ofCustomGuis") && astring.length >= 2) {
-/* 5947 */             this.ofCustomGuis = Boolean.valueOf(astring[1]).booleanValue();
+/* 5947 */           if (astring[0].equals("ofCustomGuis") && astring.length >= 2) {
+/* 5948 */             this.ofCustomGuis = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5949 */           if (astring[0].equals("ofShowGlErrors") && astring.length >= 2) {
-/* 5950 */             this.ofShowGlErrors = Boolean.valueOf(astring[1]).booleanValue();
+/* 5950 */           if (astring[0].equals("ofShowGlErrors") && astring.length >= 2) {
+/* 5951 */             this.ofShowGlErrors = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5952 */           if (astring[0].equals("ofFullscreenMode") && astring.length >= 2) {
-/* 5953 */             this.ofFullscreenMode = astring[1];
+/* 5953 */           if (astring[0].equals("ofFullscreenMode") && astring.length >= 2) {
+/* 5954 */             this.ofFullscreenMode = astring[1];
 /*      */           }
-/* 5955 */           if (astring[0].equals("ofFastMath") && astring.length >= 2) {
-/* 5956 */             this.ofFastMath = Boolean.valueOf(astring[1]).booleanValue();
-/* 5957 */             MathHelper.fastMath = this.ofFastMath;
+/* 5956 */           if (astring[0].equals("ofFastMath") && astring.length >= 2) {
+/* 5957 */             this.ofFastMath = Boolean.valueOf(astring[1]).booleanValue();
+/* 5958 */             MathHelper.fastMath = this.ofFastMath;
 /*      */           } 
-/* 5959 */           if (astring[0].equals("ofFastRender") && astring.length >= 2) {
-/* 5960 */             this.ofFastRender = Boolean.valueOf(astring[1]).booleanValue();
+/* 5960 */           if (astring[0].equals("ofFastRender") && astring.length >= 2) {
+/* 5961 */             this.ofFastRender = Boolean.valueOf(astring[1]).booleanValue();
 /*      */           }
-/* 5962 */           if (astring[0].equals("ofTranslucentBlocks") && astring.length >= 2) {
-/* 5963 */             this.ofTranslucentBlocks = Integer.valueOf(astring[1]).intValue();
-/* 5964 */             this.ofTranslucentBlocks = Config.limit(this.ofTranslucentBlocks, 0, 2);
+/* 5963 */           if (astring[0].equals("ofTranslucentBlocks") && astring.length >= 2) {
+/* 5964 */             this.ofTranslucentBlocks = Integer.valueOf(astring[1]).intValue();
+/* 5965 */             this.ofTranslucentBlocks = Config.limit(this.ofTranslucentBlocks, 0, 2);
 /*      */           } 
-/* 5966 */           if (!astring[0].equals("key_" + this.ofKeyBindZoom.getKeyDescription())) {
+/* 5967 */           if (!astring[0].equals("key_" + this.ofKeyBindZoom.getKeyDescription())) {
 /*      */             continue;
 /*      */           }
-/* 5969 */           this.ofKeyBindZoom.setKeyCode(Integer.parseInt(astring[1]));
-/* 5970 */         } catch (Exception exception) {
-/* 5971 */           Config.dbg("Skipping bad option: " + s);
-/* 5972 */           exception.printStackTrace();
+/* 5970 */           this.ofKeyBindZoom.setKeyCode(Integer.parseInt(astring[1]));
+/* 5971 */         } catch (Exception exception) {
+/* 5972 */           Config.dbg("Skipping bad option: " + s);
+/* 5973 */           exception.printStackTrace();
 /*      */         } 
 /*      */       } 
-/* 5975 */       KeyUtils.fixKeyConflicts(this.mc, new KeyBinding[] { this.ofKeyBindZoom });
-/* 5976 */       KeyBinding.resetKeyBindingArrayAndHash();
-/* 5977 */       bufferedreader.close();
-/* 5978 */     } catch (Exception exception2) {
-/* 5979 */       Config.warn("Failed to load options");
-/* 5980 */       exception2.printStackTrace();
+/* 5976 */       KeyUtils.fixKeyConflicts(this.mc, new KeyBinding[] { this.ofKeyBindZoom });
+/* 5977 */       KeyBinding.resetKeyBindingArrayAndHash();
+/* 5978 */       bufferedreader.close();
+/* 5979 */     } catch (Exception exception2) {
+/* 5980 */       Config.warn("Failed to load options");
+/* 5981 */       exception2.printStackTrace();
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   public void saveOfOptions() {
 /*      */     try {
-/* 5986 */       PrintWriter printwriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(this.optionsFileOF), "UTF-8"));
-/* 5987 */       printwriter.println("ofFogType:" + this.ofFogType);
-/* 5988 */       printwriter.println("ofFogStart:" + this.ofFogStart);
-/* 5989 */       printwriter.println("ofMipmapType:" + this.ofMipmapType);
-/* 5990 */       printwriter.println("ofOcclusionFancy:" + this.ofOcclusionFancy);
-/* 5991 */       printwriter.println("ofSmoothFps:" + this.ofSmoothFps);
-/* 5992 */       printwriter.println("ofSmoothWorld:" + this.ofSmoothWorld);
-/* 5993 */       printwriter.println("ofAoLevel:" + this.ofAoLevel);
-/* 5994 */       printwriter.println("ofClouds:" + this.ofClouds);
-/* 5995 */       printwriter.println("ofCloudsHeight:" + this.ofCloudsHeight);
-/* 5996 */       printwriter.println("ofTrees:" + this.ofTrees);
-/* 5997 */       printwriter.println("ofDroppedItems:" + this.ofDroppedItems);
-/* 5998 */       printwriter.println("ofRain:" + this.ofRain);
-/* 5999 */       printwriter.println("ofAnimatedWater:" + this.ofAnimatedWater);
-/* 6000 */       printwriter.println("ofAnimatedLava:" + this.ofAnimatedLava);
-/* 6001 */       printwriter.println("ofAnimatedFire:" + this.ofAnimatedFire);
-/* 6002 */       printwriter.println("ofAnimatedPortal:" + this.ofAnimatedPortal);
-/* 6003 */       printwriter.println("ofAnimatedRedstone:" + this.ofAnimatedRedstone);
-/* 6004 */       printwriter.println("ofAnimatedExplosion:" + this.ofAnimatedExplosion);
-/* 6005 */       printwriter.println("ofAnimatedFlame:" + this.ofAnimatedFlame);
-/* 6006 */       printwriter.println("ofAnimatedSmoke:" + this.ofAnimatedSmoke);
-/* 6007 */       printwriter.println("ofVoidParticles:" + this.ofVoidParticles);
-/* 6008 */       printwriter.println("ofWaterParticles:" + this.ofWaterParticles);
-/* 6009 */       printwriter.println("ofPortalParticles:" + this.ofPortalParticles);
-/* 6010 */       printwriter.println("ofPotionParticles:" + this.ofPotionParticles);
-/* 6011 */       printwriter.println("ofFireworkParticles:" + this.ofFireworkParticles);
-/* 6012 */       printwriter.println("ofDrippingWaterLava:" + this.ofDrippingWaterLava);
-/* 6013 */       printwriter.println("ofAnimatedTerrain:" + this.ofAnimatedTerrain);
-/* 6014 */       printwriter.println("ofAnimatedTextures:" + this.ofAnimatedTextures);
-/* 6015 */       printwriter.println("ofRainSplash:" + this.ofRainSplash);
-/* 6016 */       printwriter.println("ofLagometer:" + this.ofLagometer);
-/* 6017 */       printwriter.println("ofShowFps:" + this.ofShowFps);
-/* 6018 */       printwriter.println("ofAutoSaveTicks:" + this.ofAutoSaveTicks);
-/* 6019 */       printwriter.println("ofBetterGrass:" + this.ofBetterGrass);
-/* 6020 */       printwriter.println("ofConnectedTextures:" + this.ofConnectedTextures);
-/* 6021 */       printwriter.println("ofWeather:" + this.ofWeather);
-/* 6022 */       printwriter.println("ofSky:" + this.ofSky);
-/* 6023 */       printwriter.println("ofStars:" + this.ofStars);
-/* 6024 */       printwriter.println("ofSunMoon:" + this.ofSunMoon);
-/* 6025 */       printwriter.println("ofVignette:" + this.ofVignette);
-/* 6026 */       printwriter.println("ofChunkUpdates:" + this.ofChunkUpdates);
-/* 6027 */       printwriter.println("ofChunkUpdatesDynamic:" + this.ofChunkUpdatesDynamic);
-/* 6028 */       printwriter.println("ofTime:" + this.ofTime);
-/* 6029 */       printwriter.println("ofClearWater:" + this.ofClearWater);
-/* 6030 */       printwriter.println("ofAaLevel:" + this.ofAaLevel);
-/* 6031 */       printwriter.println("ofAfLevel:" + this.ofAfLevel);
-/* 6032 */       printwriter.println("ofProfiler:" + this.ofProfiler);
-/* 6033 */       printwriter.println("ofBetterSnow:" + this.ofBetterSnow);
-/* 6034 */       printwriter.println("ofSwampColors:" + this.ofSwampColors);
-/* 6035 */       printwriter.println("ofRandomEntities:" + this.ofRandomEntities);
-/* 6036 */       printwriter.println("ofSmoothBiomes:" + this.ofSmoothBiomes);
-/* 6037 */       printwriter.println("ofCustomFonts:" + this.ofCustomFonts);
-/* 6038 */       printwriter.println("ofCustomColors:" + this.ofCustomColors);
-/* 6039 */       printwriter.println("ofCustomItems:" + this.ofCustomItems);
-/* 6040 */       printwriter.println("ofCustomSky:" + this.ofCustomSky);
-/* 6041 */       printwriter.println("ofShowCapes:" + this.ofShowCapes);
-/* 6042 */       printwriter.println("ofNaturalTextures:" + this.ofNaturalTextures);
-/* 6043 */       printwriter.println("ofEmissiveTextures:" + this.ofEmissiveTextures);
-/* 6044 */       printwriter.println("ofLazyChunkLoading:" + this.ofLazyChunkLoading);
-/* 6045 */       printwriter.println("ofRenderRegions:" + this.ofRenderRegions);
-/* 6046 */       printwriter.println("ofSmartAnimations:" + this.ofSmartAnimations);
-/* 6047 */       printwriter.println("ofDynamicFov:" + this.ofDynamicFov);
-/* 6048 */       printwriter.println("ofAlternateBlocks:" + this.ofAlternateBlocks);
-/* 6049 */       printwriter.println("ofDynamicLights:" + this.ofDynamicLights);
-/* 6050 */       printwriter.println("ofScreenshotSize:" + this.ofScreenshotSize);
-/* 6051 */       printwriter.println("ofCustomEntityModels:" + this.ofCustomEntityModels);
-/* 6052 */       printwriter.println("ofCustomGuis:" + this.ofCustomGuis);
-/* 6053 */       printwriter.println("ofShowGlErrors:" + this.ofShowGlErrors);
-/* 6054 */       printwriter.println("ofFullscreenMode:" + this.ofFullscreenMode);
-/* 6055 */       printwriter.println("ofFastMath:" + this.ofFastMath);
-/* 6056 */       printwriter.println("ofFastRender:" + this.ofFastRender);
-/* 6057 */       printwriter.println("ofTranslucentBlocks:" + this.ofTranslucentBlocks);
-/* 6058 */       printwriter.println("key_" + this.ofKeyBindZoom.getKeyDescription() + ":" + this.ofKeyBindZoom.getKeyCode());
-/* 6059 */       printwriter.close();
-/* 6060 */     } catch (Exception exception) {
-/* 6061 */       Config.warn("Failed to save options");
-/* 6062 */       exception.printStackTrace();
+/* 5987 */       PrintWriter printwriter = new PrintWriter(new OutputStreamWriter(new FileOutputStream(this.optionsFileOF), "UTF-8"));
+/* 5988 */       printwriter.println("ofFogType:" + this.ofFogType);
+/* 5989 */       printwriter.println("ofFogStart:" + this.ofFogStart);
+/* 5990 */       printwriter.println("ofMipmapType:" + this.ofMipmapType);
+/* 5991 */       printwriter.println("ofOcclusionFancy:" + this.ofOcclusionFancy);
+/* 5992 */       printwriter.println("ofSmoothFps:" + this.ofSmoothFps);
+/* 5993 */       printwriter.println("ofSmoothWorld:" + this.ofSmoothWorld);
+/* 5994 */       printwriter.println("ofAoLevel:" + this.ofAoLevel);
+/* 5995 */       printwriter.println("ofClouds:" + this.ofClouds);
+/* 5996 */       printwriter.println("ofCloudsHeight:" + this.ofCloudsHeight);
+/* 5997 */       printwriter.println("ofTrees:" + this.ofTrees);
+/* 5998 */       printwriter.println("ofDroppedItems:" + this.ofDroppedItems);
+/* 5999 */       printwriter.println("ofRain:" + this.ofRain);
+/* 6000 */       printwriter.println("ofAnimatedWater:" + this.ofAnimatedWater);
+/* 6001 */       printwriter.println("ofAnimatedLava:" + this.ofAnimatedLava);
+/* 6002 */       printwriter.println("ofAnimatedFire:" + this.ofAnimatedFire);
+/* 6003 */       printwriter.println("ofAnimatedPortal:" + this.ofAnimatedPortal);
+/* 6004 */       printwriter.println("ofAnimatedRedstone:" + this.ofAnimatedRedstone);
+/* 6005 */       printwriter.println("ofAnimatedExplosion:" + this.ofAnimatedExplosion);
+/* 6006 */       printwriter.println("ofAnimatedFlame:" + this.ofAnimatedFlame);
+/* 6007 */       printwriter.println("ofAnimatedSmoke:" + this.ofAnimatedSmoke);
+/* 6008 */       printwriter.println("ofVoidParticles:" + this.ofVoidParticles);
+/* 6009 */       printwriter.println("ofWaterParticles:" + this.ofWaterParticles);
+/* 6010 */       printwriter.println("ofPortalParticles:" + this.ofPortalParticles);
+/* 6011 */       printwriter.println("ofPotionParticles:" + this.ofPotionParticles);
+/* 6012 */       printwriter.println("ofFireworkParticles:" + this.ofFireworkParticles);
+/* 6013 */       printwriter.println("ofDrippingWaterLava:" + this.ofDrippingWaterLava);
+/* 6014 */       printwriter.println("ofAnimatedTerrain:" + this.ofAnimatedTerrain);
+/* 6015 */       printwriter.println("ofAnimatedTextures:" + this.ofAnimatedTextures);
+/* 6016 */       printwriter.println("ofRainSplash:" + this.ofRainSplash);
+/* 6017 */       printwriter.println("ofLagometer:" + this.ofLagometer);
+/* 6018 */       printwriter.println("ofShowFps:" + this.ofShowFps);
+/* 6019 */       printwriter.println("ofAutoSaveTicks:" + this.ofAutoSaveTicks);
+/* 6020 */       printwriter.println("ofBetterGrass:" + this.ofBetterGrass);
+/* 6021 */       printwriter.println("ofConnectedTextures:" + this.ofConnectedTextures);
+/* 6022 */       printwriter.println("ofWeather:" + this.ofWeather);
+/* 6023 */       printwriter.println("ofSky:" + this.ofSky);
+/* 6024 */       printwriter.println("ofStars:" + this.ofStars);
+/* 6025 */       printwriter.println("ofSunMoon:" + this.ofSunMoon);
+/* 6026 */       printwriter.println("ofVignette:" + this.ofVignette);
+/* 6027 */       printwriter.println("ofChunkUpdates:" + this.ofChunkUpdates);
+/* 6028 */       printwriter.println("ofChunkUpdatesDynamic:" + this.ofChunkUpdatesDynamic);
+/* 6029 */       printwriter.println("ofTime:" + this.ofTime);
+/* 6030 */       printwriter.println("ofClearWater:" + this.ofClearWater);
+/* 6031 */       printwriter.println("ofAaLevel:" + this.ofAaLevel);
+/* 6032 */       printwriter.println("ofAfLevel:" + this.ofAfLevel);
+/* 6033 */       printwriter.println("ofProfiler:" + this.ofProfiler);
+/* 6034 */       printwriter.println("ofBetterSnow:" + this.ofBetterSnow);
+/* 6035 */       printwriter.println("ofSwampColors:" + this.ofSwampColors);
+/* 6036 */       printwriter.println("ofRandomEntities:" + this.ofRandomEntities);
+/* 6037 */       printwriter.println("ofSmoothBiomes:" + this.ofSmoothBiomes);
+/* 6038 */       printwriter.println("ofCustomFonts:" + this.ofCustomFonts);
+/* 6039 */       printwriter.println("ofCustomColors:" + this.ofCustomColors);
+/* 6040 */       printwriter.println("ofCustomItems:" + this.ofCustomItems);
+/* 6041 */       printwriter.println("ofCustomSky:" + this.ofCustomSky);
+/* 6042 */       printwriter.println("ofShowCapes:" + this.ofShowCapes);
+/* 6043 */       printwriter.println("ofNaturalTextures:" + this.ofNaturalTextures);
+/* 6044 */       printwriter.println("ofEmissiveTextures:" + this.ofEmissiveTextures);
+/* 6045 */       printwriter.println("ofLazyChunkLoading:" + this.ofLazyChunkLoading);
+/* 6046 */       printwriter.println("ofRenderRegions:" + this.ofRenderRegions);
+/* 6047 */       printwriter.println("ofSmartAnimations:" + this.ofSmartAnimations);
+/* 6048 */       printwriter.println("ofDynamicFov:" + this.ofDynamicFov);
+/* 6049 */       printwriter.println("ofAlternateBlocks:" + this.ofAlternateBlocks);
+/* 6050 */       printwriter.println("ofDynamicLights:" + this.ofDynamicLights);
+/* 6051 */       printwriter.println("ofScreenshotSize:" + this.ofScreenshotSize);
+/* 6052 */       printwriter.println("ofCustomEntityModels:" + this.ofCustomEntityModels);
+/* 6053 */       printwriter.println("ofCustomGuis:" + this.ofCustomGuis);
+/* 6054 */       printwriter.println("ofShowGlErrors:" + this.ofShowGlErrors);
+/* 6055 */       printwriter.println("ofFullscreenMode:" + this.ofFullscreenMode);
+/* 6056 */       printwriter.println("ofFastMath:" + this.ofFastMath);
+/* 6057 */       printwriter.println("ofFastRender:" + this.ofFastRender);
+/* 6058 */       printwriter.println("ofTranslucentBlocks:" + this.ofTranslucentBlocks);
+/* 6059 */       printwriter.println("key_" + this.ofKeyBindZoom.getKeyDescription() + ":" + this.ofKeyBindZoom.getKeyCode());
+/* 6060 */       printwriter.close();
+/* 6061 */     } catch (Exception exception) {
+/* 6062 */       Config.warn("Failed to save options");
+/* 6063 */       exception.printStackTrace();
 /*      */     } 
 /*      */   }
 /*      */   
 /*      */   private void updateRenderClouds() {
-/* 6067 */     switch (this.ofClouds) {
+/* 6068 */     switch (this.ofClouds) {
 /*      */       case 1:
-/* 6069 */         this.clouds = 1;
+/* 6070 */         this.clouds = 1;
 /*      */         return;
 /*      */       
 /*      */       case 2:
-/* 6073 */         this.clouds = 2;
+/* 6074 */         this.clouds = 2;
 /*      */         return;
 /*      */       
 /*      */       case 3:
-/* 6077 */         this.clouds = 0;
+/* 6078 */         this.clouds = 0;
 /*      */         return;
 /*      */     } 
 /*      */     
-/* 6081 */     if (this.fancyGraphics) {
-/* 6082 */       this.clouds = 2;
+/* 6082 */     if (this.fancyGraphics) {
+/* 6083 */       this.clouds = 2;
 /*      */     } else {
 /*      */       
-/* 6085 */       this.clouds = 1;
+/* 6086 */       this.clouds = 1;
 /*      */     } 
 /*      */   }
 /*      */ 
 /*      */ 
 /*      */   
 /*      */   public void resetSettings() {
-/* 6092 */     this.renderDistanceChunks = 8;
-/* 6093 */     this.viewBobbing = true;
-/* 6094 */     this.anaglyph = false;
-/* 6095 */     this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
-/* 6096 */     this.enableVsync = false;
-/* 6097 */     updateVSync();
-/* 6098 */     this.mipmapLevels = 4;
-/* 6099 */     this.fancyGraphics = true;
-/* 6100 */     this.ambientOcclusion = 2;
-/* 6101 */     this.clouds = 2;
-/* 6102 */     this.gammaSetting = 70.0F;
-/* 6103 */     this.saturation = 0.0F;
-/* 6104 */     this.particleSetting = 0;
-/* 6105 */     this.language = 0;
-/* 6106 */     this.heldItemTooltips = true;
-/* 6107 */     this.useVbo = false;
-/* 6108 */     this.logger = false;
-/* 6109 */     this.ofFogType = 1;
-/* 6110 */     this.ofFogStart = 0.8F;
-/* 6111 */     this.ofMipmapType = 0;
-/* 6112 */     this.ofOcclusionFancy = false;
-/* 6113 */     this.ofSmartAnimations = false;
-/* 6114 */     this.ofSmoothFps = false;
-/* 6115 */     Config.updateAvailableProcessors();
-/* 6116 */     this.ofSmoothWorld = Config.isSingleProcessor();
-/* 6117 */     this.ofLazyChunkLoading = false;
-/* 6118 */     this.ofRenderRegions = false;
-/* 6119 */     this.ofFastMath = false;
-/* 6120 */     this.ofFastRender = false;
-/* 6121 */     this.ofTranslucentBlocks = 0;
-/* 6122 */     this.ofDynamicFov = true;
-/* 6123 */     this.ofAlternateBlocks = true;
-/* 6124 */     this.ofDynamicLights = 3;
-/* 6125 */     this.ofScreenshotSize = 1;
-/* 6126 */     this.ofCustomEntityModels = true;
-/* 6127 */     this.ofCustomGuis = true;
-/* 6128 */     this.ofShowGlErrors = true;
-/* 6129 */     this.ofAoLevel = 1.0F;
-/* 6130 */     this.ofAaLevel = 0;
-/* 6131 */     this.ofAfLevel = 1;
-/* 6132 */     this.ofClouds = 0;
-/* 6133 */     this.ofCloudsHeight = 0.0F;
-/* 6134 */     this.ofTrees = 0;
-/* 6135 */     this.ofRain = 0;
-/* 6136 */     this.ofBetterGrass = 3;
-/* 6137 */     this.ofAutoSaveTicks = 4000;
-/* 6138 */     this.ofLagometer = false;
-/* 6139 */     this.ofShowFps = false;
-/* 6140 */     this.ofProfiler = false;
-/* 6141 */     this.ofWeather = true;
-/* 6142 */     this.ofSky = true;
-/* 6143 */     this.ofStars = true;
-/* 6144 */     this.ofSunMoon = true;
-/* 6145 */     this.ofVignette = 0;
-/* 6146 */     this.ofChunkUpdates = 1;
-/* 6147 */     this.ofChunkUpdatesDynamic = false;
-/* 6148 */     this.ofTime = 0;
-/* 6149 */     this.ofClearWater = false;
-/* 6150 */     this.ofBetterSnow = false;
-/* 6151 */     this.ofFullscreenMode = "Default";
-/* 6152 */     this.ofSwampColors = true;
-/* 6153 */     this.ofRandomEntities = true;
-/* 6154 */     this.ofSmoothBiomes = true;
-/* 6155 */     this.ofCustomFonts = true;
-/* 6156 */     this.ofCustomColors = true;
-/* 6157 */     this.ofCustomItems = true;
-/* 6158 */     this.ofCustomSky = true;
-/* 6159 */     this.ofShowCapes = true;
-/* 6160 */     this.ofConnectedTextures = 2;
-/* 6161 */     this.ofNaturalTextures = false;
-/* 6162 */     this.ofEmissiveTextures = true;
-/* 6163 */     this.ofAnimatedWater = 0;
-/* 6164 */     this.ofAnimatedLava = 0;
-/* 6165 */     this.ofAnimatedFire = true;
-/* 6166 */     this.ofAnimatedPortal = true;
-/* 6167 */     this.ofAnimatedRedstone = true;
-/* 6168 */     this.ofAnimatedExplosion = true;
-/* 6169 */     this.ofAnimatedFlame = true;
-/* 6170 */     this.ofAnimatedSmoke = true;
-/* 6171 */     this.ofVoidParticles = true;
-/* 6172 */     this.ofWaterParticles = true;
-/* 6173 */     this.ofRainSplash = true;
-/* 6174 */     this.ofPortalParticles = true;
-/* 6175 */     this.ofPotionParticles = true;
-/* 6176 */     this.ofFireworkParticles = true;
-/* 6177 */     this.ofDrippingWaterLava = true;
-/* 6178 */     this.ofAnimatedTerrain = true;
-/* 6179 */     this.ofAnimatedTextures = true;
-/* 6180 */     Shaders.setShaderPack("OFF");
-/* 6181 */     Shaders.configAntialiasingLevel = 0;
-/* 6182 */     Shaders.uninit();
-/* 6183 */     Shaders.storeConfig();
-/* 6184 */     updateWaterOpacity();
-/* 6185 */     this.difficulty.refreshResources();
-/* 6186 */     saveOptions();
+/* 6093 */     this.renderDistanceChunks = 8;
+/* 6094 */     this.viewBobbing = true;
+/* 6095 */     this.anaglyph = false;
+/* 6096 */     this.limitFramerate = (int)Options.FRAMERATE_LIMIT.getValueMax();
+/* 6097 */     this.enableVsync = false;
+/* 6098 */     updateVSync();
+/* 6099 */     this.mipmapLevels = 4;
+/* 6100 */     this.fancyGraphics = true;
+/* 6101 */     this.ambientOcclusion = 2;
+/* 6102 */     this.clouds = 2;
+/* 6103 */     this.gammaSetting = 70.0F;
+/* 6104 */     this.saturation = 0.0F;
+/* 6105 */     this.particleSetting = 0;
+/* 6106 */     this.language = 0;
+/* 6107 */     this.heldItemTooltips = true;
+/* 6108 */     this.useVbo = false;
+/* 6109 */     this.logger = false;
+/* 6110 */     this.ofFogType = 1;
+/* 6111 */     this.ofFogStart = 0.8F;
+/* 6112 */     this.ofMipmapType = 0;
+/* 6113 */     this.ofOcclusionFancy = false;
+/* 6114 */     this.ofSmartAnimations = false;
+/* 6115 */     this.ofSmoothFps = false;
+/* 6116 */     Config.updateAvailableProcessors();
+/* 6117 */     this.ofSmoothWorld = Config.isSingleProcessor();
+/* 6118 */     this.ofLazyChunkLoading = false;
+/* 6119 */     this.ofRenderRegions = false;
+/* 6120 */     this.ofFastMath = false;
+/* 6121 */     this.ofFastRender = false;
+/* 6122 */     this.ofTranslucentBlocks = 0;
+/* 6123 */     this.ofDynamicFov = true;
+/* 6124 */     this.ofAlternateBlocks = true;
+/* 6125 */     this.ofDynamicLights = 3;
+/* 6126 */     this.ofScreenshotSize = 1;
+/* 6127 */     this.ofCustomEntityModels = true;
+/* 6128 */     this.ofCustomGuis = true;
+/* 6129 */     this.ofShowGlErrors = true;
+/* 6130 */     this.ofAoLevel = 1.0F;
+/* 6131 */     this.ofAaLevel = 0;
+/* 6132 */     this.ofAfLevel = 1;
+/* 6133 */     this.ofClouds = 0;
+/* 6134 */     this.ofCloudsHeight = 0.0F;
+/* 6135 */     this.ofTrees = 0;
+/* 6136 */     this.ofRain = 0;
+/* 6137 */     this.ofBetterGrass = 3;
+/* 6138 */     this.ofAutoSaveTicks = 4000;
+/* 6139 */     this.ofLagometer = false;
+/* 6140 */     this.ofShowFps = false;
+/* 6141 */     this.ofProfiler = false;
+/* 6142 */     this.ofWeather = true;
+/* 6143 */     this.ofSky = true;
+/* 6144 */     this.ofStars = true;
+/* 6145 */     this.ofSunMoon = true;
+/* 6146 */     this.ofVignette = 0;
+/* 6147 */     this.ofChunkUpdates = 1;
+/* 6148 */     this.ofChunkUpdatesDynamic = false;
+/* 6149 */     this.ofTime = 0;
+/* 6150 */     this.ofClearWater = false;
+/* 6151 */     this.ofBetterSnow = false;
+/* 6152 */     this.ofFullscreenMode = "Default";
+/* 6153 */     this.ofSwampColors = true;
+/* 6154 */     this.ofRandomEntities = true;
+/* 6155 */     this.ofSmoothBiomes = true;
+/* 6156 */     this.ofCustomFonts = true;
+/* 6157 */     this.ofCustomColors = true;
+/* 6158 */     this.ofCustomItems = true;
+/* 6159 */     this.ofCustomSky = true;
+/* 6160 */     this.ofShowCapes = true;
+/* 6161 */     this.ofConnectedTextures = 2;
+/* 6162 */     this.ofNaturalTextures = false;
+/* 6163 */     this.ofEmissiveTextures = true;
+/* 6164 */     this.ofAnimatedWater = 0;
+/* 6165 */     this.ofAnimatedLava = 0;
+/* 6166 */     this.ofAnimatedFire = true;
+/* 6167 */     this.ofAnimatedPortal = true;
+/* 6168 */     this.ofAnimatedRedstone = true;
+/* 6169 */     this.ofAnimatedExplosion = true;
+/* 6170 */     this.ofAnimatedFlame = true;
+/* 6171 */     this.ofAnimatedSmoke = true;
+/* 6172 */     this.ofVoidParticles = true;
+/* 6173 */     this.ofWaterParticles = true;
+/* 6174 */     this.ofRainSplash = true;
+/* 6175 */     this.ofPortalParticles = true;
+/* 6176 */     this.ofPotionParticles = true;
+/* 6177 */     this.ofFireworkParticles = true;
+/* 6178 */     this.ofDrippingWaterLava = true;
+/* 6179 */     this.ofAnimatedTerrain = true;
+/* 6180 */     this.ofAnimatedTextures = true;
+/* 6181 */     Shaders.setShaderPack("OFF");
+/* 6182 */     Shaders.configAntialiasingLevel = 0;
+/* 6183 */     Shaders.uninit();
+/* 6184 */     Shaders.storeConfig();
+/* 6185 */     updateWaterOpacity();
+/* 6186 */     this.difficulty.refreshResources();
+/* 6187 */     saveOptions();
 /*      */   }
 /*      */   
 /*      */   public void updateVSync() {
-/* 6190 */     Display.setVSyncEnabled(this.enableVsync);
+/* 6191 */     Display.setVSyncEnabled(this.enableVsync);
 /*      */   }
 /*      */   
 /*      */   private void updateWaterOpacity() {
-/* 6194 */     if (Config.isIntegratedServerRunning()) {
-/* 6195 */       Config.waterOpacityChanged = true;
+/* 6195 */     if (Config.isIntegratedServerRunning()) {
+/* 6196 */       Config.waterOpacityChanged = true;
 /*      */     }
-/* 6197 */     ClearWater.updateWaterOpacity(this, (World)this.difficulty.theWorld);
+/* 6198 */     ClearWater.updateWaterOpacity(this, (World)this.difficulty.theWorld);
 /*      */   }
 /*      */   
 /*      */   public void setAllAnimations(boolean p_setAllAnimations_1_) {
-/* 6201 */     int i = p_setAllAnimations_1_ ? 0 : 2;
-/* 6202 */     this.ofAnimatedWater = i;
-/* 6203 */     this.ofAnimatedLava = i;
-/* 6204 */     this.ofAnimatedFire = p_setAllAnimations_1_;
-/* 6205 */     this.ofAnimatedPortal = p_setAllAnimations_1_;
-/* 6206 */     this.ofAnimatedRedstone = p_setAllAnimations_1_;
-/* 6207 */     this.ofAnimatedExplosion = p_setAllAnimations_1_;
-/* 6208 */     this.ofAnimatedFlame = p_setAllAnimations_1_;
-/* 6209 */     this.ofAnimatedSmoke = p_setAllAnimations_1_;
-/* 6210 */     this.ofVoidParticles = p_setAllAnimations_1_;
-/* 6211 */     this.ofWaterParticles = p_setAllAnimations_1_;
-/* 6212 */     this.ofRainSplash = p_setAllAnimations_1_;
-/* 6213 */     this.ofPortalParticles = p_setAllAnimations_1_;
-/* 6214 */     this.ofPotionParticles = p_setAllAnimations_1_;
-/* 6215 */     this.ofFireworkParticles = p_setAllAnimations_1_;
-/* 6216 */     this.language = p_setAllAnimations_1_ ? 0 : 2;
-/* 6217 */     this.ofDrippingWaterLava = p_setAllAnimations_1_;
-/* 6218 */     this.ofAnimatedTerrain = p_setAllAnimations_1_;
-/* 6219 */     this.ofAnimatedTextures = p_setAllAnimations_1_;
+/* 6202 */     int i = p_setAllAnimations_1_ ? 0 : 2;
+/* 6203 */     this.ofAnimatedWater = i;
+/* 6204 */     this.ofAnimatedLava = i;
+/* 6205 */     this.ofAnimatedFire = p_setAllAnimations_1_;
+/* 6206 */     this.ofAnimatedPortal = p_setAllAnimations_1_;
+/* 6207 */     this.ofAnimatedRedstone = p_setAllAnimations_1_;
+/* 6208 */     this.ofAnimatedExplosion = p_setAllAnimations_1_;
+/* 6209 */     this.ofAnimatedFlame = p_setAllAnimations_1_;
+/* 6210 */     this.ofAnimatedSmoke = p_setAllAnimations_1_;
+/* 6211 */     this.ofVoidParticles = p_setAllAnimations_1_;
+/* 6212 */     this.ofWaterParticles = p_setAllAnimations_1_;
+/* 6213 */     this.ofRainSplash = p_setAllAnimations_1_;
+/* 6214 */     this.ofPortalParticles = p_setAllAnimations_1_;
+/* 6215 */     this.ofPotionParticles = p_setAllAnimations_1_;
+/* 6216 */     this.ofFireworkParticles = p_setAllAnimations_1_;
+/* 6217 */     this.language = p_setAllAnimations_1_ ? 0 : 2;
+/* 6218 */     this.ofDrippingWaterLava = p_setAllAnimations_1_;
+/* 6219 */     this.ofAnimatedTerrain = p_setAllAnimations_1_;
+/* 6220 */     this.ofAnimatedTextures = p_setAllAnimations_1_;
 /*      */   }
 /*      */   
 /*      */   private static int nextValue(int p_nextValue_0_, int[] p_nextValue_1_) {
-/* 6223 */     int i = indexOf(p_nextValue_0_, p_nextValue_1_);
-/* 6224 */     if (i < 0) {
-/* 6225 */       return p_nextValue_1_[0];
+/* 6224 */     int i = indexOf(p_nextValue_0_, p_nextValue_1_);
+/* 6225 */     if (i < 0) {
+/* 6226 */       return p_nextValue_1_[0];
 /*      */     }
-/* 6227 */     if (++i >= p_nextValue_1_.length) {
-/* 6228 */       i = 0;
+/* 6228 */     if (++i >= p_nextValue_1_.length) {
+/* 6229 */       i = 0;
 /*      */     }
-/* 6230 */     return p_nextValue_1_[i];
+/* 6231 */     return p_nextValue_1_[i];
 /*      */   }
 /*      */   
 /*      */   private static int limit(int p_limit_0_, int[] p_limit_1_) {
-/* 6234 */     int i = indexOf(p_limit_0_, p_limit_1_);
-/* 6235 */     return (i < 0) ? p_limit_1_[0] : p_limit_0_;
+/* 6235 */     int i = indexOf(p_limit_0_, p_limit_1_);
+/* 6236 */     return (i < 0) ? p_limit_1_[0] : p_limit_0_;
 /*      */   }
 /*      */   
 /*      */   private static int indexOf(int p_indexOf_0_, int[] p_indexOf_1_) {
-/* 6239 */     for (int i = 0; i < p_indexOf_1_.length; i++) {
-/* 6240 */       if (p_indexOf_1_[i] == p_indexOf_0_) {
-/* 6241 */         return i;
+/* 6240 */     for (int i = 0; i < p_indexOf_1_.length; i++) {
+/* 6241 */       if (p_indexOf_1_[i] == p_indexOf_0_) {
+/* 6242 */         return i;
 /*      */       }
 /*      */     } 
-/* 6244 */     return -1;
+/* 6245 */     return -1;
 /*      */   }
 /*      */   
 /*      */   public enum Options
 /*      */   {
-/* 6249 */     FAKE_TIME("FAKE_TIME", 117, "SET_TIME", 117, "options.faketime", true, false, 0.0F, 20000.0F, 1.0F),
+/* 6250 */     FAKE_TIME("FAKE_TIME", 117, "SET_TIME", 117, "options.faketime", true, false, 0.0F, 20000.0F, 1.0F),
 /*      */     
-/* 6251 */     INVERT_MOUSE("INVERT_MOUSE", 0, "INVERT_MOUSE", 0, "options.invertMouse", false, true),
-/* 6252 */     SENSITIVITY("SENSITIVITY", 1, "SENSITIVITY", 1, "options.sensitivity", true, false),
-/* 6253 */     FOV("FOV", 2, "FOV", 2, "options.fov", true, false, 30.0F, 110.0F, 1.0F),
-/* 6254 */     GAMMA("GAMMA", 3, "GAMMA", 3, "options.gamma", true, false),
-/* 6255 */     SATURATION("SATURATION", 4, "SATURATION", 4, "options.saturation", true, false),
-/* 6256 */     RENDER_DISTANCE("RENDER_DISTANCE", 5, "RENDER_DISTANCE", 5, "options.renderDistance", true, false, 2.0F, 16.0F, 1.0F),
-/* 6257 */     VIEW_BOBBING("VIEW_BOBBING", 6, "VIEW_BOBBING", 6, "options.viewBobbing", false, true),
-/* 6258 */     ANAGLYPH("ANAGLYPH", 7, "ANAGLYPH", 7, "options.anaglyph", false, true),
-/* 6259 */     FRAMERATE_LIMIT("FRAMERATE_LIMIT", 8, "FRAMERATE_LIMIT", 8, "options.framerateLimit", true, false, 0.0F, 260.0F, 5.0F),
-/* 6260 */     FBO_ENABLE("FBO_ENABLE", 9, "FBO_ENABLE", 9, "options.fboEnable", false, true),
-/* 6261 */     RENDER_CLOUDS("RENDER_CLOUDS", 10, "RENDER_CLOUDS", 10, "options.renderClouds", false, false),
-/* 6262 */     GRAPHICS("GRAPHICS", 11, "GRAPHICS", 11, "options.graphics", false, false),
-/* 6263 */     AMBIENT_OCCLUSION("AMBIENT_OCCLUSION", 12, "AMBIENT_OCCLUSION", 12, "options.ao", false, false),
-/* 6264 */     GUI_SCALE("GUI_SCALE", 13, "GUI_SCALE", 13, "options.guiScale", false, false),
-/* 6265 */     PARTICLES("PARTICLES", 14, "PARTICLES", 14, "options.particles", false, false),
-/* 6266 */     CHAT_VISIBILITY("CHAT_VISIBILITY", 15, "CHAT_VISIBILITY", 15, "options.chat.visibility", false, false),
-/* 6267 */     CHAT_COLOR("CHAT_COLOR", 16, "CHAT_COLOR", 16, "options.chat.color", false, true),
-/* 6268 */     CHAT_LINKS("CHAT_LINKS", 17, "CHAT_LINKS", 17, "options.chat.links", false, true),
-/* 6269 */     CHAT_OPACITY("CHAT_OPACITY", 18, "CHAT_OPACITY", 18, "options.chat.opacity", true, false),
-/* 6270 */     CHAT_LINKS_PROMPT("CHAT_LINKS_PROMPT", 19, "CHAT_LINKS_PROMPT", 19, "options.chat.links.prompt", false, true),
-/* 6271 */     SNOOPER_ENABLED("SNOOPER_ENABLED", 20, "SNOOPER_ENABLED", 20, "options.snooper", false, true),
-/* 6272 */     USE_FULLSCREEN("USE_FULLSCREEN", 21, "USE_FULLSCREEN", 21, "options.fullscreen", false, true),
-/* 6273 */     ENABLE_VSYNC("ENABLE_VSYNC", 22, "ENABLE_VSYNC", 22, "options.vsync", false, true),
-/* 6274 */     USE_VBO("USE_VBO", 23, "USE_VBO", 23, "options.vbo", false, true),
-/* 6275 */     TOUCHSCREEN("TOUCHSCREEN", 24, "TOUCHSCREEN", 24, "options.touchscreen", false, true),
-/* 6276 */     CHAT_SCALE("CHAT_SCALE", 25, "CHAT_SCALE", 25, "options.chat.scale", true, false),
-/* 6277 */     CHAT_WIDTH("CHAT_WIDTH", 26, "CHAT_WIDTH", 26, "options.chat.width", true, false),
-/* 6278 */     CHAT_HEIGHT_FOCUSED("CHAT_HEIGHT_FOCUSED", 27, "CHAT_HEIGHT_FOCUSED", 27, "options.chat.height.focused", true, false),
-/* 6279 */     CHAT_HEIGHT_UNFOCUSED("CHAT_HEIGHT_UNFOCUSED", 28, "CHAT_HEIGHT_UNFOCUSED", 28, "options.chat.height.unfocused", true, false),
-/* 6280 */     MIPMAP_LEVELS("MIPMAP_LEVELS", 29, "MIPMAP_LEVELS", 29, "options.mipmapLevels", true, false, 0.0F, 4.0F, 1.0F),
-/* 6281 */     FORCE_UNICODE_FONT("FORCE_UNICODE_FONT", 30, "FORCE_UNICODE_FONT", 30, "options.forceUnicodeFont", false, true),
-/* 6282 */     STREAM_BYTES_PER_PIXEL("STREAM_BYTES_PER_PIXEL", 31, "STREAM_BYTES_PER_PIXEL", 31, "options.stream.bytesPerPixel", true, false),
-/* 6283 */     STREAM_VOLUME_MIC("STREAM_VOLUME_MIC", 32, "STREAM_VOLUME_MIC", 32, "options.stream.micVolumne", true, false),
-/* 6284 */     STREAM_VOLUME_SYSTEM("STREAM_VOLUME_SYSTEM", 33, "STREAM_VOLUME_SYSTEM", 33, "options.stream.systemVolume", true, false),
-/* 6285 */     STREAM_KBPS("STREAM_KBPS", 34, "STREAM_KBPS", 34, "options.stream.kbps", true, false),
-/* 6286 */     STREAM_FPS("STREAM_FPS", 35, "STREAM_FPS", 35, "options.stream.fps", true, false),
-/* 6287 */     STREAM_COMPRESSION("STREAM_COMPRESSION", 36, "STREAM_COMPRESSION", 36, "options.stream.compression", false, false),
-/* 6288 */     STREAM_SEND_METADATA("STREAM_SEND_METADATA", 37, "STREAM_SEND_METADATA", 37, "options.stream.sendMetadata", false, true),
-/* 6289 */     STREAM_CHAT_ENABLED("STREAM_CHAT_ENABLED", 38, "STREAM_CHAT_ENABLED", 38, "options.stream.chat.enabled", false, false),
-/* 6290 */     STREAM_CHAT_USER_FILTER("STREAM_CHAT_USER_FILTER", 39, "STREAM_CHAT_USER_FILTER", 39, "options.stream.chat.userFilter", false, false),
-/* 6291 */     STREAM_MIC_TOGGLE_BEHAVIOR("STREAM_MIC_TOGGLE_BEHAVIOR", 40, "STREAM_MIC_TOGGLE_BEHAVIOR", 40, "options.stream.micToggleBehavior", false, false),
-/* 6292 */     BLOCK_ALTERNATIVES("BLOCK_ALTERNATIVES", 41, "BLOCK_ALTERNATIVES", 41, "options.blockAlternatives", false, true),
-/* 6293 */     REDUCED_DEBUG_INFO("REDUCED_DEBUG_INFO", 42, "REDUCED_DEBUG_INFO", 42, "options.reducedDebugInfo", false, true),
-/* 6294 */     ENTITY_SHADOWS("ENTITY_SHADOWS", 43, "ENTITY_SHADOWS", 43, "options.entityShadows", false, true),
-/* 6295 */     enumFloat("enumFloat", 44, "enumFloat", 44, "options.realmsNotifications", false, true),
-/* 6296 */     FOG_FANCY("FOG_FANCY", 45, "FOG_FANCY", 45, "of.options.FOG_FANCY", false, false),
-/* 6297 */     FOG_START("FOG_START", 46, "FOG_START", 46, "of.options.FOG_START", false, false),
-/* 6298 */     MIPMAP_TYPE("MIPMAP_TYPE", 47, "MIPMAP_TYPE", 47, "of.options.MIPMAP_TYPE", true, false, 0.0F, 3.0F, 1.0F),
-/* 6299 */     SMOOTH_FPS("SMOOTH_FPS", 48, "SMOOTH_FPS", 48, "of.options.SMOOTH_FPS", false, false),
-/* 6300 */     CLOUDS("CLOUDS", 49, "CLOUDS", 49, "of.options.CLOUDS", false, false),
-/* 6301 */     CLOUD_HEIGHT("CLOUD_HEIGHT", 50, "CLOUD_HEIGHT", 50, "of.options.CLOUD_HEIGHT", true, false),
-/* 6302 */     TREES("TREES", 51, "TREES", 51, "of.options.TREES", false, false),
-/* 6303 */     RAIN("RAIN", 52, "RAIN", 52, "of.options.RAIN", false, false),
-/* 6304 */     ANIMATED_WATER("ANIMATED_WATER", 53, "ANIMATED_WATER", 53, "of.options.ANIMATED_WATER", false, false),
-/* 6305 */     ANIMATED_LAVA("ANIMATED_LAVA", 54, "ANIMATED_LAVA", 54, "of.options.ANIMATED_LAVA", false, false),
-/* 6306 */     ANIMATED_FIRE("ANIMATED_FIRE", 55, "ANIMATED_FIRE", 55, "of.options.ANIMATED_FIRE", false, false),
-/* 6307 */     ANIMATED_PORTAL("ANIMATED_PORTAL", 56, "ANIMATED_PORTAL", 56, "of.options.ANIMATED_PORTAL", false, false),
-/* 6308 */     AO_LEVEL("AO_LEVEL", 57, "AO_LEVEL", 57, "of.options.AO_LEVEL", true, false),
-/* 6309 */     LAGOMETER("LAGOMETER", 58, "LAGOMETER", 58, "of.options.LAGOMETER", false, false),
-/* 6310 */     SHOW_FPS("SHOW_FPS", 59, "SHOW_FPS", 59, "of.options.SHOW_FPS", false, false),
-/* 6311 */     AUTOSAVE_TICKS("AUTOSAVE_TICKS", 60, "AUTOSAVE_TICKS", 60, "of.options.AUTOSAVE_TICKS", false, false),
-/* 6312 */     BETTER_GRASS("BETTER_GRASS", 61, "BETTER_GRASS", 61, "of.options.BETTER_GRASS", false, false),
-/* 6313 */     ANIMATED_REDSTONE("ANIMATED_REDSTONE", 62, "ANIMATED_REDSTONE", 62, "of.options.ANIMATED_REDSTONE", false, false),
-/* 6314 */     ANIMATED_EXPLOSION("ANIMATED_EXPLOSION", 63, "ANIMATED_EXPLOSION", 63, "of.options.ANIMATED_EXPLOSION", false, false),
-/* 6315 */     ANIMATED_FLAME("ANIMATED_FLAME", 64, "ANIMATED_FLAME", 64, "of.options.ANIMATED_FLAME", false, false),
-/* 6316 */     ANIMATED_SMOKE("ANIMATED_SMOKE", 65, "ANIMATED_SMOKE", 65, "of.options.ANIMATED_SMOKE", false, false),
-/* 6317 */     WEATHER("WEATHER", 66, "WEATHER", 66, "of.options.WEATHER", false, false),
-/* 6318 */     SKY("SKY", 67, "SKY", 67, "of.options.SKY", false, false),
-/* 6319 */     STARS("STARS", 68, "STARS", 68, "of.options.STARS", false, false),
-/* 6320 */     SUN_MOON("SUN_MOON", 69, "SUN_MOON", 69, "of.options.SUN_MOON", false, false),
-/* 6321 */     VIGNETTE("VIGNETTE", 70, "VIGNETTE", 70, "of.options.VIGNETTE", false, false),
-/* 6322 */     CHUNK_UPDATES("CHUNK_UPDATES", 71, "CHUNK_UPDATES", 71, "of.options.CHUNK_UPDATES", false, false),
-/* 6323 */     CHUNK_UPDATES_DYNAMIC("CHUNK_UPDATES_DYNAMIC", 72, "CHUNK_UPDATES_DYNAMIC", 72, "of.options.CHUNK_UPDATES_DYNAMIC", false, false),
-/* 6324 */     TIME("TIME", 73, "TIME", 73, "of.options.TIME", false, false),
-/* 6325 */     CLEAR_WATER("CLEAR_WATER", 74, "CLEAR_WATER", 74, "of.options.CLEAR_WATER", false, false),
-/* 6326 */     SMOOTH_WORLD("SMOOTH_WORLD", 75, "SMOOTH_WORLD", 75, "of.options.SMOOTH_WORLD", false, false),
-/* 6327 */     VOID_PARTICLES("VOID_PARTICLES", 76, "VOID_PARTICLES", 76, "of.options.VOID_PARTICLES", false, false),
-/* 6328 */     WATER_PARTICLES("WATER_PARTICLES", 77, "WATER_PARTICLES", 77, "of.options.WATER_PARTICLES", false, false),
-/* 6329 */     RAIN_SPLASH("RAIN_SPLASH", 78, "RAIN_SPLASH", 78, "of.options.RAIN_SPLASH", false, false),
-/* 6330 */     PORTAL_PARTICLES("PORTAL_PARTICLES", 79, "PORTAL_PARTICLES", 79, "of.options.PORTAL_PARTICLES", false, false),
-/* 6331 */     POTION_PARTICLES("POTION_PARTICLES", 80, "POTION_PARTICLES", 80, "of.options.POTION_PARTICLES", false, false),
-/* 6332 */     FIREWORK_PARTICLES("FIREWORK_PARTICLES", 81, "FIREWORK_PARTICLES", 81, "of.options.FIREWORK_PARTICLES", false, false),
-/* 6333 */     PROFILER("PROFILER", 82, "PROFILER", 82, "of.options.PROFILER", false, false),
-/* 6334 */     DRIPPING_WATER_LAVA("DRIPPING_WATER_LAVA", 83, "DRIPPING_WATER_LAVA", 83, "of.options.DRIPPING_WATER_LAVA", false, false),
-/* 6335 */     BETTER_SNOW("BETTER_SNOW", 84, "BETTER_SNOW", 84, "of.options.BETTER_SNOW", false, false),
-/* 6336 */     FULLSCREEN_MODE("FULLSCREEN_MODE", 85, "FULLSCREEN_MODE", 85, "of.options.FULLSCREEN_MODE", true, false, 0.0F, (Config.getDisplayModes()).length, 1.0F),
-/* 6337 */     ANIMATED_TERRAIN("ANIMATED_TERRAIN", 86, "ANIMATED_TERRAIN", 86, "of.options.ANIMATED_TERRAIN", false, false),
-/* 6338 */     SWAMP_COLORS("SWAMP_COLORS", 87, "SWAMP_COLORS", 87, "of.options.SWAMP_COLORS", false, false),
-/* 6339 */     RANDOM_ENTITIES("RANDOM_ENTITIES", 88, "RANDOM_ENTITIES", 88, "of.options.RANDOM_ENTITIES", false, false),
-/* 6340 */     SMOOTH_BIOMES("SMOOTH_BIOMES", 89, "SMOOTH_BIOMES", 89, "of.options.SMOOTH_BIOMES", false, false),
-/* 6341 */     CUSTOM_FONTS("CUSTOM_FONTS", 90, "CUSTOM_FONTS", 90, "of.options.CUSTOM_FONTS", false, false),
-/* 6342 */     CUSTOM_COLORS("CUSTOM_COLORS", 91, "CUSTOM_COLORS", 91, "of.options.CUSTOM_COLORS", false, false),
-/* 6343 */     SHOW_CAPES("SHOW_CAPES", 92, "SHOW_CAPES", 92, "of.options.SHOW_CAPES", false, false),
-/* 6344 */     CONNECTED_TEXTURES("CONNECTED_TEXTURES", 93, "CONNECTED_TEXTURES", 93, "of.options.CONNECTED_TEXTURES", false, false),
-/* 6345 */     CUSTOM_ITEMS("CUSTOM_ITEMS", 94, "CUSTOM_ITEMS", 94, "of.options.CUSTOM_ITEMS", false, false),
-/* 6346 */     AA_LEVEL("AA_LEVEL", 95, "AA_LEVEL", 95, "of.options.AA_LEVEL", true, false, 0.0F, 16.0F, 1.0F),
-/* 6347 */     AF_LEVEL("AF_LEVEL", 96, "AF_LEVEL", 96, "of.options.AF_LEVEL", true, false, 1.0F, 16.0F, 1.0F),
-/* 6348 */     ANIMATED_TEXTURES("ANIMATED_TEXTURES", 97, "ANIMATED_TEXTURES", 97, "of.options.ANIMATED_TEXTURES", false, false),
-/* 6349 */     NATURAL_TEXTURES("NATURAL_TEXTURES", 98, "NATURAL_TEXTURES", 98, "of.options.NATURAL_TEXTURES", false, false),
-/* 6350 */     EMISSIVE_TEXTURES("EMISSIVE_TEXTURES", 99, "EMISSIVE_TEXTURES", 99, "of.options.EMISSIVE_TEXTURES", false, false),
-/* 6351 */     HELD_ITEM_TOOLTIPS("HELD_ITEM_TOOLTIPS", 100, "HELD_ITEM_TOOLTIPS", 100, "of.options.HELD_ITEM_TOOLTIPS", false, false),
-/* 6352 */     DROPPED_ITEMS("DROPPED_ITEMS", 101, "DROPPED_ITEMS", 101, "of.options.DROPPED_ITEMS", false, false),
-/* 6353 */     LAZY_CHUNK_LOADING("LAZY_CHUNK_LOADING", 102, "LAZY_CHUNK_LOADING", 102, "of.options.LAZY_CHUNK_LOADING", false, false),
-/* 6354 */     CUSTOM_SKY("CUSTOM_SKY", 103, "CUSTOM_SKY", 103, "of.options.CUSTOM_SKY", false, false),
-/* 6355 */     FAST_MATH("FAST_MATH", 104, "FAST_MATH", 104, "of.options.FAST_MATH", false, false),
-/* 6356 */     FAST_RENDER("FAST_RENDER", 105, "FAST_RENDER", 105, "of.options.FAST_RENDER", false, false),
-/* 6357 */     TRANSLUCENT_BLOCKS("TRANSLUCENT_BLOCKS", 106, "TRANSLUCENT_BLOCKS", 106, "of.options.TRANSLUCENT_BLOCKS", false, false),
-/* 6358 */     DYNAMIC_FOV("DYNAMIC_FOV", 107, "DYNAMIC_FOV", 107, "of.options.DYNAMIC_FOV", false, false),
-/* 6359 */     DYNAMIC_LIGHTS("DYNAMIC_LIGHTS", 108, "DYNAMIC_LIGHTS", 108, "of.options.DYNAMIC_LIGHTS", false, false),
-/* 6360 */     ALTERNATE_BLOCKS("ALTERNATE_BLOCKS", 109, "ALTERNATE_BLOCKS", 109, "of.options.ALTERNATE_BLOCKS", false, false),
-/* 6361 */     CUSTOM_ENTITY_MODELS("CUSTOM_ENTITY_MODELS", 110, "CUSTOM_ENTITY_MODELS", 110, "of.options.CUSTOM_ENTITY_MODELS", false, false),
-/* 6362 */     ADVANCED_TOOLTIPS("ADVANCED_TOOLTIPS", 111, "ADVANCED_TOOLTIPS", 111, "of.options.ADVANCED_TOOLTIPS", false, false),
-/* 6363 */     SCREENSHOT_SIZE("SCREENSHOT_SIZE", 112, "SCREENSHOT_SIZE", 112, "of.options.SCREENSHOT_SIZE", false, false),
-/* 6364 */     CUSTOM_GUIS("CUSTOM_GUIS", 113, "CUSTOM_GUIS", 113, "of.options.CUSTOM_GUIS", false, false),
-/* 6365 */     RENDER_REGIONS("RENDER_REGIONS", 114, "RENDER_REGIONS", 114, "of.options.RENDER_REGIONS", false, false),
-/* 6366 */     SHOW_GL_ERRORS("SHOW_GL_ERRORS", 115, "SHOW_GL_ERRORS", 115, "of.options.SHOW_GL_ERRORS", false, false),
-/* 6367 */     SMART_ANIMATIONS("SMART_ANIMATIONS", 116, "SMART_ANIMATIONS", 116, "of.options.SMART_ANIMATIONS", false, false);
+/* 6252 */     INVERT_MOUSE("INVERT_MOUSE", 0, "INVERT_MOUSE", 0, "options.invertMouse", false, true),
+/* 6253 */     SENSITIVITY("SENSITIVITY", 1, "SENSITIVITY", 1, "options.sensitivity", true, false),
+/* 6254 */     FOV("FOV", 2, "FOV", 2, "options.fov", true, false, 30.0F, 110.0F, 1.0F),
+/* 6255 */     GAMMA("GAMMA", 3, "GAMMA", 3, "options.gamma", true, false),
+/* 6256 */     SATURATION("SATURATION", 4, "SATURATION", 4, "options.saturation", true, false),
+/* 6257 */     RENDER_DISTANCE("RENDER_DISTANCE", 5, "RENDER_DISTANCE", 5, "options.renderDistance", true, false, 2.0F, 16.0F, 1.0F),
+/* 6258 */     VIEW_BOBBING("VIEW_BOBBING", 6, "VIEW_BOBBING", 6, "options.viewBobbing", false, true),
+/* 6259 */     ANAGLYPH("ANAGLYPH", 7, "ANAGLYPH", 7, "options.anaglyph", false, true),
+/* 6260 */     FRAMERATE_LIMIT("FRAMERATE_LIMIT", 8, "FRAMERATE_LIMIT", 8, "options.framerateLimit", true, false, 0.0F, 260.0F, 5.0F),
+/* 6261 */     FBO_ENABLE("FBO_ENABLE", 9, "FBO_ENABLE", 9, "options.fboEnable", false, true),
+/* 6262 */     RENDER_CLOUDS("RENDER_CLOUDS", 10, "RENDER_CLOUDS", 10, "options.renderClouds", false, false),
+/* 6263 */     GRAPHICS("GRAPHICS", 11, "GRAPHICS", 11, "options.graphics", false, false),
+/* 6264 */     AMBIENT_OCCLUSION("AMBIENT_OCCLUSION", 12, "AMBIENT_OCCLUSION", 12, "options.ao", false, false),
+/* 6265 */     GUI_SCALE("GUI_SCALE", 13, "GUI_SCALE", 13, "options.guiScale", false, false),
+/* 6266 */     PARTICLES("PARTICLES", 14, "PARTICLES", 14, "options.particles", false, false),
+/* 6267 */     CHAT_VISIBILITY("CHAT_VISIBILITY", 15, "CHAT_VISIBILITY", 15, "options.chat.visibility", false, false),
+/* 6268 */     CHAT_COLOR("CHAT_COLOR", 16, "CHAT_COLOR", 16, "options.chat.color", false, true),
+/* 6269 */     CHAT_LINKS("CHAT_LINKS", 17, "CHAT_LINKS", 17, "options.chat.links", false, true),
+/* 6270 */     CHAT_OPACITY("CHAT_OPACITY", 18, "CHAT_OPACITY", 18, "options.chat.opacity", true, false),
+/* 6271 */     CHAT_LINKS_PROMPT("CHAT_LINKS_PROMPT", 19, "CHAT_LINKS_PROMPT", 19, "options.chat.links.prompt", false, true),
+/* 6272 */     SNOOPER_ENABLED("SNOOPER_ENABLED", 20, "SNOOPER_ENABLED", 20, "options.snooper", false, true),
+/* 6273 */     USE_FULLSCREEN("USE_FULLSCREEN", 21, "USE_FULLSCREEN", 21, "options.fullscreen", false, true),
+/* 6274 */     ENABLE_VSYNC("ENABLE_VSYNC", 22, "ENABLE_VSYNC", 22, "options.vsync", false, true),
+/* 6275 */     USE_VBO("USE_VBO", 23, "USE_VBO", 23, "options.vbo", false, true),
+/* 6276 */     TOUCHSCREEN("TOUCHSCREEN", 24, "TOUCHSCREEN", 24, "options.touchscreen", false, true),
+/* 6277 */     CHAT_SCALE("CHAT_SCALE", 25, "CHAT_SCALE", 25, "options.chat.scale", true, false),
+/* 6278 */     CHAT_WIDTH("CHAT_WIDTH", 26, "CHAT_WIDTH", 26, "options.chat.width", true, false),
+/* 6279 */     CHAT_HEIGHT_FOCUSED("CHAT_HEIGHT_FOCUSED", 27, "CHAT_HEIGHT_FOCUSED", 27, "options.chat.height.focused", true, false),
+/* 6280 */     CHAT_HEIGHT_UNFOCUSED("CHAT_HEIGHT_UNFOCUSED", 28, "CHAT_HEIGHT_UNFOCUSED", 28, "options.chat.height.unfocused", true, false),
+/* 6281 */     MIPMAP_LEVELS("MIPMAP_LEVELS", 29, "MIPMAP_LEVELS", 29, "options.mipmapLevels", true, false, 0.0F, 4.0F, 1.0F),
+/* 6282 */     FORCE_UNICODE_FONT("FORCE_UNICODE_FONT", 30, "FORCE_UNICODE_FONT", 30, "options.forceUnicodeFont", false, true),
+/* 6283 */     STREAM_BYTES_PER_PIXEL("STREAM_BYTES_PER_PIXEL", 31, "STREAM_BYTES_PER_PIXEL", 31, "options.stream.bytesPerPixel", true, false),
+/* 6284 */     STREAM_VOLUME_MIC("STREAM_VOLUME_MIC", 32, "STREAM_VOLUME_MIC", 32, "options.stream.micVolumne", true, false),
+/* 6285 */     STREAM_VOLUME_SYSTEM("STREAM_VOLUME_SYSTEM", 33, "STREAM_VOLUME_SYSTEM", 33, "options.stream.systemVolume", true, false),
+/* 6286 */     STREAM_KBPS("STREAM_KBPS", 34, "STREAM_KBPS", 34, "options.stream.kbps", true, false),
+/* 6287 */     STREAM_FPS("STREAM_FPS", 35, "STREAM_FPS", 35, "options.stream.fps", true, false),
+/* 6288 */     STREAM_COMPRESSION("STREAM_COMPRESSION", 36, "STREAM_COMPRESSION", 36, "options.stream.compression", false, false),
+/* 6289 */     STREAM_SEND_METADATA("STREAM_SEND_METADATA", 37, "STREAM_SEND_METADATA", 37, "options.stream.sendMetadata", false, true),
+/* 6290 */     STREAM_CHAT_ENABLED("STREAM_CHAT_ENABLED", 38, "STREAM_CHAT_ENABLED", 38, "options.stream.chat.enabled", false, false),
+/* 6291 */     STREAM_CHAT_USER_FILTER("STREAM_CHAT_USER_FILTER", 39, "STREAM_CHAT_USER_FILTER", 39, "options.stream.chat.userFilter", false, false),
+/* 6292 */     STREAM_MIC_TOGGLE_BEHAVIOR("STREAM_MIC_TOGGLE_BEHAVIOR", 40, "STREAM_MIC_TOGGLE_BEHAVIOR", 40, "options.stream.micToggleBehavior", false, false),
+/* 6293 */     BLOCK_ALTERNATIVES("BLOCK_ALTERNATIVES", 41, "BLOCK_ALTERNATIVES", 41, "options.blockAlternatives", false, true),
+/* 6294 */     REDUCED_DEBUG_INFO("REDUCED_DEBUG_INFO", 42, "REDUCED_DEBUG_INFO", 42, "options.reducedDebugInfo", false, true),
+/* 6295 */     ENTITY_SHADOWS("ENTITY_SHADOWS", 43, "ENTITY_SHADOWS", 43, "options.entityShadows", false, true),
+/* 6296 */     enumFloat("enumFloat", 44, "enumFloat", 44, "options.realmsNotifications", false, true),
+/* 6297 */     FOG_FANCY("FOG_FANCY", 45, "FOG_FANCY", 45, "of.options.FOG_FANCY", false, false),
+/* 6298 */     FOG_START("FOG_START", 46, "FOG_START", 46, "of.options.FOG_START", false, false),
+/* 6299 */     MIPMAP_TYPE("MIPMAP_TYPE", 47, "MIPMAP_TYPE", 47, "of.options.MIPMAP_TYPE", true, false, 0.0F, 3.0F, 1.0F),
+/* 6300 */     SMOOTH_FPS("SMOOTH_FPS", 48, "SMOOTH_FPS", 48, "of.options.SMOOTH_FPS", false, false),
+/* 6301 */     CLOUDS("CLOUDS", 49, "CLOUDS", 49, "of.options.CLOUDS", false, false),
+/* 6302 */     CLOUD_HEIGHT("CLOUD_HEIGHT", 50, "CLOUD_HEIGHT", 50, "of.options.CLOUD_HEIGHT", true, false),
+/* 6303 */     TREES("TREES", 51, "TREES", 51, "of.options.TREES", false, false),
+/* 6304 */     RAIN("RAIN", 52, "RAIN", 52, "of.options.RAIN", false, false),
+/* 6305 */     ANIMATED_WATER("ANIMATED_WATER", 53, "ANIMATED_WATER", 53, "of.options.ANIMATED_WATER", false, false),
+/* 6306 */     ANIMATED_LAVA("ANIMATED_LAVA", 54, "ANIMATED_LAVA", 54, "of.options.ANIMATED_LAVA", false, false),
+/* 6307 */     ANIMATED_FIRE("ANIMATED_FIRE", 55, "ANIMATED_FIRE", 55, "of.options.ANIMATED_FIRE", false, false),
+/* 6308 */     ANIMATED_PORTAL("ANIMATED_PORTAL", 56, "ANIMATED_PORTAL", 56, "of.options.ANIMATED_PORTAL", false, false),
+/* 6309 */     AO_LEVEL("AO_LEVEL", 57, "AO_LEVEL", 57, "of.options.AO_LEVEL", true, false),
+/* 6310 */     LAGOMETER("LAGOMETER", 58, "LAGOMETER", 58, "of.options.LAGOMETER", false, false),
+/* 6311 */     SHOW_FPS("SHOW_FPS", 59, "SHOW_FPS", 59, "of.options.SHOW_FPS", false, false),
+/* 6312 */     AUTOSAVE_TICKS("AUTOSAVE_TICKS", 60, "AUTOSAVE_TICKS", 60, "of.options.AUTOSAVE_TICKS", false, false),
+/* 6313 */     BETTER_GRASS("BETTER_GRASS", 61, "BETTER_GRASS", 61, "of.options.BETTER_GRASS", false, false),
+/* 6314 */     ANIMATED_REDSTONE("ANIMATED_REDSTONE", 62, "ANIMATED_REDSTONE", 62, "of.options.ANIMATED_REDSTONE", false, false),
+/* 6315 */     ANIMATED_EXPLOSION("ANIMATED_EXPLOSION", 63, "ANIMATED_EXPLOSION", 63, "of.options.ANIMATED_EXPLOSION", false, false),
+/* 6316 */     ANIMATED_FLAME("ANIMATED_FLAME", 64, "ANIMATED_FLAME", 64, "of.options.ANIMATED_FLAME", false, false),
+/* 6317 */     ANIMATED_SMOKE("ANIMATED_SMOKE", 65, "ANIMATED_SMOKE", 65, "of.options.ANIMATED_SMOKE", false, false),
+/* 6318 */     WEATHER("WEATHER", 66, "WEATHER", 66, "of.options.WEATHER", false, false),
+/* 6319 */     SKY("SKY", 67, "SKY", 67, "of.options.SKY", false, false),
+/* 6320 */     STARS("STARS", 68, "STARS", 68, "of.options.STARS", false, false),
+/* 6321 */     SUN_MOON("SUN_MOON", 69, "SUN_MOON", 69, "of.options.SUN_MOON", false, false),
+/* 6322 */     VIGNETTE("VIGNETTE", 70, "VIGNETTE", 70, "of.options.VIGNETTE", false, false),
+/* 6323 */     CHUNK_UPDATES("CHUNK_UPDATES", 71, "CHUNK_UPDATES", 71, "of.options.CHUNK_UPDATES", false, false),
+/* 6324 */     CHUNK_UPDATES_DYNAMIC("CHUNK_UPDATES_DYNAMIC", 72, "CHUNK_UPDATES_DYNAMIC", 72, "of.options.CHUNK_UPDATES_DYNAMIC", false, false),
+/* 6325 */     TIME("TIME", 73, "TIME", 73, "of.options.TIME", false, false),
+/* 6326 */     CLEAR_WATER("CLEAR_WATER", 74, "CLEAR_WATER", 74, "of.options.CLEAR_WATER", false, false),
+/* 6327 */     SMOOTH_WORLD("SMOOTH_WORLD", 75, "SMOOTH_WORLD", 75, "of.options.SMOOTH_WORLD", false, false),
+/* 6328 */     VOID_PARTICLES("VOID_PARTICLES", 76, "VOID_PARTICLES", 76, "of.options.VOID_PARTICLES", false, false),
+/* 6329 */     WATER_PARTICLES("WATER_PARTICLES", 77, "WATER_PARTICLES", 77, "of.options.WATER_PARTICLES", false, false),
+/* 6330 */     RAIN_SPLASH("RAIN_SPLASH", 78, "RAIN_SPLASH", 78, "of.options.RAIN_SPLASH", false, false),
+/* 6331 */     PORTAL_PARTICLES("PORTAL_PARTICLES", 79, "PORTAL_PARTICLES", 79, "of.options.PORTAL_PARTICLES", false, false),
+/* 6332 */     POTION_PARTICLES("POTION_PARTICLES", 80, "POTION_PARTICLES", 80, "of.options.POTION_PARTICLES", false, false),
+/* 6333 */     FIREWORK_PARTICLES("FIREWORK_PARTICLES", 81, "FIREWORK_PARTICLES", 81, "of.options.FIREWORK_PARTICLES", false, false),
+/* 6334 */     PROFILER("PROFILER", 82, "PROFILER", 82, "of.options.PROFILER", false, false),
+/* 6335 */     DRIPPING_WATER_LAVA("DRIPPING_WATER_LAVA", 83, "DRIPPING_WATER_LAVA", 83, "of.options.DRIPPING_WATER_LAVA", false, false),
+/* 6336 */     BETTER_SNOW("BETTER_SNOW", 84, "BETTER_SNOW", 84, "of.options.BETTER_SNOW", false, false),
+/* 6337 */     FULLSCREEN_MODE("FULLSCREEN_MODE", 85, "FULLSCREEN_MODE", 85, "of.options.FULLSCREEN_MODE", true, false, 0.0F, (Config.getDisplayModes()).length, 1.0F),
+/* 6338 */     ANIMATED_TERRAIN("ANIMATED_TERRAIN", 86, "ANIMATED_TERRAIN", 86, "of.options.ANIMATED_TERRAIN", false, false),
+/* 6339 */     SWAMP_COLORS("SWAMP_COLORS", 87, "SWAMP_COLORS", 87, "of.options.SWAMP_COLORS", false, false),
+/* 6340 */     RANDOM_ENTITIES("RANDOM_ENTITIES", 88, "RANDOM_ENTITIES", 88, "of.options.RANDOM_ENTITIES", false, false),
+/* 6341 */     SMOOTH_BIOMES("SMOOTH_BIOMES", 89, "SMOOTH_BIOMES", 89, "of.options.SMOOTH_BIOMES", false, false),
+/* 6342 */     CUSTOM_FONTS("CUSTOM_FONTS", 90, "CUSTOM_FONTS", 90, "of.options.CUSTOM_FONTS", false, false),
+/* 6343 */     CUSTOM_COLORS("CUSTOM_COLORS", 91, "CUSTOM_COLORS", 91, "of.options.CUSTOM_COLORS", false, false),
+/* 6344 */     SHOW_CAPES("SHOW_CAPES", 92, "SHOW_CAPES", 92, "of.options.SHOW_CAPES", false, false),
+/* 6345 */     CONNECTED_TEXTURES("CONNECTED_TEXTURES", 93, "CONNECTED_TEXTURES", 93, "of.options.CONNECTED_TEXTURES", false, false),
+/* 6346 */     CUSTOM_ITEMS("CUSTOM_ITEMS", 94, "CUSTOM_ITEMS", 94, "of.options.CUSTOM_ITEMS", false, false),
+/* 6347 */     AA_LEVEL("AA_LEVEL", 95, "AA_LEVEL", 95, "of.options.AA_LEVEL", true, false, 0.0F, 16.0F, 1.0F),
+/* 6348 */     AF_LEVEL("AF_LEVEL", 96, "AF_LEVEL", 96, "of.options.AF_LEVEL", true, false, 1.0F, 16.0F, 1.0F),
+/* 6349 */     ANIMATED_TEXTURES("ANIMATED_TEXTURES", 97, "ANIMATED_TEXTURES", 97, "of.options.ANIMATED_TEXTURES", false, false),
+/* 6350 */     NATURAL_TEXTURES("NATURAL_TEXTURES", 98, "NATURAL_TEXTURES", 98, "of.options.NATURAL_TEXTURES", false, false),
+/* 6351 */     EMISSIVE_TEXTURES("EMISSIVE_TEXTURES", 99, "EMISSIVE_TEXTURES", 99, "of.options.EMISSIVE_TEXTURES", false, false),
+/* 6352 */     HELD_ITEM_TOOLTIPS("HELD_ITEM_TOOLTIPS", 100, "HELD_ITEM_TOOLTIPS", 100, "of.options.HELD_ITEM_TOOLTIPS", false, false),
+/* 6353 */     DROPPED_ITEMS("DROPPED_ITEMS", 101, "DROPPED_ITEMS", 101, "of.options.DROPPED_ITEMS", false, false),
+/* 6354 */     LAZY_CHUNK_LOADING("LAZY_CHUNK_LOADING", 102, "LAZY_CHUNK_LOADING", 102, "of.options.LAZY_CHUNK_LOADING", false, false),
+/* 6355 */     CUSTOM_SKY("CUSTOM_SKY", 103, "CUSTOM_SKY", 103, "of.options.CUSTOM_SKY", false, false),
+/* 6356 */     FAST_MATH("FAST_MATH", 104, "FAST_MATH", 104, "of.options.FAST_MATH", false, false),
+/* 6357 */     FAST_RENDER("FAST_RENDER", 105, "FAST_RENDER", 105, "of.options.FAST_RENDER", false, false),
+/* 6358 */     TRANSLUCENT_BLOCKS("TRANSLUCENT_BLOCKS", 106, "TRANSLUCENT_BLOCKS", 106, "of.options.TRANSLUCENT_BLOCKS", false, false),
+/* 6359 */     DYNAMIC_FOV("DYNAMIC_FOV", 107, "DYNAMIC_FOV", 107, "of.options.DYNAMIC_FOV", false, false),
+/* 6360 */     DYNAMIC_LIGHTS("DYNAMIC_LIGHTS", 108, "DYNAMIC_LIGHTS", 108, "of.options.DYNAMIC_LIGHTS", false, false),
+/* 6361 */     ALTERNATE_BLOCKS("ALTERNATE_BLOCKS", 109, "ALTERNATE_BLOCKS", 109, "of.options.ALTERNATE_BLOCKS", false, false),
+/* 6362 */     CUSTOM_ENTITY_MODELS("CUSTOM_ENTITY_MODELS", 110, "CUSTOM_ENTITY_MODELS", 110, "of.options.CUSTOM_ENTITY_MODELS", false, false),
+/* 6363 */     ADVANCED_TOOLTIPS("ADVANCED_TOOLTIPS", 111, "ADVANCED_TOOLTIPS", 111, "of.options.ADVANCED_TOOLTIPS", false, false),
+/* 6364 */     SCREENSHOT_SIZE("SCREENSHOT_SIZE", 112, "SCREENSHOT_SIZE", 112, "of.options.SCREENSHOT_SIZE", false, false),
+/* 6365 */     CUSTOM_GUIS("CUSTOM_GUIS", 113, "CUSTOM_GUIS", 113, "of.options.CUSTOM_GUIS", false, false),
+/* 6366 */     RENDER_REGIONS("RENDER_REGIONS", 114, "RENDER_REGIONS", 114, "of.options.RENDER_REGIONS", false, false),
+/* 6367 */     SHOW_GL_ERRORS("SHOW_GL_ERRORS", 115, "SHOW_GL_ERRORS", 115, "of.options.SHOW_GL_ERRORS", false, false),
+/* 6368 */     SMART_ANIMATIONS("SMART_ANIMATIONS", 116, "SMART_ANIMATIONS", 116, "of.options.SMART_ANIMATIONS", false, false);
 /*      */     
 /*      */     private final boolean enumBoolean;
 /*      */     private final boolean enumString;
@@ -6375,13 +6376,13 @@
 /*      */     
 /*      */     public static Options getEnumOptions(int ordinal) {
 /*      */       Options[] values;
-/* 6378 */       for (int length = (values = values()).length, i = 0; i < length; i++) {
-/* 6379 */         Options gamesettings$options = values[i];
-/* 6380 */         if (gamesettings$options.returnEnumOrdinal() == ordinal) {
-/* 6381 */           return gamesettings$options;
+/* 6379 */       for (int length = (values = values()).length, i = 0; i < length; i++) {
+/* 6380 */         Options gamesettings$options = values[i];
+/* 6381 */         if (gamesettings$options.returnEnumOrdinal() == ordinal) {
+/* 6382 */           return gamesettings$options;
 /*      */         }
 /*      */       } 
-/* 6384 */       return null;
+/* 6385 */       return null;
 /*      */     }
 /*      */ 
 /*      */ 
@@ -6389,62 +6390,62 @@
 /*      */ 
 /*      */     
 /*      */     Options(String s2, int n2, String s, int n, String str, boolean isFloat, boolean isBoolean, float valMin, float valMax, float valStep) {
-/* 6392 */       this.valueStep = str;
-/* 6393 */       this.enumBoolean = isFloat;
-/* 6394 */       this.enumString = isBoolean;
-/* 6395 */       this.valueMax = valMin;
-/* 6396 */       this.$VALUES = valMax;
-/* 6397 */       this.valueMin = valStep;
+/* 6393 */       this.valueStep = str;
+/* 6394 */       this.enumBoolean = isFloat;
+/* 6395 */       this.enumString = isBoolean;
+/* 6396 */       this.valueMax = valMin;
+/* 6397 */       this.$VALUES = valMax;
+/* 6398 */       this.valueMin = valStep;
 /*      */     }
 /*      */     
 /*      */     public boolean getEnumFloat() {
-/* 6401 */       return this.enumBoolean;
+/* 6402 */       return this.enumBoolean;
 /*      */     }
 /*      */     
 /*      */     public boolean getEnumBoolean() {
-/* 6405 */       return this.enumString;
+/* 6406 */       return this.enumString;
 /*      */     }
 /*      */     
 /*      */     public int returnEnumOrdinal() {
-/* 6409 */       return ordinal();
+/* 6410 */       return ordinal();
 /*      */     }
 /*      */     
 /*      */     public String getEnumString() {
-/* 6413 */       return this.valueStep;
+/* 6414 */       return this.valueStep;
 /*      */     }
 /*      */     
 /*      */     public float getValueMax() {
-/* 6417 */       return this.$VALUES;
+/* 6418 */       return this.$VALUES;
 /*      */     }
 /*      */     
 /*      */     public void setValueMax(float value) {
-/* 6421 */       this.$VALUES = value;
+/* 6422 */       this.$VALUES = value;
 /*      */     }
 /*      */     
 /*      */     public float normalizeValue(float value) {
-/* 6425 */       return MathHelper.clamp_float((snapToStepClamp(value) - this.valueMax) / (this.$VALUES - this.valueMax), 0.0F, 1.0F);
+/* 6426 */       return MathHelper.clamp_float((snapToStepClamp(value) - this.valueMax) / (this.$VALUES - this.valueMax), 0.0F, 1.0F);
 /*      */     }
 /*      */     
 /*      */     public float denormalizeValue(float value) {
-/* 6429 */       return snapToStepClamp(this.valueMax + (this.$VALUES - this.valueMax) * MathHelper.clamp_float(value, 0.0F, 1.0F));
+/* 6430 */       return snapToStepClamp(this.valueMax + (this.$VALUES - this.valueMax) * MathHelper.clamp_float(value, 0.0F, 1.0F));
 /*      */     }
 /*      */     
 /*      */     public float snapToStepClamp(float value) {
-/* 6433 */       value = snapToStep(value);
-/* 6434 */       return MathHelper.clamp_float(value, this.valueMax, this.$VALUES);
+/* 6434 */       value = snapToStep(value);
+/* 6435 */       return MathHelper.clamp_float(value, this.valueMax, this.$VALUES);
 /*      */     }
 /*      */     
 /*      */     protected float snapToStep(float value) {
-/* 6438 */       if (this.valueMin > 0.0F) {
-/* 6439 */         value = this.valueMin * Math.round(value / this.valueMin);
+/* 6439 */       if (this.valueMin > 0.0F) {
+/* 6440 */         value = this.valueMin * Math.round(value / this.valueMin);
 /*      */       }
-/* 6441 */       return value;
+/* 6442 */       return value;
 /*      */     }
 /*      */   }
 /*      */ }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\net\minecraft\client\settings\GameSettings.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\net\minecraft\client\settings\GameSettings.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

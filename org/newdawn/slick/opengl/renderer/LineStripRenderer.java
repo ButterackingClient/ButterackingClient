@@ -19,7 +19,7 @@ public interface LineStripRenderer {
 }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\org\newdawn\slick\opengl\renderer\LineStripRenderer.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\org\newdawn\slick\opengl\renderer\LineStripRenderer.class
  * Java compiler version: 5 (49.0)
  * JD-Core Version:       1.1.3
  */

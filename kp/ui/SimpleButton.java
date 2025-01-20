@@ -17,12 +17,12 @@
 /*    */   public boolean useState;
 /*    */   public boolean hover;
 /*    */   
-/* 20 */   private static IButtonRenderer renderer = new IButtonRenderer()
-/*    */     {
+/* 20 */   private static IButtonRenderer renderer = new IButtonRenderer() {
 /*    */       public void render(SimpleButton button) {}
 /*    */     };
-/*    */ 
-/*    */ 
+/*    */   
+/*    */   public static interface IButtonRenderer {
+/*    */     void render(SimpleButton param1SimpleButton); }
 /*    */   
 /*    */   public SimpleButton(int id, String text, int x, int y, int w, int h) {
 /* 28 */     this.state = true;
@@ -34,8 +34,8 @@
 /* 34 */     this.y = y;
 /* 35 */     this.width = w;
 /* 36 */     this.height = h;
-/*    */   }
-/*    */   
+/*    */   } public static interface ButtonActionEvent {
+/*    */     void onClick(int param1Int); }
 /*    */   public void setActionEvent(ButtonActionEvent e) {
 /* 40 */     this.event = e;
 /*    */   }
@@ -71,18 +71,10 @@
 /*    */   public static void setRenderInterface(IButtonRenderer e) {
 /* 72 */     renderer = e;
 /*    */   }
-/*    */   
-/*    */   public static interface ButtonActionEvent {
-/*    */     void onClick(int param1Int);
-/*    */   }
-/*    */   
-/*    */   public static interface IButtonRenderer {
-/*    */     void render(SimpleButton param1SimpleButton);
-/*    */   }
 /*    */ }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\k\\ui\SimpleButton.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\k\\ui\SimpleButton.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

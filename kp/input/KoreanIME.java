@@ -57,7 +57,7 @@
 /* 57 */       if (this.selectionFuncPtr.getCursor() > 0 && this.editing) {
 /* 58 */         char end = target.getTargetText().charAt(this.selectionFuncPtr.getCursor() - 1);
 /* 59 */         if (HangulAssembler.isKorean(end) || HangulAssembler.getJamoTier(end) > 0) {
-/* 60 */           String text = String.valueOf(String.valueOf(HangulAssembler.disassemble(end))) + c;
+/* 60 */           String text = String.valueOf(HangulAssembler.disassemble(end)) + c;
 /* 61 */           text = HangulAssembler.make(text);
 /* 62 */           if (this.identifier.apply(text)) {
 /* 63 */             replaceStrAtCursor(target, text);
@@ -84,7 +84,7 @@
 /* 84 */     int last = text.length();
 /* 85 */     String a = text.substring(0, cur);
 /* 86 */     String b = text.substring(cur);
-/* 87 */     text = String.valueOf(String.valueOf(a.substring(0, a.length() - 1))) + c + b;
+/* 87 */     text = String.valueOf(a.substring(0, a.length() - 1)) + c + b;
 /* 88 */     int dCursor = text.length() - last;
 /* 89 */     if (target.setTargetText(text)) {
 /* 90 */       this.selectionFuncPtr.setCursor(cur + dCursor);
@@ -95,7 +95,7 @@
 /*    */ }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\kp\input\KoreanIME.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\kp\input\KoreanIME.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

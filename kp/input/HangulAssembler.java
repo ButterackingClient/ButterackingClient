@@ -141,7 +141,7 @@
 /*     */   }
 /*     */   
 /*     */   public static boolean isAllowed(String s) {
-/* 144 */     return !(Code.CHO.getIndex(s) == -1 && Code.JUNG.getIndex(s) == -1 && Code.JONG.getIndex(s) == -1);
+/* 144 */     return (Code.CHO.getIndex(s) != -1 || Code.JUNG.getIndex(s) != -1 || Code.JONG.getIndex(s) != -1);
 /*     */   }
 /*     */   
 /*     */   public enum Code
@@ -156,7 +156,7 @@
 /*     */     private String getData() {
 /* 157 */       KeyboardArray keyboard = Config.keyloader.getKeyboard();
 /* 158 */       switch (this) {
-/*     */         case null:
+/*     */         case CHO:
 /* 160 */           return keyboard.getChosung();
 /*     */         
 /*     */         case JUNG:
@@ -172,7 +172,7 @@
 /*     */ 
 /*     */     
 /*     */     public int getIndex(String cs) {
-/* 175 */       int idx = getData().indexOf((cs.length() == 1) ? (String.valueOf(String.valueOf(cs)) + " ") : cs);
+/* 175 */       int idx = getData().indexOf((cs.length() == 1) ? (String.valueOf(cs) + " ") : cs);
 /* 176 */       if (cs.charAt(0) == ' ' || idx == -1 || idx % 2 == 1) {
 /* 177 */         return -1;
 /*     */       }
@@ -241,7 +241,7 @@
 /*     */ }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\kp\input\HangulAssembler.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\kp\input\HangulAssembler.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

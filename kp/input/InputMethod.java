@@ -140,7 +140,7 @@
 /*     */           
 /* 141 */           String s1 = text.substring(0, cur);
 /* 142 */           String s2 = text.substring(cur + 1);
-/* 143 */           this.target.setTargetText(String.valueOf(String.valueOf(s1)) + s2);
+/* 143 */           this.target.setTargetText(String.valueOf(s1) + s2);
 /*     */         }
 /*     */       
 /*     */       } 
@@ -213,7 +213,7 @@
 /* 213 */       int cursor = this.selectionFuncPtr.getCursor();
 /* 214 */       String splited1 = this.target.getTargetText().substring(0, cursor);
 /* 215 */       String splited2 = this.target.getTargetText().substring(cursor);
-/* 216 */       this.target.setTargetText(String.valueOf(String.valueOf(splited1)) + str + splited2);
+/* 216 */       this.target.setTargetText(String.valueOf(splited1) + str + splited2);
 /* 217 */       this.selectionFuncPtr.setCursor(cursor + 1);
 /*     */     } 
 /*     */   }
@@ -240,7 +240,7 @@
 /*     */   }
 /*     */   
 /*     */   public boolean isAlpha(char c) {
-/* 243 */     return !((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'));
+/* 243 */     return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 /*     */   }
 /*     */   
 /*     */   public static void setInterface(IMinecraftInterface itf) {
@@ -293,7 +293,7 @@
 /*     */ }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\kp\input\InputMethod.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\kp\input\InputMethod.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */

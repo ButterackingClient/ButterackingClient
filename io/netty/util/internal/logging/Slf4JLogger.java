@@ -183,7 +183,7 @@
 /*     */ }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\io\nett\\util\internal\logging\Slf4JLogger.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\io\nett\\util\internal\logging\Slf4JLogger.class
  * Java compiler version: 6 (50.0)
  * JD-Core Version:       1.1.3
  */

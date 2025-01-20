@@ -39,7 +39,7 @@ public interface ChannelGroupFuture extends Future<Void>, Iterable<ChannelFuture
 }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\io\netty\channel\group\ChannelGroupFuture.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\io\netty\channel\group\ChannelGroupFuture.class
  * Java compiler version: 6 (50.0)
  * JD-Core Version:       1.1.3
  */

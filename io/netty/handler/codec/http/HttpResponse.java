@@ -9,7 +9,7 @@ public interface HttpResponse extends HttpMessage {
 }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\io\netty\handler\codec\http\HttpResponse.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\io\netty\handler\codec\http\HttpResponse.class
  * Java compiler version: 6 (50.0)
  * JD-Core Version:       1.1.3
  */

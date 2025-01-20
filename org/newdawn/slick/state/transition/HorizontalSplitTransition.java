@@ -111,7 +111,7 @@
 /*     */ }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\org\newdawn\slick\state\transition\HorizontalSplitTransition.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\org\newdawn\slick\state\transition\HorizontalSplitTransition.class
  * Java compiler version: 5 (49.0)
  * JD-Core Version:       1.1.3
  */

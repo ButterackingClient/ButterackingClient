@@ -21,7 +21,7 @@ public interface IMinecraftInterface {
 }
 
 
-/* Location:              C:\User\\user\Desktop\Butteracking Client v4\Butteracking Client v4.jar!\kp\mcinterface\IMinecraftInterface.class
+/* Location:              C:\User\\user\Desktop\Butteracking Client v4.1.jar!\kp\mcinterface\IMinecraftInterface.class
  * Java compiler version: 8 (52.0)
  * JD-Core Version:       1.1.3
  */
