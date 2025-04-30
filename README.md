@@ -1,8 +1,9 @@
 > [!NOTE]
 > **안정성을 위해 최신버전을 유지해주세요**
+> **Please keep it up to date for stablity**
 
 ## Butteracking Client
-가장 기본적인 PVP 클라이언트
+The most basic Minecraft PvP Client
 
 ![image](https://github.com/user-attachments/assets/a9436910-caa0-4fbd-aa6d-960a61adfa09)
 
@@ -23,21 +24,21 @@
 ```
 
 ## ❓ FAQ
-[FAQ 확인](https://github.com/ButterackingClient/ButterackingClient/blob/main/FAQ.md)
+[Check the FAQ](https://github.com/ButterackingClient/ButterackingClient/blob/main/FAQ.md)
 
 ## 📥 Download
-- 다운로드 및 적용 스크립트:
+- Automatic download with Powershell script:
 ```
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/ButterackingClient/ButterackingClient/refs/heads/main/download_client.ps1" -OutFile "download_client.ps1"; Set-ExecutionPolicy Bypass -Scope LocalMachine; ./download_client.ps1
 ```
-- 수동 다운로드: https://github.com/ButterackingClient/ButterackingClient/releases/tag/latest
+- Manual download: https://github.com/ButterackingClient/ButterackingClient/releases/tag/latest
 
 ## 🌐 Social
 - **YouTube**: [@Butteracking](https://www.youtube.com/@Butteracking)
 
 
 ## 💻 Developer / Contributors
-- **delta8682**: [GitHub](https://github.com/delta8682)
+- [Dev] **delta8682**: [GitHub](https://github.com/delta8682)
 
 ---
 
